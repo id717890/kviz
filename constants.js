@@ -1,0 +1,5 @@
+export default {
+  QUESTION_TYPE: {
+    CHECK_BOX_TEXT_VARIANTS: 'CHECK_BOX_TEXT_VARIANTS',
+  },
+}
