@@ -6,6 +6,46 @@
   border: 1px solid yellow !important;
 }
 
+.kviz-select-field {
+  .vs__dropdown-toggle{
+    height: 45px;
+  }
+  
+  ul {
+    padding-left: 0 !important;
+  }
+}
+
+.kviz-select-field.vs--open {
+  .vs__selected{
+    height: 35px;
+  }
+}
+
+.my-swiper-button-prev {
+  left: 10px;
+  right: auto;
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.my-swiper-button-next {
+  right: 10px;
+  left: auto;
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after
+{
+  display: none;
+}
+
 a {
   text-decoration: none !important;
   color: inherit !important;

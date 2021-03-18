@@ -10,11 +10,13 @@
               увеличения продаж</span
             >
           </div>
-          <div class="">
+          <div class="pb-16">
             <CheckBoxVariant :items="[]" />
             <RadioBoxVariant :items="[]" />
             <RadioBoxVariantImage :items="[]" />
-            <RadioBoxVariant :items="[]" />
+            <RadioBoxSwiperSlider :items="[]" />
+            <ComboBoxVariant :items="[]" />
+            <TextVariant :items="[]" />
           </div>
         </div>
       </div>
@@ -27,8 +29,19 @@ import { mapState } from 'vuex'
 import CheckBoxVariant from '~/components/Question/CheckBoxVariants'
 import RadioBoxVariant from '~/components/Question/RadioBoxVariants'
 import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
+import RadioBoxSwiperSlider from '~/components/Question/RadioBoxSwiperSlider'
+import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
+import TextVariant from '~/components/Question/TextVariant'
+
 export default {
-  components: { CheckBoxVariant, RadioBoxVariant, RadioBoxVariantImage },
+  components: {
+    CheckBoxVariant,
+    RadioBoxVariant,
+    RadioBoxVariantImage,
+    RadioBoxSwiperSlider,
+    ComboBoxVariant,
+    TextVariant,
+  },
   computed: {
     ...mapState({
       kviz: (state) => state.kviz.steps,
