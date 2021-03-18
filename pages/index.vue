@@ -10,13 +10,14 @@
               увеличения продаж</span
             >
           </div>
-          <div class="pb-16">
+          <div style="padding-bottom: 400px">
             <CheckBoxVariant :items="[]" />
             <RadioBoxVariant :items="[]" />
             <RadioBoxVariantImage :items="[]" />
             <RadioBoxSwiperSlider :items="[]" />
             <ComboBoxVariant :items="[]" />
             <TextVariant :items="[]" />
+            <DatePickerVariant :items="[]" />
           </div>
         </div>
       </div>
@@ -32,6 +33,7 @@ import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
 import RadioBoxSwiperSlider from '~/components/Question/RadioBoxSwiperSlider'
 import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
 import TextVariant from '~/components/Question/TextVariant'
+import DatePickerVariant from '~/components/Question/DatePickerVariant'
 
 export default {
   components: {
@@ -41,6 +43,7 @@ export default {
     RadioBoxSwiperSlider,
     ComboBoxVariant,
     TextVariant,
+    DatePickerVariant,
   },
   computed: {
     ...mapState({

@@ -2,22 +2,91 @@
 // @import 'main';
 // @import 'text';
 
+.mx-datepicker-main.mx-datepicker-popup {
+  .mx-table.mx-table-date thead{
+    color: #FF9A19 !important;
+  }
+
+  .mx-table-year {
+    .cell.active {
+      background-color: #5CC4EE;
+      border-radius: 5px;
+      height: 100%;
+
+      div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .mx-table-month {
+    .cell.active {
+      background-color: #5CC4EE;
+      border-radius: 5px;
+      height: 100%;
+
+      div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .mx-date-row {
+    .cell.active {
+      background-color: #5CC4EE;
+      border-radius: 5px;
+
+      div {
+        line-height: 32px;
+      }
+    }
+  }
+}
+
+.neiros__datepicker__vue {
+  width: 100% !important;
+
+  
+
+  .mx-input-wrapper {
+    .mx-input {
+      height: 53px;
+      cursor: pointer;
+      font-family: 'Roboto Light', sans-serif;
+      color: #606060;
+      font-size: 16px;
+    }
+  }
+
+  .mx-icon-calendar {
+    display: block !important;
+    left: 15px;
+    right: auto;
+  }
+}
+
 .test {
   border: 1px solid yellow !important;
 }
 
 .kviz-select-field {
-  .vs__dropdown-toggle{
+  .vs__dropdown-toggle {
     height: 45px;
   }
-  
+
   ul {
     padding-left: 0 !important;
   }
 }
 
 .kviz-select-field.vs--open {
-  .vs__selected{
+  .vs__selected {
     height: 35px;
   }
 }
@@ -41,8 +110,7 @@
 }
 
 .swiper-button-prev::after,
-.swiper-button-next::after
-{
+.swiper-button-next::after {
   display: none;
 }
 
@@ -60,8 +128,9 @@ a {
   scrollbar-width: none;
 }
 
-::before, ::after {
-  box-sizing: content-box !important
+::before,
+::after {
+  box-sizing: content-box !important;
 }
 
 button:focus {
