@@ -18,6 +18,7 @@
             <ComboBoxVariant :items="[]" />
             <TextVariant :items="[]" />
             <DatePickerVariant :items="[]" />
+            <SliderVariant :items="[]" />
           </div>
         </div>
       </div>
@@ -34,6 +35,7 @@ import RadioBoxSwiperSlider from '~/components/Question/RadioBoxSwiperSlider'
 import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
 import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
+import SliderVariant from '~/components/Question/SliderVariant'
 
 export default {
   components: {
@@ -44,6 +46,7 @@ export default {
     ComboBoxVariant,
     TextVariant,
     DatePickerVariant,
+    SliderVariant,
   },
   computed: {
     ...mapState({

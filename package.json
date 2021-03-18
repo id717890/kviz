@@ -20,6 +20,7 @@
     "swiper": "^6.5.0",
     "uuid": "^8.3.2",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-range-component": "^1.0.3",
     "vue-select": "^3.11.2",
     "vue2-datepicker": "^3.9.0"
   },
