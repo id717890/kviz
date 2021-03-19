@@ -10,7 +10,7 @@
         использовать для увеличения продаж
         <p>В конце теста бонус - <b>профессиональная консультация</b></p>
       </div>
-      <button type="button" class="neiros_kviz_btn">пройти тест</button>
+      <nuxt-link to="/quiz" class="neiros_kviz_btn">пройти тест</nuxt-link>
       <div>
         <div class="txt1">Бонус после прохождения теста!</div>
         <div class="neiros__bonus-container">

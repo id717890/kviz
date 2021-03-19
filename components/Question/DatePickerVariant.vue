@@ -4,7 +4,7 @@
     <div class="step checkbox-block active">
       <div class="neiros__kviz_polls">
         <div class="neiros___polls_date active flex-grow-1">
-          <div class="container-fluid">
+          <div class="container-fluid pa-0">
             <div class="row">
               <div class="col-6">
                 <date-picker

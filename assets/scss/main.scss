@@ -102,3 +102,189 @@
     margin-left: 80px;
   }
 }
+
+.neiros_kviz_btn_next,
+.neiros_kviz_btn_prev {
+  height: 50px;
+}
+
+.neiros_kviz_btn_prev {
+  box-shadow: none;
+  border: 2px solid #a8abb9;
+  outline: none;
+  font-family: 'Roboto';
+  text-transform: uppercase;
+  padding: 15px 10px 15px 10px;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 ;
+  width: 135px;
+  margin-top: 0px;
+  background: none;
+  color: #a8abb9;
+  overflow: hidden;
+  -webkit-transition: ease 0.3s;
+  transition: ease 0.3s;
+  position: relative;
+}
+
+.neiros_kviz_btn_prev:hover {
+  background: #e9e9e9;
+}
+.neiros_kviz_btn_prev:focus {
+  outline: none;
+}
+
+.neiros_kviz_btn_prev img {
+  padding-right: 5px;
+}
+
+.neiros_kviz_btn_next {
+  box-shadow: none;
+  border: none;
+  outline: none;
+  font-family: 'Roboto';
+  text-transform: uppercase;
+  padding: 15px 10px 15px 10px;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 ;
+  width: 135px;
+  margin-top: 0px;
+  background: #00b9ee;
+  color: #fff;
+  overflow: hidden;
+  -webkit-transition: ease 0.3s;
+  transition: ease 0.3s;
+  position: relative;
+}
+
+.neiros_kviz_btn_next:hover {
+  background: #03a7d5;
+}
+
+.neiros_kviz_btn_next:focus {
+  outline: none;
+}
+
+.neiros_kviz_btn_next::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 300px;
+  margin-left: 60px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0),
+    #fff 40%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0.6;
+  position: absolute;
+  left: -40px;
+  top: -150px;
+  z-index: 1;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  -webkit-animation-name: slideme;
+  animation-name: slideme;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-delay: 0.05s;
+  animation-delay: 0.05s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.neiros_kviz_btn_next[disabled] {
+  cursor: not-allowed;
+}
+
+.quiz-bar {
+  background-color: #f5f6fa !important;
+}
+
+.quiz-blue span {
+  background-color: #34c2e3 !important;
+}
+
+.quiz-stripes span {
+  background-repeat: initial;
+  position: relative;
+  border-radius: 20px;
+  display: block;
+  -webkit-background-size: 30px 30px;
+  -moz-background-size: 30px 30px;
+  background-size: 30px 30px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0.25, rgba(255, 255, 255, 0.15)),
+    color-stop(0.25, transparent),
+    color-stop(0.5, transparent),
+    color-stop(0.5, rgba(255, 255, 255, 0.15)),
+    color-stop(0.75, rgba(255, 255, 255, 0.15)),
+    color-stop(0.75, transparent),
+    to(transparent)
+  );
+  background-image: -webkit-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+}

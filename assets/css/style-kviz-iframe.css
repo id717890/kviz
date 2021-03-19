@@ -81,7 +81,7 @@ html {
   overflow: auto;
 }
 .neiros__container_kviz .neiros__block_kviz_left {
-  position: absolute;
+  position: relative;
   left: 0px;
   top: 0px;
   bottom: 0px;
@@ -129,6 +129,8 @@ html {
   margin-right: 7px;
 }
 .neiros__block_kviz_cov {
+  display: flex;
+  flex-flow: column;
   position: relative;
   padding: 40px 30px 30px 40px;
   height: 100%;

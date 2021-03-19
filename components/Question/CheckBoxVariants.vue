@@ -5,7 +5,7 @@
       <div class="neiros__kviz_polls">
         <div class="neiros__answer-variants__textVariant active">
           <input id="cb1" type="checkbox" name="checkbox-polls-1" />
-          <label for="cb1"><span>Каждый день1</span></label>
+          <label for="cb1" class="mb-0"><span>Каждый день1</span></label>
         </div>
 
         <div class="neiros__answer-variants__textVariant">

@@ -8,8 +8,8 @@
             ref="slider"
             v-model="value"
             height="10"
-            min="1"
-            max="200"
+            :min="1"
+            :max="200"
             :bg-style="bgStyle"
             :process-style="processStyle"
           ></vue-range-slider>
