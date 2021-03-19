@@ -1,57 +1,29 @@
 <template>
-  <div id="#neiros__kviz_iframe">
-    <div class="neiros__container_kviz">
-      <div class="neiros__block_kviz_left ferst_polls_block">
-        <div class="neiros__block_kviz_cov">
-          <div class="neiros__top_copyright">
-            <img src="~/assets/images/check-element.PNG" />
-            <span
-              >Пройдите тест и узнайте какие инструменты использовать для
-              увеличения продаж</span
-            >
-          </div>
-          <div style="padding-bottom: 400px">
-            <CheckBoxVariant :items="[]" />
-            <RadioBoxVariant :items="[]" />
-            <RadioBoxVariantImage :items="[]" />
-            <RadioBoxSwiperSlider :items="[]" />
-            <ComboBoxVariant :items="[]" />
-            <TextVariant :items="[]" />
-            <DatePickerVariant :items="[]" />
-            <SliderVariant :items="[]" />
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+    <Loading />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import CheckBoxVariant from '~/components/Question/CheckBoxVariants'
-import RadioBoxVariant from '~/components/Question/RadioBoxVariants'
-import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
-import RadioBoxSwiperSlider from '~/components/Question/RadioBoxSwiperSlider'
-import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
-import TextVariant from '~/components/Question/TextVariant'
-import DatePickerVariant from '~/components/Question/DatePickerVariant'
-import SliderVariant from '~/components/Question/SliderVariant'
-
+import { mapMutations } from 'vuex'
+import types from '~/store/types'
 export default {
-  components: {
-    CheckBoxVariant,
-    RadioBoxVariant,
-    RadioBoxVariantImage,
-    RadioBoxSwiperSlider,
-    ComboBoxVariant,
-    TextVariant,
-    DatePickerVariant,
-    SliderVariant,
+  mounted() {
+    const id = this.$route.query.id
+    if (id) {
+      this[types.SET_QUIZ_ID](id)
+      setTimeout(() => {
+        this.$router.push({ name: 'quiz' })
+      }, 2000)
+    } else {
+      this.$router.push({
+        name: 'error',
+        params: { message: 'Quiz ID not found' },
+      })
+    }
   },
-  computed: {
-    ...mapState({
-      kviz: (state) => state.kviz.steps,
-    }),
+  methods: {
+    ...mapMutations('quiz', [types.SET_QUIZ_ID]),
   },
 }
 </script>
