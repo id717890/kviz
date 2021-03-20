@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import types from '~/store/types'
 
 export default {
@@ -14,14 +14,15 @@ export default {
       step1: (state) => state?.quiz?.steps?.step1,
     }),
   },
-  mounted() {
+  async mounted() {
     const id = this.$route.query.id
     if (id) {
-      this[types.SET_QUIZ_ID](id)
+      await this[types.FETCH_QUIZ_CONFIG_ACTION](id)
       setTimeout(() => {
-        const startPageIsActive = this.step1?.isActive
-        if (startPageIsActive === true) this.$router.push({ name: 'start' })
-        if (startPageIsActive === false) this.$router.push({ name: 'quiz' })
+        this.$router.push({ name: 'start' })
+        // const startPageIsActive = this.step1?.isActive
+        // if (startPageIsActive === true) this.$router.push({ name: 'start' })
+        // if (startPageIsActive === false) this.$router.push({ name: 'quiz' })
       }, 2000)
     } else {
       this.$router.push({
@@ -31,7 +32,8 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('quiz', [types.SET_QUIZ_ID]),
+    ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
+    // ...mapMutations('quiz', [types.SET_QUIZ_ID]),
   },
 }
 </script>

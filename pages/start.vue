@@ -2,15 +2,20 @@
   <div id="neiros_kviz" class="start-wrapper">
     <div class="start-image">
       <v-img class="start-picture" src="/images/bg-left-kviz.jpg" cover></v-img>
-      <!-- <img src="/images/bg-left-kviz.jpg" class="start-picture" alt="" /> -->
     </div>
     <div class="start-content">
-      <div class="neiros__kviz_block_right_text_top">
-        Пройдите тест и узнайте какие инструменты<br />
+      <div v-if="title" class="neiros__kviz_block_right_text_top">
+        {{ title }}
+        <p></p>
+        <!-- Пройдите тест и узнайте какие инструменты<br />
         использовать для увеличения продаж
-        <p>В конце теста бонус - <b>профессиональная консультация</b></p>
+        <p>В конце теста бонус - <b>профессиональная консультация</b></p> -->
       </div>
-      <nuxt-link to="/quiz" class="neiros_kviz_btn">пройти тест</nuxt-link>
+      <div v-if="subtitle" class="neiros__kviz_block_right_text_top">
+        {{ subtitle }}
+        <p></p>
+      </div>
+      <nuxt-link to="/quiz" class="neiros_kviz_btn">{{ buttonText }}</nuxt-link>
       <div>
         <div class="txt1">Бонус после прохождения теста!</div>
         <div class="neiros__bonus-container">
@@ -23,39 +28,24 @@
       </div>
     </div>
   </div>
-  <!-- <div id="neiros_kviz" class="neiros_kviz">
-    <div
-      class="neiros__kviz_block_left scale-up-hor-left"
-      style="
-        background: url(/images/bg-left-kviz.jpg) center center no-repeat;
-        background-size: cover;
-      "
-    ></div>
-    <div class="neiros__kviz_block_right scale-up-hor-right">
-      <div class="neiros__kviz_padding_block">
-        <div class="neiros__kviz_block_right_text_top">
-          Пройдите тест и узнайте какие инструменты<br />
-          использовать для увеличения продаж
-          <p>В конце теста бонус - <b>профессиональная консультация</b></p>
-        </div>
-
-        <button type="button" class="neiros__kviz_btn">пройти тест</button>
-
-        <div class="neiros__kviz_block_right_text_bottom">
-          Бонус после прохождения теста!
-        </div>
-        <div class="neiros__bonus-container">
-          <img src="images/bonus-img.PNG" alt="" />
-          <div>Полное<br />руковоство<br />для бизнеса</div>
-        </div>
-        <div class="neiros__footer">
-          <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
-        </div>
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      step1: (state) => state?.quiz?.steps?.step1,
+    }),
+    title() {
+      return this.step1?.title
+    },
+    subtitle() {
+      return this.step1?.subtitle
+    },
+    buttonText() {
+      return this.step1?.button_text ?? 'Пройти тест'
+    },
+  },
+}
 </script>
