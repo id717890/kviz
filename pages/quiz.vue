@@ -11,7 +11,7 @@
             >
           </div>
           <div class="d-flex flex-column flex-grow-1">
-            <component :is="question" :items="[]"></component>
+            <component :is="question"></component>
             <!-- <CheckBoxVariant :items="[]" />
             <RadioBoxVariant :items="[]" />
             <RadioBoxVariantImage :items="[]" />
@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import CheckBoxVariant from '~/components/Question/CheckBoxVariants'
 import RadioBoxVariant from '~/components/Question/RadioBoxVariants'
 import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
@@ -115,11 +115,14 @@ import DatePickerVariant from '~/components/Question/DatePickerVariant'
 import SliderVariant from '~/components/Question/SliderVariant'
 import QuizProgress from '~/components/QuizProgress'
 import Constants from '~/constants'
+import types from '~/store/types'
+
+const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 
 export default {
   components: {
     [Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS]: CheckBoxVariant,
-    RadioBoxVariant,
+    [Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS]: RadioBoxVariant,
     RadioBoxVariantImage,
     RadioBoxSwiperSlider,
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
@@ -134,8 +137,29 @@ export default {
       kviz: (state) => state.kviz.steps,
     }),
     question() {
+      const questionType = this.currentQuestion?.tip_oprosa?.toUpperCase()
+      // console.log(questionType)
+      switch (questionType) {
+        case CHECK_OR_RADIO_VARIANTS: {
+          const multiple = this.currentQuestion?.neskolko
+          if (multiple === 'true') {
+            console.log('check')
+            return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
+          }
+          if (multiple === 'false') {
+            console.log('radio')
+            return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
+          }
+        }
+      }
       return this.currentQuestion?.type
     },
+  },
+  async mounted() {
+    await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
+  },
+  methods: {
+    ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
   },
 }
 </script>

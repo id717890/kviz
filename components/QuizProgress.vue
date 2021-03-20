@@ -26,7 +26,7 @@ export default {
   computed: {
     ...mapGetters('quiz', ['totalQuestions']),
     ...mapState({
-      currentQuestion: (state) => state?.quiz?.currentQuestion,
+      currentQuestion: (state) => state?.quiz?.currentQuestionIndex,
     }),
     progress() {
       return ((this.currentQuestion * 100) / this.totalQuestions).toFixed()
