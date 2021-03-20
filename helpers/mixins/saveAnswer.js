@@ -1,11 +1,13 @@
 import { mapMutations, mapState, mapGetters } from 'vuex'
+import { cloneDeep } from 'lodash'
 import types from '~/store/types'
 
 export default {
   mounted() {
     this.variants = this.question?.variants?.map((x) => {
-      x.isSelected = false
-      return x
+      const item = cloneDeep(x)
+      this.$set(item, 'isSelected', false)
+      return item
     })
   },
   computed: {
@@ -21,7 +23,7 @@ export default {
     change() {
       this[types.SAVE_STEP_ANSWER]({
         index: this.currentQuestionIndex,
-        answers: this.variants?.filter((x) => x.isSelected),
+        answers: cloneDeep(this.variants?.filter((x) => x.isSelected)),
       })
     },
   },

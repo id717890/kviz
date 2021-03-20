@@ -7,6 +7,7 @@
           v-for="(variant, index) in variants"
           :key="index"
           class="neiros__answer-variants__textVariant"
+          :class="{ active: variant.isSelected }"
         >
           <input
             :id="`cb${index}`"
