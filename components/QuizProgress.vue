@@ -29,10 +29,7 @@ export default {
       currentQuestion: (state) => state?.quiz?.currentQuestion,
     }),
     progress() {
-      return (
-        ((this.currentQuestion + 1) * 100) /
-        this.totalQuestions
-      ).toFixed()
+      return ((this.currentQuestion * 100) / this.totalQuestions).toFixed()
     },
   },
   methods: {

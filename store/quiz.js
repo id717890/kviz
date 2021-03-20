@@ -17,21 +17,21 @@ export const state = () => ({
         type: Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS,
         question: 'q1',
       },
-      {
-        id: 2,
-        type: Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS,
-        question: 'q2',
-      },
-      {
-        id: 3,
-        type: Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS,
-        question: 'q3',
-      },
-      {
-        id: 4,
-        type: Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS,
-        question: 'q4',
-      },
+      // {
+      //   id: 2,
+      //   type: Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS,
+      //   question: 'q2',
+      // },
+      // {
+      //   id: 3,
+      //   type: Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS,
+      //   question: 'q3',
+      // },
+      // {
+      //   id: 4,
+      //   type: Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS,
+      //   question: 'q4',
+      // },
     ],
     step3: null,
   },
@@ -52,6 +52,9 @@ export const actions = {
     const current = state.currentQuestion
     if (current < total - 1) {
       commit(types.SET_CURRENT_QUESTION, current + 1)
+    } else if (current === total - 1) {
+      // eslint-disable-next-line no-undef
+      $nuxt.$router.push({ name: 'finish' })
     }
   },
   [types.PREV_QUESTION_ACTION]: ({ commit, state }) => {
