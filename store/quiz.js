@@ -42,6 +42,12 @@ export const state = () => ({
 })
 
 export const getters = {
+  currentQuestionAnswers(state) {
+    return (
+      state?.answers.find((x) => x.index === state?.currentQuestionIndex)
+        ?.answers ?? []
+    )
+  },
   totalQuestions(state) {
     return state?.steps?.step2?.length
   },
@@ -91,11 +97,14 @@ export const mutations = {
       state.answers.push({ index, answers })
     } else {
       const findIndex = state.answers.find((x) => x.index === index)
+      console.log('findIndex', findIndex, index)
       if (findIndex) {
         state.answers.splice(state.answers.indexOf(findIndex), 1, {
           index,
           answers,
         })
+      } else {
+        state.answers.push({ index, answers })
       }
     }
   },
