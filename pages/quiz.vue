@@ -114,6 +114,7 @@ import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
 import SliderVariant from '~/components/Question/SliderVariant'
 import QuizProgress from '~/components/QuizProgress'
+import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
 import types from '~/store/types'
 
@@ -131,6 +132,7 @@ export default {
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
     SliderVariant,
     QuizProgress,
+    [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
   },
   computed: {
     ...mapGetters('quiz', ['currentQuestion']),
@@ -157,7 +159,7 @@ export default {
           return Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER
         }
       }
-      return questionType
+      return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
     },
   },
   async mounted() {},
