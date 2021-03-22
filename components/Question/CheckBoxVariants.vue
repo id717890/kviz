@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="neiros__kviz_polls_h1">Первый вопрос по данной теме?</div>
+    <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
     <div class="step checkbox-block active">
       <div v-if="variants" class="neiros__kviz_polls">
         <div

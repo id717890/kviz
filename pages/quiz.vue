@@ -11,7 +11,7 @@
             >
           </div>
           <div class="d-flex flex-column flex-grow-1">
-            <component :is="question"></component>
+            <component :is="question" v-if="question"></component>
             <!-- <CheckBoxVariant :items="[]" />
             <RadioBoxVariant :items="[]" />
             <RadioBoxVariantImage :items="[]" />
@@ -152,10 +152,13 @@ export default {
           }
         }
       }
-      return this.currentQuestion?.type
+      return questionType
     },
   },
   async mounted() {
+    this.$forceUpdate()
+  },
+  async created() {
     await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
   },
   methods: {

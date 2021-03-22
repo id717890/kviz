@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_progress_text">
-      Вопрос <span id="current-step">{{ currentQuestion + 1 }}</span> из
+      Вопрос <span id="current-step">{{ currentQuestionIndex + 1 }}</span> из
       <span id="all-step">{{ totalQuestions }}</span>
     </div>
     <div class="progress-bar quiz-bar quiz-blue quiz-stripes w-100">
@@ -11,7 +11,11 @@
       <button class="neiros_kviz_btn_prev" @click="prev">
         <img src="images/row-left.png" /> <span>назад</span>
       </button>
-      <button class="neiros_kviz_btn_next" @click="next">
+      <button
+        class="neiros_kviz_btn_next"
+        :disabled="isPreventNext"
+        @click="next"
+      >
         далее <img src="images/row-right.PNG" />
       </button>
     </div>
@@ -24,12 +28,25 @@ import types from '~/store/types'
 
 export default {
   computed: {
-    ...mapGetters('quiz', ['totalQuestions']),
+    ...mapGetters('quiz', [
+      'totalQuestions',
+      'currentQuestion',
+      'currentQuestionAnswers',
+    ]),
     ...mapState({
-      currentQuestion: (state) => state?.quiz?.currentQuestionIndex,
+      currentQuestionIndex: (state) => state?.quiz?.currentQuestionIndex,
     }),
     progress() {
-      return ((this.currentQuestion * 100) / this.totalQuestions).toFixed()
+      return ((this.currentQuestionIndex * 100) / this.totalQuestions).toFixed()
+    },
+    isPreventNext() {
+      const isOptional = this.currentQuestion?.neobbyazatelnii_vopros === 'true'
+      const isAnyAnswer = this.currentQuestionAnswers?.length > 0
+      if (isOptional) {
+        return false
+      } else if (isAnyAnswer) {
+        return false
+      } else return true
     },
   },
   methods: {
