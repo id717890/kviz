@@ -40,7 +40,7 @@ export default {
       return ((this.currentQuestionIndex * 100) / this.totalQuestions).toFixed()
     },
     isPreventNext() {
-      const isOptional = this.currentQuestion?.neobbyazatelnii_vopros === 'true'
+      const isOptional = this.currentQuestion?.neobbyazatelnii_vopros
       const isAnyAnswer = this.currentQuestionAnswers?.length > 0
       if (isOptional) {
         return false

@@ -17,7 +17,7 @@
             @change="change"
           />
           <label :for="`cb${index}`" class="mb-0">
-            <span>Каждый день1</span>
+            <span>{{ variant.text }}</span>
           </label>
         </div>
 
@@ -48,8 +48,5 @@ import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
 export default {
   name: 'QuestionCheckBoxVariant',
   mixins: [saveAnswerMixin],
-  data: () => ({
-    variants: [],
-  }),
 }
 </script>

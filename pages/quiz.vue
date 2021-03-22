@@ -108,7 +108,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import CheckBoxVariant from '~/components/Question/CheckBoxVariants'
 import RadioBoxVariant from '~/components/Question/RadioBoxVariants'
 import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
-import RadioBoxSwiperSlider from '~/components/Question/RadioBoxSwiperSlider'
+import SliderImageVariants from '~/components/Question/SliderImageVariants'
 import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
 import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
@@ -118,13 +118,14 @@ import Constants from '~/constants'
 import types from '~/store/types'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
+const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
 
 export default {
   components: {
     [Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS]: CheckBoxVariant,
     [Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS]: RadioBoxVariant,
     RadioBoxVariantImage,
-    RadioBoxSwiperSlider,
+    [Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER]: SliderImageVariants,
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
     TextVariant,
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
@@ -140,24 +141,26 @@ export default {
       const questionType = this.currentQuestion?.tip_oprosa?.toUpperCase()
       // console.log(questionType)
       switch (questionType) {
-        case CHECK_OR_RADIO_VARIANTS: {
-          const multiple = this.currentQuestion?.neskolko
-          if (multiple === 'true') {
-            console.log('check')
-            return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
+        case CHECK_OR_RADIO_VARIANTS:
+          {
+            const multiple = this.currentQuestion?.neskolko
+            if (multiple === true) {
+              return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
+            }
+            if (multiple === false) {
+              return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
+            }
           }
-          if (multiple === 'false') {
-            console.log('radio')
-            return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
-          }
+          break
+        case CHECK_OR_RADIO_IMAGE_VARIANTS: {
+          // const multiple = this.currentQuestion?.neskolko
+          return Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER
         }
       }
       return questionType
     },
   },
-  async mounted() {
-    this.$forceUpdate()
-  },
+  async mounted() {},
   async created() {
     await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
   },

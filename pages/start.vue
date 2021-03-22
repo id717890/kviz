@@ -44,7 +44,8 @@ export default {
       return this.step1?.subtitle
     },
     buttonText() {
-      return this.step1?.button_text ?? 'Пройти тест'
+      const btnText = this.step1?.button_text
+      return btnText || 'Пройти тест'
     },
   },
 }

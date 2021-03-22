@@ -17,7 +17,7 @@
               :value="variant.id"
               @change="changeRadio"
             />
-            <span>Каждый день2</span>
+            <span>{{ variant.text }}</span>
           </label>
         </div>
       </div>
@@ -31,8 +31,5 @@ import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
 export default {
   name: 'QuestionRadioBoxVariant',
   mixins: [saveAnswerMixin],
-  data: () => ({
-    variants: [],
-  }),
 }
 </script>

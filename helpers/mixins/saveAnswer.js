@@ -3,7 +3,11 @@ import { cloneDeep } from 'lodash'
 import types from '~/store/types'
 
 export default {
-  mounted() {
+  data: () => ({
+    variants: [],
+  }),
+  beforeMount() {
+    console.log('beforeMount')
     this.variants = this.question?.variants?.map((variant) => {
       const item = cloneDeep(variant)
       const findAnswer = this.answers?.find(
@@ -22,6 +26,9 @@ export default {
       question: 'quiz/currentQuestion',
       answers: 'quiz/currentQuestionAnswers',
     }),
+    isMultiple() {
+      return this.question?.neskolko ?? false
+    },
   },
   methods: {
     ...mapMutations('quiz', [types.SAVE_STEP_ANSWER]),
@@ -48,6 +55,20 @@ export default {
       })
       this.saveAnswer()
       this[types.NEXT_QUESTION_ACTION]()
+    },
+    clickSlide(index, reallyIndex) {
+      if (!this.isMultiple) {
+        this.resetSelection()
+      }
+      this.variants?.forEach((variant, variantIndex) => {
+        if (variantIndex === reallyIndex) {
+          variant.isSelected = true
+        }
+      })
+      this.saveAnswer()
+      if (!this.isMultiple) {
+        this[types.NEXT_QUESTION_ACTION]()
+      }
     },
   },
 }

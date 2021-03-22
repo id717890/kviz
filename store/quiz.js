@@ -1,44 +1,15 @@
 import { cloneDeep } from 'lodash'
 import types from './types'
-import Constants from '~/constants'
+// import Constants from '~/constants'
 import QuizApi from '~/api/Quiz'
+// import fakedata from '~/fakedata'
 // import fakedata from '~/fakedata'
 
 export const state = () => ({
   id: null,
   answers: [],
   currentQuestionIndex: 0,
-  steps: {
-    step1: {
-      title: '',
-      subtitle: '',
-      buttonText: '',
-      isActive: true,
-    },
-    step2: [
-      {
-        id: 1,
-        type: Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS,
-        question: 'q1',
-      },
-      // {
-      //   id: 2,
-      //   type: Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS,
-      //   question: 'q2',
-      // },
-      // {
-      //   id: 3,
-      //   type: Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS,
-      //   question: 'q3',
-      // },
-      // {
-      //   id: 4,
-      //   type: Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS,
-      //   question: 'q4',
-      // },
-    ],
-    step3: null,
-  },
+  steps: null,
 })
 
 export const getters = {
@@ -65,7 +36,8 @@ export const actions = {
       const { data } = await QuizApi.getQuizConfig()
       commit(types.SET_QUIZ_ID, id)
       const steps = cloneDeep(data?.data)
-      steps.step2 = steps.step2.filter((x) => x.optional !== 'false')
+      // const steps = cloneDeep(fakedata?.data)
+      steps.step2 = steps.step2.filter((x) => x.optional !== false)
       commit(types.SET_QUIZ_STEPS, steps)
       // commit(types.SET_QUIZ_STEPS, data?.data)
     } catch (e) {
