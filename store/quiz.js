@@ -69,7 +69,7 @@ export const mutations = {
       state.answers.push({ index, answers })
     } else {
       const findIndex = state.answers.find((x) => x.index === index)
-      console.log('findIndex', findIndex, index)
+      // console.log('findIndex', findIndex, index)
       if (findIndex) {
         state.answers.splice(state.answers.indexOf(findIndex), 1, {
           index,

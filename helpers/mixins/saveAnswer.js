@@ -1,13 +1,17 @@
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex'
-import { cloneDeep } from 'lodash'
+import { cloneDeep, debounce } from 'lodash'
 import types from '~/store/types'
 
 export default {
   data: () => ({
     variants: [],
+    textAnswer: null, // для компонента с текстовым полем
+    selectedItems: null, // для компонента со списком
   }),
+  created() {
+    this.debouncedChangeTextVariant = debounce(this.changeTextVariant, 550)
+  },
   beforeMount() {
-    console.log('beforeMount')
     this.variants = this.question?.variants?.map((variant) => {
       const item = cloneDeep(variant)
       const findAnswer = this.answers?.find(
@@ -36,13 +40,13 @@ export default {
     saveAnswer() {
       const answers = cloneDeep(this.variants?.filter((x) => x.isSelected))
       console.log(answers)
-      console.log(answers.length > 0)
-      if (answers && answers.length > 0) {
-        this[types.SAVE_STEP_ANSWER]({
-          index: this.currentQuestionIndex,
-          answers,
-        })
-      }
+      // console.log(answers.length > 0)
+      // if (answers && answers.length > 0) {
+      this[types.SAVE_STEP_ANSWER]({
+        index: this.currentQuestionIndex,
+        answers,
+      })
+      // }
     },
     change() {
       this.saveAnswer()
@@ -56,6 +60,18 @@ export default {
       this.saveAnswer()
       this[types.NEXT_QUESTION_ACTION]()
     },
+    changeRadioAndImage(item) {
+      this.variants.forEach((variant) => {
+        if (Number(variant.id) === Number(item?.target?.value)) {
+          this.currentImage = variant?.src
+          variant.isSelected = true
+        } else variant.isSelected = false
+      })
+      this.saveAnswer()
+      setTimeout(() => {
+        this[types.NEXT_QUESTION_ACTION]()
+      }, 1000)
+    },
     clickSlide(index, reallyIndex) {
       if (!this.isMultiple) {
         this.resetSelection()
@@ -67,6 +83,36 @@ export default {
       })
       this.saveAnswer()
       if (!this.isMultiple) {
+        this[types.NEXT_QUESTION_ACTION]()
+      }
+    },
+    resetSelection() {
+      this.variants?.forEach((variant) => {
+        variant.isSelected = false
+      })
+    },
+    changeTextVariant() {
+      this[types.SAVE_STEP_ANSWER]({
+        index: this.currentQuestionIndex,
+        answers: [this.textAnswer],
+      })
+    },
+    selectChange(items) {
+      this.resetSelection()
+      if (this.isMultiple) {
+        this.variants.forEach((variant) => {
+          const findItem = items.find((x) => x.id === variant.id)
+          if (findItem) {
+            variant.isSelected = true
+          }
+        })
+        this.saveAnswer()
+      } else {
+        const findItem = this.variants.find((x) => x?.id === items?.id)
+        if (findItem) {
+          findItem.isSelected = true
+        }
+        this.saveAnswer()
         this[types.NEXT_QUESTION_ACTION]()
       }
     },

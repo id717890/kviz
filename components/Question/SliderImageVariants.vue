@@ -118,13 +118,6 @@ export default {
     },
   },
   methods: {
-    resetSelection() {
-      console.log('isMulti', this.isMultiple)
-      this.variants.forEach((variant) => {
-        variant.isSelected = false
-      })
-    },
-
     prev() {
       this.swiper.slidePrev()
     },

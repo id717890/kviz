@@ -12,6 +12,7 @@
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <component :is="question" v-if="question"></component>
+            <!-- <RadioBoxVariantImage :items="[]" /> -->
             <!-- <CheckBoxVariant :items="[]" />
             <RadioBoxVariant :items="[]" />
             <RadioBoxVariantImage :items="[]" />
@@ -105,11 +106,12 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import CheckBoxVariant from '~/components/Question/CheckBoxVariants'
-import RadioBoxVariant from '~/components/Question/RadioBoxVariants'
-import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
+import CheckBoxVariant from '~/components/Question/CheckBoxVariant'
+import CheckBoxImageVariant from '~/components/Question/CheckBoxImageVariant'
+import RadioBoxVariant from '~/components/Question/RadioBoxVariant'
+import RadioBoxImageVariant from '~/components/Question/RadioBoxImageVariant'
 import SliderImageVariants from '~/components/Question/SliderImageVariants'
-import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
+import ComboBoxVariant from '~/components/Question/ComboBoxVariant'
 import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
 import SliderVariant from '~/components/Question/SliderVariant'
@@ -120,15 +122,22 @@ import types from '~/store/types'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
+const CHECK_OR_RADIO_AND_IMAGE_VARIANTS = 'VAR-I-KARTINKA'
+const TEXT_VARIANT = 'POLE-DLYA-VVODA'
+const COMBOBOX_VARIANT = 'VIPADAYSHII-SPISOK'
 
 export default {
   components: {
     [Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS]: CheckBoxVariant,
+    [Constants.QUESTION_TYPE
+      .CHECK_BOX_TEXT_AND_IMAGE_VARIANTS]: CheckBoxImageVariant,
     [Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS]: RadioBoxVariant,
-    RadioBoxVariantImage,
+    [Constants.QUESTION_TYPE
+      .RADIO_BOX_TEXT_AND_IMAGE_VARIANTS]: RadioBoxImageVariant,
     [Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER]: SliderImageVariants,
+    [Constants.QUESTION_TYPE.TEXT_VARIANT]: TextVariant,
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
-    TextVariant,
+
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
     SliderVariant,
     QuizProgress,
@@ -143,20 +152,31 @@ export default {
       const questionType = this.currentQuestion?.tip_oprosa?.toUpperCase()
       // console.log(questionType)
       switch (questionType) {
-        case CHECK_OR_RADIO_VARIANTS:
-          {
-            const multiple = this.currentQuestion?.neskolko
-            if (multiple === true) {
-              return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
-            }
-            if (multiple === false) {
-              return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
-            }
+        case CHECK_OR_RADIO_VARIANTS: {
+          const multiple = this.currentQuestion?.neskolko
+          if (multiple) {
+            return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
+          } else {
+            return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
           }
-          break
+        }
         case CHECK_OR_RADIO_IMAGE_VARIANTS: {
           // const multiple = this.currentQuestion?.neskolko
           return Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER
+        }
+        case CHECK_OR_RADIO_AND_IMAGE_VARIANTS: {
+          const multiple = this.currentQuestion?.neskolko
+          if (multiple) {
+            return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_AND_IMAGE_VARIANTS
+          } else {
+            return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_AND_IMAGE_VARIANTS
+          }
+        }
+        case TEXT_VARIANT: {
+          return Constants.QUESTION_TYPE.TEXT_VARIANT
+        }
+        case COMBOBOX_VARIANT: {
+          return Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS
         }
       }
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
