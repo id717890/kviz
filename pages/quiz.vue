@@ -125,6 +125,7 @@ const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
 const CHECK_OR_RADIO_AND_IMAGE_VARIANTS = 'VAR-I-KARTINKA'
 const TEXT_VARIANT = 'POLE-DLYA-VVODA'
 const COMBOBOX_VARIANT = 'VIPADAYSHII-SPISOK'
+const DATE_PICKER = 'DATA'
 
 export default {
   components: {
@@ -137,8 +138,8 @@ export default {
     [Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER]: SliderImageVariants,
     [Constants.QUESTION_TYPE.TEXT_VARIANT]: TextVariant,
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
-
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
+
     SliderVariant,
     QuizProgress,
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
@@ -177,6 +178,9 @@ export default {
         }
         case COMBOBOX_VARIANT: {
           return Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS
+        }
+        case DATE_PICKER: {
+          return Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS
         }
       }
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND

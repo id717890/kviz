@@ -1,5 +1,6 @@
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex'
 import { cloneDeep, debounce } from 'lodash'
+import { format } from 'date-fns'
 import types from '~/store/types'
 
 export default {
@@ -7,6 +8,10 @@ export default {
     variants: [],
     textAnswer: null, // для компонента с текстовым полем
     selectedItems: null, // для компонента со списком
+    datePicker: {
+      dateTime1: null, // для компонента даты
+      dateTime2: null, // для компонента даты
+    },
   }),
   created() {
     this.debouncedChangeTextVariant = debounce(this.changeTextVariant, 550)
@@ -114,6 +119,42 @@ export default {
         }
         this.saveAnswer()
         this[types.NEXT_QUESTION_ACTION]()
+      }
+    },
+    dateChange() {
+      const answers = []
+      const dateTime1 = this.datePicker?.dateTime1
+      const dateTime2 = this.datePicker?.dateTime2
+      const formatDate = 'dd.MM.yyyy'
+      const formatTime = 'hh:mm'
+
+      try {
+        if (dateTime1) {
+          if (this.isTime) {
+            answers.push(format(dateTime1, formatTime))
+          } else {
+            answers.push(format(dateTime1, formatDate))
+          }
+        }
+        if (this.isDataPickerRange && dateTime2) {
+          if (this.isTime) {
+            answers.push(format(dateTime2, formatTime))
+          } else {
+            answers.push(format(dateTime2, formatDate))
+          }
+        }
+
+        if (
+          (this.isDataPickerRange && answers?.length === 2) ||
+          (!this.isDataPickerRange && answers?.length === 1)
+        ) {
+          this[types.SAVE_STEP_ANSWER]({
+            index: this.currentQuestionIndex,
+            answers,
+          })
+        }
+      } catch (e) {
+        console.error(e)
       }
     },
   },

@@ -44,12 +44,14 @@ export default {
   }),
   mounted() {
     if (this.variants?.length) {
-      this.currentImage = this.variants[0]?.src
+      // this.currentImage = this.variants[0]?.src ?? '/images/polls-img.JPG'
+      this.currentImage = '/images/polls-img.JPG'
     }
   },
   methods: {
     changeCheckBoxAndImage(variant) {
-      this.currentImage = variant?.src
+      // this.currentImage = variant?.src ?? '/images/polls-img.JPG'
+      this.currentImage = '/images/polls-img.JPG'
       this.saveAnswer()
     },
   },
