@@ -81,6 +81,9 @@
               <div class="neiros__work_operator">Ведущий программист</div>
             </div>
           </div>
+          <div v-if="chatMessage" class="message-chat-question">
+            <div class="tolltip">{{ chatMessage }}</div>
+          </div>
 
           <div class="neiros__block_bonus">
             <img src="images/bonus-img2.PNG" alt="" />
@@ -149,6 +152,9 @@ export default {
     ...mapState({
       kviz: (state) => state.kviz.steps,
     }),
+    chatMessage() {
+      return this.currentQuestion?.massage
+    },
     question() {
       const questionType = this.currentQuestion?.tip_oprosa?.toUpperCase()
       // console.log(questionType)
