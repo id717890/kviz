@@ -13,6 +13,7 @@ export default {
       dateTime2: null, // для компонента даты
     },
     rangeValue: null, // для компонента диапазаон
+    files: null, // для компонента файлы
   }),
   created() {
     const debounceTimeout = process.env.VUE_APP_DEBOUNCE_TIMEOUT ?? 1000
@@ -167,6 +168,13 @@ export default {
       this[types.SAVE_STEP_ANSWER]({
         index: this.currentQuestionIndex,
         answers: [value],
+      })
+    },
+    uploadFiles(event) {
+      this.files = event.target.files
+      this[types.SAVE_STEP_ANSWER]({
+        index: this.currentQuestionIndex,
+        answers: [this.files],
       })
     },
   },

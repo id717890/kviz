@@ -118,6 +118,7 @@ import ComboBoxVariant from '~/components/Question/ComboBoxVariant'
 import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
 import RangeVariant from '~/components/Question/RangeVariant'
+import FileVariant from '~/components/Question/FileVariant'
 import QuizProgress from '~/components/QuizProgress'
 import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
@@ -130,6 +131,7 @@ const TEXT_VARIANT = 'POLE-DLYA-VVODA'
 const COMBOBOX_VARIANT = 'VIPADAYSHII-SPISOK'
 const DATE_PICKER = 'DATA'
 const RANGE = 'POLZYNOK'
+const FILE_VARIANT = 'TIME-PAGE'
 
 export default {
   components: {
@@ -144,6 +146,7 @@ export default {
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
     [Constants.QUESTION_TYPE.RANGE_VARIANTS]: RangeVariant,
+    [Constants.QUESTION_TYPE.FILE_VARIANTS]: FileVariant,
     QuizProgress,
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
   },
@@ -190,6 +193,9 @@ export default {
         }
         case RANGE: {
           return Constants.QUESTION_TYPE.RANGE_VARIANTS
+        }
+        case FILE_VARIANT: {
+          return Constants.QUESTION_TYPE.FILE_VARIANTS
         }
       }
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
