@@ -117,7 +117,7 @@ import SliderImageVariants from '~/components/Question/SliderImageVariants'
 import ComboBoxVariant from '~/components/Question/ComboBoxVariant'
 import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
-import SliderVariant from '~/components/Question/SliderVariant'
+import RangeVariant from '~/components/Question/RangeVariant'
 import QuizProgress from '~/components/QuizProgress'
 import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
@@ -129,6 +129,7 @@ const CHECK_OR_RADIO_AND_IMAGE_VARIANTS = 'VAR-I-KARTINKA'
 const TEXT_VARIANT = 'POLE-DLYA-VVODA'
 const COMBOBOX_VARIANT = 'VIPADAYSHII-SPISOK'
 const DATE_PICKER = 'DATA'
+const RANGE = 'POLZYNOK'
 
 export default {
   components: {
@@ -142,8 +143,7 @@ export default {
     [Constants.QUESTION_TYPE.TEXT_VARIANT]: TextVariant,
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
-
-    SliderVariant,
+    [Constants.QUESTION_TYPE.RANGE_VARIANTS]: RangeVariant,
     QuizProgress,
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
   },
@@ -187,6 +187,9 @@ export default {
         }
         case DATE_PICKER: {
           return Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS
+        }
+        case RANGE: {
+          return Constants.QUESTION_TYPE.RANGE_VARIANTS
         }
       }
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND

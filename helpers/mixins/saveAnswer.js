@@ -12,9 +12,15 @@ export default {
       dateTime1: null, // для компонента даты
       dateTime2: null, // для компонента даты
     },
+    rangeValue: null, // для компонента диапазаон
   }),
   created() {
-    this.debouncedChangeTextVariant = debounce(this.changeTextVariant, 550)
+    const debounceTimeout = process.env.VUE_APP_DEBOUNCE_TIMEOUT ?? 1000
+    this.debouncedChangeTextVariant = debounce(
+      this.changeTextVariant,
+      debounceTimeout
+    )
+    this.debouncedChangeRange = debounce(this.changeRange, debounceTimeout)
   },
   beforeMount() {
     this.variants = this.question?.variants?.map((variant) => {
@@ -156,6 +162,12 @@ export default {
       } catch (e) {
         console.error(e)
       }
+    },
+    changeRange(value) {
+      this[types.SAVE_STEP_ANSWER]({
+        index: this.currentQuestionIndex,
+        answers: [value],
+      })
     },
   },
 }
