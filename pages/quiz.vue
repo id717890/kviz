@@ -55,35 +55,9 @@
       </div>
       <div class="neiros__block_kviz_right ferst_polls_block">
         <div class="neiros__right_sidebar">
-          <div class="neiros__block_seles_top">
-            <div class="neiros__border_sb">
-              <div class="neiros__left_sele">
-                <div class="neiros__top_descr">Ваша скидка</div>
-                <div class="neiros__top_price">2345 Р</div>
-              </div>
-              <div class="neiros__right_sele">
-                <div><img src="images/lightning.PNG" /></div>
-                <div>+ 500 Р за ответ</div>
-              </div>
-            </div>
-          </div>
+          <Discount />
 
-          <div class="neiros__block_operator">
-            <div class="neiros___left">
-              <img src="images/operator3.JPG" />
-            </div>
-            <div class="neiros___right">
-              <div class="neiros__status">
-                <div class="neiros__status_icon"></div>
-                Онлайн
-              </div>
-              <div class="neiros__name_operator">Владимир</div>
-              <div class="neiros__work_operator">Ведущий программист</div>
-            </div>
-          </div>
-          <div v-if="chatMessage" class="message-chat-question">
-            <div class="tolltip">{{ chatMessage }}</div>
-          </div>
+          <Operator />
 
           <div class="neiros__block_bonus">
             <img src="images/bonus-img2.PNG" alt="" />
@@ -123,6 +97,8 @@ import QuizProgress from '~/components/QuizProgress'
 import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
 import types from '~/store/types'
+import Operator from '~/components/Operator'
+import Discount from '~/components/Discount'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
@@ -135,6 +111,8 @@ const FILE_VARIANT = 'TIME-PAGE'
 
 export default {
   components: {
+    Operator,
+    Discount,
     [Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS]: CheckBoxVariant,
     [Constants.QUESTION_TYPE
       .CHECK_BOX_TEXT_AND_IMAGE_VARIANTS]: CheckBoxImageVariant,
