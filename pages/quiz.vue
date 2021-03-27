@@ -59,7 +59,14 @@
 
           <Operator />
 
-          <div class="neiros__block_bonus">
+          <StepBonus v-if="isShowBonus1">
+            <div class="text-bonus-dop">
+              Пройдите тест до конца, чтобы получить<br />
+              подробные инструкци
+            </div>
+          </StepBonus>
+
+          <!-- <div class="neiros__block_bonus">
             <img src="images/bonus-img2.PNG" alt="" />
             <div class="neiros__text_bonus">
               + Полное рукводство<br />
@@ -70,7 +77,7 @@
               Пройдите тест до конца, чтобы получить<br />
               подробные инструкци
             </div>
-          </div>
+          </div> -->
 
           <div class="neiros__footer">
             <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
@@ -99,6 +106,7 @@ import Constants from '~/constants'
 import types from '~/store/types'
 import Operator from '~/components/Operator'
 import Discount from '~/components/Discount'
+import StepBonus from '~/components/BonusSteps'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
@@ -113,6 +121,7 @@ export default {
   components: {
     Operator,
     Discount,
+    StepBonus,
     [Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS]: CheckBoxVariant,
     [Constants.QUESTION_TYPE
       .CHECK_BOX_TEXT_AND_IMAGE_VARIANTS]: CheckBoxImageVariant,
@@ -132,6 +141,13 @@ export default {
     ...mapGetters('quiz', ['currentQuestion']),
     ...mapState({
       kviz: (state) => state.kviz.steps,
+      isShowBonus1: (state) => {
+        const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
+        if (isShow === false || isShow === true) {
+          return isShow
+        }
+        return true
+      },
     }),
     chatMessage() {
       return this.currentQuestion?.massage

@@ -23,7 +23,20 @@
               инструкцию <b>+ заработаные бонусы!</b>
             </div>
           </div>
-          <div class="neiros__final_block_bonus">
+
+          <div class="d-flex pt-5 mt-5">
+            <!-- <div class="neiros__bonus">
+              <img src="images/bonus-img-final2.PNG" />
+              <div>
+                Полное<br />
+                руковоство<br />
+                для бизнеса
+              </div>
+            </div> -->
+            <BonusFinish1 v-if="isShowBonus1Finish" />
+            <BonusFinish2 />
+          </div>
+          <!-- <div class="neiros__final_block_bonus">
             <div class="neiros__bonus">
               <img src="images/bonus-img-final2.PNG" />
               <div>
@@ -32,15 +45,8 @@
                 для бизнеса
               </div>
             </div>
-            <div class="neiros__bonus">
-              <img src="images/bonus-img-final.PNG" />
-              <div class="pos-2">
-                Скидка<br />
-                на месяц<br />
-                подписки
-              </div>
-            </div>
-          </div>
+            <BonusFinish />
+          </div> -->
         </div>
       </div>
       <div class="neiros__block_kviz_right two_polls_block">
@@ -49,6 +55,7 @@
             <div class="neiros__input_form">
               <span>Введите Ваше имя*</span>
               <input
+                v-model="name"
                 type="text"
                 name="name"
                 class=""
@@ -58,6 +65,7 @@
             <div class="neiros__input_form">
               <span>На какую почту отправить результаты?</span>
               <input
+                v-model="email"
                 type="text"
                 name="email"
                 class=""
@@ -73,7 +81,11 @@
                 <a href="#"><img src="images/icons/social/viber.PNG" /></a>
               </div>
             </div>
-            <button class="neiros__btn-left-sidebar">
+            <button
+              :disabled="!isValidForm"
+              class="neiros__btn-left-sidebar"
+              @click.prevent="goToThanks"
+            >
               <img src="images/btn-mail.PNG" /> получить результаты
             </button>
             <div class="neiros__privacy_policy_block">
@@ -94,16 +106,43 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
-
+import { mapGetters, mapActions, mapState } from 'vuex'
+import types from '~/store/types'
+import BonusFinish1 from '~/components/BonusFinish1'
+import BonusFinish2 from '~/components/BonusFinish2'
 export default {
+  components: { BonusFinish1, BonusFinish2 },
+  data: () => ({
+    name: null,
+    email: null,
+  }),
   computed: {
     ...mapGetters('quiz', ['currentQuestion']),
     ...mapState({
-      kviz: (state) => state.kviz.steps,
+      isShowBonus1Finish: (state) => {
+        const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
+        if (isShow === false || isShow === true) {
+          return isShow
+        }
+        return true
+      },
     }),
     question() {
       return this.currentQuestion?.type
+    },
+    isValidForm() {
+      return this.email && this.name
+    },
+  },
+  async created() {
+    await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
+  },
+  methods: {
+    ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
+    goToThanks() {
+      if (this.name && this.email) {
+        this.$router.push('/thanks')
+      }
     },
   },
 }
