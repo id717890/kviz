@@ -3,7 +3,7 @@
     <div class="neiros__container_kviz">
       <div class="neiros__block_kviz_left two_polls_block">
         <div class="neiros__block_kviz_cov">
-          <div class="neiros__final_h1">Отлично! Остался всего один шаг!</div>
+          <div class="neiros__final_h1">{{ title }}</div>
           <div class="neiros__progress_block_two overflow-visible">
             <div
               class="progress-bar quiz-bar quiz-blue quiz-stripes overflow-visible"
@@ -15,7 +15,8 @@
           </div>
           <div class="neiros__final_block_text">
             <div class="neiros__final_h2">
-              Заполните форму, чтобы получить результаты<br />прохождения теста
+              <!-- Заполните форму, чтобы получить результаты<br />прохождения теста -->
+              {{ text1 }}
             </div>
             <div class="neiros__final_h2_description">
               Мы рассмотрели ваши ответы и в течении 5 минут вышлем Вам
@@ -77,7 +78,17 @@ export default {
         }
         return true
       },
+      settings: (state) => state?.quiz?.steps?.step4,
     }),
+    title() {
+      return this.settings?.title || 'Отлично! Остался всего один шаг!'
+    },
+    text1() {
+      return (
+        this.settings?.text ||
+        'Заполните форму, чтобы получить результаты прохождения теста'
+      )
+    },
     question() {
       return this.currentQuestion?.type
     },

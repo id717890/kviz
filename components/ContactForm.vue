@@ -118,9 +118,7 @@ export default {
   },
   methods: {
     goToThanks() {
-      if (this.name && this.email) {
-        this.$router.push('/thanks')
-      }
+      this.$router.push('/thanks')
     },
   },
 }

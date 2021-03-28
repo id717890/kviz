@@ -9,7 +9,7 @@
         </div>
         <div class="kviz_success_h1">Спасибо!</div>
         <div class="kviz_success_h2">
-          Ожидайте ответа <img src="images/icons/like.PNG" />
+          {{ message }} <img src="images/icons/like.PNG" />
         </div>
       </div>
     </div>
@@ -17,5 +17,16 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState({
+      settings: (state) => state?.quiz?.steps?.step4,
+      message() {
+        return this.settings?.messenge || 'Ожидайте ответа'
+      },
+    }),
+  },
+}
 </script>
