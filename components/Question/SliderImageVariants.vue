@@ -20,6 +20,7 @@
             <div
               :class="{ 'select-poll': slide.isSelected }"
               class="swiper-slide-block"
+              :style="cssVars"
             >
               <!-- <div><img :src="slide.img" /></div> -->
               <div><img src="/images/polls-img.JPG" /></div>
@@ -54,6 +55,8 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Swiper as SwiperClass, Pagination, Scrollbar } from 'swiper/swiper.esm'
+import { mapState } from 'vuex'
+import Constants from '~/constants'
 
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
@@ -122,6 +125,20 @@ export default {
 
   // }),
   computed: {
+    ...mapState({
+      color: (state) =>
+        state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
+    }),
+    // styles() {
+    //   return {
+    //     border: `1px solid ${this.color}`,
+    //   }
+    // },
+    cssVars() {
+      return {
+        '--slide-border-color': this.color,
+      }
+    },
     swiper() {
       return this.$refs['my-swiper'].$swiper
     },
@@ -136,3 +153,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.swiper-slide .swiper-slide-block.select-poll {
+  border: 1px solid var(--slide-border-color) !important;
+}
+</style>
