@@ -51,54 +51,7 @@
       </div>
       <div class="neiros__block_kviz_right two_polls_block">
         <div class="neiros__right_sidebar">
-          <div class="neiros__sidebar_form">
-            <div class="neiros__input_form">
-              <span>Введите Ваше имя*</span>
-              <input
-                v-model="name"
-                type="text"
-                name="name"
-                class=""
-                placeholder="Иванов Иван"
-              />
-            </div>
-            <div class="neiros__input_form">
-              <span>На какую почту отправить результаты?</span>
-              <input
-                v-model="email"
-                type="text"
-                name="email"
-                class=""
-                placeholder="Ваш e-mail"
-              />
-            </div>
-            <div class="neiros__social_block">
-              <span>Использовать месседжеры</span>
-              <div>
-                <a href="#"><img src="images/icons/social/facebook.PNG" /></a>
-                <a href="#"><img src="images/icons/social/telegram.PNG" /></a>
-                <a href="#"><img src="images/icons/social/vk.PNG" /></a>
-                <a href="#"><img src="images/icons/social/viber.PNG" /></a>
-              </div>
-            </div>
-            <button
-              :disabled="!isValidForm"
-              class="neiros__btn-left-sidebar"
-              @click.prevent="goToThanks"
-            >
-              <img src="images/btn-mail.PNG" /> получить результаты
-            </button>
-            <div class="neiros__privacy_policy_block">
-              <input id="neiros__privacy_policy" type="checkbox" checked />
-              <label for="neiros__privacy_policy"
-                >С <a href="">политикой конфиденциальности</a> ознакомлен</label
-              >
-            </div>
-            <div class="neiros__block_present">
-              <img src="images/present.png" />
-              <span class="txt-14 pt-1">+ 7 дней безлимита в подарок</span>
-            </div>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </div>
@@ -110,12 +63,10 @@ import { mapGetters, mapActions, mapState } from 'vuex'
 import types from '~/store/types'
 import BonusFinish1 from '~/components/BonusFinish1'
 import BonusFinish2 from '~/components/BonusFinish2'
+import ContactForm from '~/components/ContactForm'
 export default {
-  components: { BonusFinish1, BonusFinish2 },
-  data: () => ({
-    name: null,
-    email: null,
-  }),
+  components: { BonusFinish1, BonusFinish2, ContactForm },
+
   computed: {
     ...mapGetters('quiz', ['currentQuestion']),
     ...mapState({
@@ -130,20 +81,12 @@ export default {
     question() {
       return this.currentQuestion?.type
     },
-    isValidForm() {
-      return this.email && this.name
-    },
   },
   async created() {
     await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
   },
   methods: {
     ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
-    goToThanks() {
-      if (this.name && this.email) {
-        this.$router.push('/thanks')
-      }
-    },
   },
 }
 </script>
