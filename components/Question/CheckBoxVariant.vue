@@ -17,7 +17,7 @@
             @change="change"
           />
           <label :for="`cb${index}`" class="mb-0">
-            <span>{{ variant.text }}</span>
+            <span :style="cssVars">{{ variant.text }}</span>
           </label>
         </div>
 
@@ -43,10 +43,32 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
-
+import Constants from '~/constants'
 export default {
   name: 'QuestionCheckBoxVariant',
   mixins: [saveAnswerMixin],
+  computed: {
+    ...mapState({
+      color: (state) =>
+        state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
+    }),
+    cssVars() {
+      return {
+        '--cb-color': this.color,
+      }
+    },
+  },
+  mounted() {
+    this.setColorScheem()
+  },
 }
 </script>
+
+<style scoped>
+input[type='checkbox']:checked + label span::after {
+  border-left: 2.5px solid var(--cb-color);
+  border-bottom: 2.5px solid var(--cb-color);
+}
+</style>

@@ -1,4 +1,5 @@
 export default {
+  DEFAULT_COLOR_CHECK_BOX: '#03a7d5',
   DISCOUNT_TYPE: {
     GROWING: 'Растущая',
     FALLING: 'Падающая',

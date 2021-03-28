@@ -38,6 +38,7 @@ export default {
   computed: {
     ...mapState({
       currentQuestionIndex: (state) => state?.quiz?.currentQuestionIndex,
+      color: (state) => state?.quiz?.steps?.step5?.color,
     }),
     ...mapGetters({
       question: 'quiz/currentQuestion',
@@ -50,6 +51,16 @@ export default {
   methods: {
     ...mapMutations('quiz', [types.SAVE_STEP_ANSWER]),
     ...mapActions('quiz', [types.NEXT_QUESTION_ACTION]),
+    setColorScheem() {
+      console.log(document.querySelectorAll('label span::after'))
+    },
+    convertHex(color, opacity = 1) {
+      color = color.replace('#', '')
+      const r = parseInt(color.substring(0, 2), 16)
+      const g = parseInt(color.substring(2, 4), 16)
+      const b = parseInt(color.substring(4, 6), 16)
+      return `rgba(${r}, ${g}, ${b}, ${opacity})`
+    },
     saveAnswer() {
       const answers = cloneDeep(this.variants?.filter((x) => x.isSelected))
       console.log(answers)
@@ -62,6 +73,7 @@ export default {
       // }
     },
     change() {
+      this.setColorScheem()
       this.saveAnswer()
     },
     changeRadio(item) {
