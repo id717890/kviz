@@ -60,9 +60,6 @@ export default {
       }
     },
   },
-  mounted() {
-    this.setColorScheem()
-  },
 }
 </script>
 

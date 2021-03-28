@@ -17,7 +17,7 @@
               :value="variant.id"
               @change="changeRadio"
             />
-            <span>{{ variant.text }}</span>
+            <span :style="cssVars">{{ variant.text }}</span>
           </label>
         </div>
       </div>
@@ -26,10 +26,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
-
+import Constants from '~/constants'
 export default {
   name: 'QuestionRadioBoxVariant',
   mixins: [saveAnswerMixin],
+  computed: {
+    ...mapState({
+      color: (state) =>
+        state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
+    }),
+    cssVars() {
+      return {
+        '--cb-color': this.color,
+      }
+    },
+  },
 }
 </script>
+
+<style scoped>
+input:checked + span::before {
+  background: var(--cb-color) !important;
+}
+</style>

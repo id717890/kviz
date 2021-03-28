@@ -51,9 +51,6 @@ export default {
   methods: {
     ...mapMutations('quiz', [types.SAVE_STEP_ANSWER]),
     ...mapActions('quiz', [types.NEXT_QUESTION_ACTION]),
-    setColorScheem() {
-      console.log(document.querySelectorAll('label span::after'))
-    },
     convertHex(color, opacity = 1) {
       color = color.replace('#', '')
       const r = parseInt(color.substring(0, 2), 16)
@@ -73,7 +70,6 @@ export default {
       // }
     },
     change() {
-      this.setColorScheem()
       this.saveAnswer()
     },
     changeRadio(item) {
