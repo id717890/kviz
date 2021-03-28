@@ -348,7 +348,7 @@
   }
 }
 
-.bonus-start{
+.bonus-start {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -418,29 +418,37 @@
   }
 }
 
-.text-bonus-dop{
+.text-bonus-dop {
   font-family: 'Roboto lighti talic';
-    color: #606060;
-    font-size: 11px;
-    padding-left: 5px;
-    padding-top: 5px;
+  color: #606060;
+  font-size: 11px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
 .comment-textarea {
   min-height: 100px;
-    overflow-y: hidden;
-    font-family: 'Roboto Light';
-    overflow: hidden;
-    white-space: normal;
-    width: auto;
-    min-width: 100%;
-    max-width: 100%;
-    resize: none;
-    flex-direction: initial;
-    box-sizing: border-box;
-    position: relative;
-    font-size: 13px;
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    padding: 11px 15px 0px 15px;
+  overflow-y: hidden;
+  font-family: 'Roboto Light';
+  overflow: hidden;
+  white-space: normal;
+  width: auto;
+  min-width: 100%;
+  max-width: 100%;
+  resize: none;
+  flex-direction: initial;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 13px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  padding: 11px 15px 0px 15px;
+}
+
+.my-swiper-scrollbar {
+  position: relative !important;
+
+  .swiper-scrollbar-drag {
+    background: #0c5adb;
+  }
 }

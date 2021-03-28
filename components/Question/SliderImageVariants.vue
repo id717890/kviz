@@ -7,14 +7,12 @@
         ref="my-swiper"
         class="swiper"
         :options="swiperOption"
-        @slideChange="slideChange"
-        @click-slide="clickSlide"
+        @click-slide="debouncedClickSlide"
       >
         <swiper-slide
           v-for="slide in variants"
           :key="slide.id"
-          class="my-slide"
-          @click="clickSlide"
+          class="my-slide mr-3"
         >
           <!-- <img height="100%" :src="slide.img" alt="" /> -->
           <label tabindex="0" class="d-block">
@@ -29,7 +27,11 @@
             </div>
           </label>
         </swiper-slide>
-        <div slot="pagination" class="swiper-pagination"></div>
+        <div
+          slot="scrollbar"
+          class="swiper-scrollbar my-swiper-scrollbar"
+        ></div>
+        <!-- <div slot="pagination" class="swiper-pagination"></div> -->
         <div
           slot="button-prev"
           class="my-swiper-button-prev"
@@ -51,13 +53,13 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { Swiper as SwiperClass, Pagination } from 'swiper/swiper.esm'
+import { Swiper as SwiperClass, Pagination, Scrollbar } from 'swiper/swiper.esm'
 
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
 
-SwiperClass.use([Pagination])
+SwiperClass.use([Pagination, Scrollbar])
 
 export default {
   name: 'SliderImageVariants',
@@ -68,15 +70,22 @@ export default {
       followFinger: false,
       allowTouchMove: true,
       updateOnWindowResize: false,
+      grabCursor: true,
       // slidesOffsetBefore: 35,
       // autoHeight: true,
-      slidesPerView: 'auto',
-      slidesPerGroup: 1,
-      loop: true,
+      slidesPerView: 4,
+      // slidesPerGroup: 1,
+      slidesPerGroupSkip: 1,
+      // centeredSlides: false,
+      // loop: true,
       // width: 200,
       // height:300,
       // centeredSlides: true,
       // spaceBetween: 8,
+      // breakpoints: { 769: { slidesPerView: 4, slidesPerGroup: 1 } },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -124,7 +133,6 @@ export default {
     next() {
       this.swiper.slideNext()
     },
-    slideChange() {},
   },
 }
 </script>
