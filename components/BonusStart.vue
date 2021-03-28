@@ -4,12 +4,12 @@
     class="neiros__bonus bonus-start mt-4"
     :style="gradient"
   >
-    <img v-if="!image" class="img" src="/images/icons/bg-bonus.png" />
-    <img v-else :src="image" alt="" />
-    <div v-if="text" class="text">
+    <img v-if="!image" class="img-start" src="/images/icons/bg-bonus.png" />
+    <img v-else :src="image" alt="" class="img-start" />
+    <div v-if="text" class="text-start">
       {{ text }}
     </div>
-    <img src="/images/icons/bonus-lebel-check.png" class="icon" alt="" />
+    <img src="/images/icons/bonus-lebel-check.png" class="icon-start" alt="" />
   </div>
 </template>
 

@@ -365,6 +365,13 @@
     height: 90px;
   }
 
+  .img-start {
+    margin: 7px 30px 7px 25px !important;
+    width: auto !important;
+    box-shadow: none !important;
+    height: 90px;
+  }
+
   .icon {
     position: absolute;
     right: 15px;
@@ -374,11 +381,27 @@
     box-shadow: none !important;
   }
 
+  .icon-start {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 20px;
+    height: 20px ;
+    box-shadow: none !important;
+  }
+
   .text {
     position: relative !important;
     font-size: 19px;
     color: white;
     margin-right: 75px;
+  }
+
+  .text-start {
+    position: relative !important;
+    font-size: 19px;
+    color: white;
+    margin-right: 40px;
   }
 }
 
@@ -398,7 +421,7 @@
     margin: 7px 70px 7px 25px !important;
     width: auto !important;
     box-shadow: none !important;
-    height: 200px;
+    height: 160px;
   }
 
   .icon {

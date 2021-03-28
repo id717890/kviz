@@ -8,6 +8,7 @@
           :key="index"
           class="neiros__answer-variants__textVariant"
           :class="{ active: variant.isSelected }"
+          :style="cssVars"
         >
           <input
             :id="`cb${index}`"
@@ -20,44 +21,33 @@
             <span :style="cssVars">{{ variant.text }}</span>
           </label>
         </div>
-
-        <!-- <div class="neiros__answer-variants__textVariant">
-          <input id="cb2" type="checkbox" name="checkbox-polls-2" />
-          <label for="cb2"><span>Продвижение бизнеса</span></label>
-        </div>
-
-        <div class="neiros__answer-variants__textVariant">
-          <input id="cb3" type="checkbox" name="checkbox-polls-3" />
-          <label for="cb3"><span>5 раз в неделю</span></label>
-        </div>
-
-        <div class="neiros__answer-variants__textVariant">
-          <input id="cb4" type="checkbox" name="checkbox-polls-4" />
-          <label for="cb4"
-            ><span>Бизнер работает без моего участия</span></label
-          >
-        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
-import Constants from '~/constants'
 export default {
   name: 'QuestionCheckBoxVariant',
   mixins: [saveAnswerMixin],
   computed: {
-    ...mapState({
-      color: (state) =>
-        state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
-    }),
+    ...mapGetters('quiz', ['color']),
     cssVars() {
       return {
         '--cb-color': this.color,
+        '--cb-shadow': this.shadow,
+        '--cb-border': this.border,
       }
+    },
+    shadow() {
+      const rgb = this.convertHex(this.color, 0.3)
+      return `0px 0px 5px ${rgb}`
+    },
+    border() {
+      const rgb = this.convertHex(this.color, 0.55)
+      return `1px solid ${rgb}`
     },
   },
 }
@@ -67,5 +57,10 @@ export default {
 input[type='checkbox']:checked + label span::after {
   border-left: 2.5px solid var(--cb-color);
   border-bottom: 2.5px solid var(--cb-color);
+}
+
+.neiros__answer-variants__textVariant.active {
+  box-shadow: var(--cb-shadow);
+  border: var(--cb-border);
 }
 </style>

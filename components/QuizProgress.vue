@@ -14,6 +14,7 @@
       <button
         class="neiros_kviz_btn_next"
         :disabled="isPreventNext"
+        :style="buttonColor"
         @click="next"
       >
         далее <img src="images/row-right.PNG" />
@@ -32,6 +33,7 @@ export default {
       'totalQuestions',
       'currentQuestion',
       'currentQuestionAnswers',
+      'color',
     ]),
     ...mapState({
       currentQuestionIndex: (state) => state?.quiz?.currentQuestionIndex,
@@ -47,6 +49,11 @@ export default {
       } else if (isAnyAnswer) {
         return false
       } else return true
+    },
+    buttonColor() {
+      return {
+        background: this.color,
+      }
     },
   },
   methods: {

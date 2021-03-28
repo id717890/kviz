@@ -54,6 +54,7 @@
     <button
       :disabled="!isValidForm"
       class="neiros__btn-left-sidebar"
+      :style="buttonColor"
       @click.prevent="goToThanks"
     >
       <img src="images/btn-mail.PNG" /> {{ textButton }}
@@ -72,7 +73,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data: () => ({
     name: null,
@@ -81,9 +82,15 @@ export default {
     comment: null,
   }),
   computed: {
+    ...mapGetters('quiz', ['color']),
     ...mapState({
       contacts: (state) => state?.quiz?.steps?.step4,
     }),
+    buttonColor() {
+      return {
+        background: this.color,
+      }
+    },
     textButton() {
       return this.contacts?.text_button || 'Получить результаты'
     },

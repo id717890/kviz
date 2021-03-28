@@ -16,7 +16,7 @@
           <p></p>
         </div>
 
-        <nuxt-link to="/quiz" class="neiros_kviz_btn">
+        <nuxt-link to="/quiz" class="neiros_kviz_btn" :style="buttonColor">
           {{ buttonText }}
         </nuxt-link>
 
@@ -31,11 +31,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Bonus from '~/components/BonusStart'
 export default {
   components: { Bonus },
   computed: {
+    ...mapGetters('quiz', ['color']),
     ...mapState({
       step1: (state) => state?.quiz?.steps?.step1,
       isShowBonus: (state) => {
@@ -55,6 +56,11 @@ export default {
     buttonText() {
       const btnText = this.step1?.button_text
       return btnText || 'Пройти тест'
+    },
+    buttonColor() {
+      return {
+        background: this.color,
+      }
     },
   },
 }

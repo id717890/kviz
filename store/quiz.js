@@ -4,6 +4,7 @@ import types from './types'
 import QuizApi from '~/api/Quiz'
 // import fakedata from '~/fakedata'
 // import fakedata from '~/fakedata'
+import Constants from '~/constants'
 
 export const state = () => ({
   id: null,
@@ -13,6 +14,9 @@ export const state = () => ({
 })
 
 export const getters = {
+  color(state) {
+    return state?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX
+  },
   currentQuestionAnswers(state) {
     return (
       state?.answers.find((x) => x.index === state?.currentQuestionIndex)

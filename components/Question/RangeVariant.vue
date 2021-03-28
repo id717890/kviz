@@ -17,11 +17,6 @@
             :tooltip-style="tooltipStyle"
             @slide-end="debouncedChangeRange"
           ></vue-range-slider>
-          <!-- <div class="min_value"></div> -->
-          <!-- <div id="slider"> -->
-          <!-- <div id="custom-handle" class="ui-slider-handle"></div> -->
-          <!-- </div> -->
-          <!-- <div class="max_value"></div> -->
         </div>
       </div>
     </div>
@@ -31,6 +26,7 @@
 <script>
 import 'vue-range-component/dist/vue-range-slider.css'
 import VueRangeSlider from 'vue-range-component'
+import { mapGetters } from 'vuex'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
 
 export default {
@@ -43,33 +39,34 @@ export default {
     step: 1,
   }),
   computed: {
+    ...mapGetters('quiz', ['color']),
     isRangeDouble() {
       return this.question?.diapazon_polzunka ?? false
     },
-  },
-  created() {
-    // this.minValue = 0
-    // this.maxValue = 100
-    // this.step = 1
-    // this.rangeValue = 10
-    this.bgStyle = {
-      backgroundColor: '#1FE7FF',
-      boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)',
-    }
-    this.processStyle = {
-      backgroundColor: '#03A7D5',
-    }
-    this.tooltipStyle = {
-      backgroundColor: '#666',
-      borderColor: '#666',
-    }
+    bgStyle() {
+      return {
+        backgroundColor: '#1FE7FF',
+        boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)',
+      }
+    },
+    tooltipStyle() {
+      return {
+        backgroundColor: this.color,
+        borderColor: this.color,
+      }
+    },
+    processStyle() {
+      return {
+        backgroundColor: this.color,
+      }
+    },
   },
   mounted() {
     const min = parseInt(this.question?.diapazon_dat_ot)
     const max = parseInt(this.question?.diapazon_dat_do)
     const step = parseInt(this.question?.diapazon_dat_step)
-    this.minValue = Number.isInteger(min) ? min : 0
-    this.maxValue = Number.isInteger(max) ? max : 1000
+    this.minValue = Number.isInteger(min) ? min : 1
+    this.maxValue = Number.isInteger(max) ? max : 100
     this.step = Number.isInteger(step) ? step : 1
     if (this.isRangeDouble) {
       this.rangeValue = [this.minValue, this.maxValue]

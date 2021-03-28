@@ -129,11 +129,6 @@ export default {
       color: (state) =>
         state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
     }),
-    // styles() {
-    //   return {
-    //     border: `1px solid ${this.color}`,
-    //   }
-    // },
     cssVars() {
       return {
         '--slide-border-color': this.color,
