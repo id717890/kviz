@@ -22,6 +22,8 @@
               class="swiper-slide-block"
               :style="cssVars"
             >
+              <svg-slider />
+
               <!-- <div><img :src="slide.img" /></div> -->
               <div><img src="/images/polls-img.JPG" /></div>
               <span>{{ slide.text }}</span>
@@ -57,7 +59,7 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Swiper as SwiperClass, Pagination, Scrollbar } from 'swiper/swiper.esm'
 import { mapState } from 'vuex'
 import Constants from '~/constants'
-
+import SvgSlider from '~/components/SVG/SliderVariantSvg'
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
@@ -66,7 +68,7 @@ SwiperClass.use([Pagination, Scrollbar])
 
 export default {
   name: 'SliderImageVariants',
-  components: { Swiper, SwiperSlide },
+  components: { Swiper, SwiperSlide, SvgSlider },
   mixins: [saveAnswerMixin],
   data: () => ({
     swiperOption: {
@@ -132,6 +134,7 @@ export default {
     cssVars() {
       return {
         '--slide-border-color': this.color,
+        '--color-fill': this.color,
       }
     },
     swiper() {

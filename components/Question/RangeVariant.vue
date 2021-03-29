@@ -61,6 +61,10 @@ export default {
       }
     },
   },
+  created() {
+    VueRangeSlider.methods.handleKeyup = () => console.log
+    VueRangeSlider.methods.handleKeydown = () => console.log
+  },
   mounted() {
     const min = parseInt(this.question?.diapazon_dat_ot)
     const max = parseInt(this.question?.diapazon_dat_do)

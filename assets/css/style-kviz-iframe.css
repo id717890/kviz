@@ -650,15 +650,16 @@ html {
   box-shadow: 0px 0px 5px rgba(98, 142, 154, 0.3);
 }
 
-.swiper-slide .swiper-slide-block.select-poll:before {
+/* .swiper-slide .swiper-slide-block.select-poll:before {
   content: '';
   right: 12px;
   top: 14px;
   position: absolute;
   width: 20px;
   height: 20px;
+  background: url(/images/icons/check.svg) center center no-repeat;
   background: url(../images/select-option.PNG) center center no-repeat;
-}
+} */
 .swiper-container-horizontal > .swiper-scrollbar {
   position: relative;
   margin-top: 15px;

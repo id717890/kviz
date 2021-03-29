@@ -84,14 +84,15 @@ export default {
     changeRadioAndImage(item) {
       this.variants.forEach((variant) => {
         if (Number(variant.id) === Number(item?.target?.value)) {
-          this.currentImage = variant?.src
+          // TODO
+          // this.currentImage = variant?.src
           variant.isSelected = true
         } else variant.isSelected = false
       })
       this.saveAnswer()
       setTimeout(() => {
         this[types.NEXT_QUESTION_ACTION]()
-      }, 1000)
+      }, 750)
     },
     clickSlide(index, reallyIndex) {
       if (!this.isMultiple) {

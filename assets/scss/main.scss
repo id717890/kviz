@@ -509,3 +509,28 @@
     background: #0c5adb;
   }
 }
+
+.swiper-slide-block.select-poll {
+  .svg-slider {
+    display: block;
+  }
+}
+
+.svg-slider{
+  display: none;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+// img.test-svg g path {
+//   fill: #001c60 !important;
+// }
+
+// .logo-svg{
+//   background-color: red;
+//   -webkit-mask: url('/images/icons/check.svg') no-repeat center;
+//   mask: url('/images/icons/check.svg') no-repeat center;
+// }

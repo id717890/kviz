@@ -9,7 +9,7 @@
             :key="index"
             class="neiros__answer-variants__textVariant"
             :class="{ active: variant.isSelected }"
-            :data-img-src="variant.src"
+            data-img-src="/images/polls-img.JPG"
             :style="cssVars"
           >
             <label class="radio">
@@ -62,7 +62,8 @@ export default {
   },
   mounted() {
     if (this.variants?.length) {
-      this.currentImage = this.variants[0]?.src
+      // this.currentImage = this.variants[0]?.src
+      this.currentImage = '/images/polls-img.JPG'
     }
   },
 }
