@@ -1,11 +1,8 @@
 <template>
   <section>
-    <div
-      class="neiros__bonus finish-bonus-block bonus-mini w-100 mt-4"
-      :style="gradient"
-    >
+    <div class="neiros__bonus bonus-step w-100 mt-4" :style="gradient">
       <img v-if="!image" class="img" src="/images/icons/bg-bonus.png" />
-      <img v-else :src="image" alt="" />
+      <img v-else :src="image" class="img-step" alt="" />
       <div v-if="text" class="text">
         {{ text }}
       </div>
