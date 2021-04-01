@@ -25,7 +25,10 @@
               <svg-slider />
 
               <!-- <div><img :src="slide.img" /></div> -->
-              <div><img src="/images/polls-img.JPG" /></div>
+              <div class="d-flex justify-content-center align-items-center">
+                <img :src="slide.src" />
+                <!-- <img src="/images/polls-img.JPG" /> -->
+              </div>
               <span>{{ slide.text }}</span>
             </div>
           </label>

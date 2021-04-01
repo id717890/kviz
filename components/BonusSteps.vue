@@ -1,9 +1,9 @@
 <template>
   <section>
     <div class="neiros__bonus bonus-step w-100 mt-4" :style="gradient">
-      <img v-if="!image" class="img" src="/images/icons/bg-bonus.png" />
-      <img v-else :src="image" class="img-step" alt="" />
-      <div v-if="text" class="text">
+      <img v-if="!image" class="img" :src="image" />
+      <!-- <img v-else :src="image" class="img-step" alt="" /> -->
+      <div v-if="text" class="text" :style="colorText">
         {{ text }}
       </div>
     </div>
@@ -21,6 +21,10 @@ export default {
     }),
     image() {
       return this.bonus?.src ?? null
+    },
+    colorText() {
+      const result = this.bonus['color-text']
+      return result ? { color: result } : ''
     },
     text() {
       return this.bonus?.name ?? null

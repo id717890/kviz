@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapState } from 'vuex'
-import types from '~/store/types'
+import { mapGetters, mapState } from 'vuex'
+// import types from '~/store/types'
 import BonusFinish1 from '~/components/BonusFinish1'
 import BonusFinish2 from '~/components/BonusFinish2'
 import ContactForm from '~/components/ContactForm'
@@ -94,10 +94,10 @@ export default {
     },
   },
   async created() {
-    await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
+    // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
   },
   methods: {
-    ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
+    // ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
   },
 }
 </script>

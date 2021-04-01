@@ -2,11 +2,12 @@
   <div
     v-if="isShowBonusFinish"
     class="neiros__bonus bonus-start mt-4"
+    :class="positions"
     :style="gradient"
   >
-    <img v-if="!image" class="img-start" src="/images/icons/bg-bonus.png" />
-    <img v-else :src="image" alt="" class="img-start" />
-    <div v-if="text" class="text-start">
+    <!-- <img v-if="!image" class="img-start" src="/images/icons/bg-bonus.png" /> -->
+    <img v-if="image" :src="image" alt="" class="img-start" />
+    <div v-if="text" class="text-start" :style="colorText">
       {{ text }}
     </div>
     <img src="/images/icons/bonus-lebel-check.png" class="icon-start" alt="" />
@@ -28,8 +29,18 @@ export default {
       }
       return true
     },
+    positions() {
+      if (!this.image) {
+        return 'justify-content-center'
+      }
+      return ''
+    },
+    colorText() {
+      const result = this.bonusFinish['color-text']
+      return result ? { color: result } : ''
+    },
     image() {
-      return this.bonusFinish?.src ?? null
+      return this.bonusFinish?.img ?? null
     },
     text() {
       return this.bonusFinish?.name ?? null

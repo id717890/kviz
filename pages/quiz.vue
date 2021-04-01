@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import CheckBoxVariant from '~/components/Question/CheckBoxVariant'
 import CheckBoxImageVariant from '~/components/Question/CheckBoxImageVariant'
 import RadioBoxVariant from '~/components/Question/RadioBoxVariant'
@@ -103,7 +103,7 @@ import FileVariant from '~/components/Question/FileVariant'
 import QuizProgress from '~/components/QuizProgress'
 import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
-import types from '~/store/types'
+// import types from '~/store/types'
 import Operator from '~/components/Operator'
 import Discount from '~/components/Discount'
 import StepBonus from '~/components/BonusSteps'
@@ -197,10 +197,10 @@ export default {
   },
   async mounted() {},
   async created() {
-    await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
+    // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
   },
   methods: {
-    ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
+    // ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
   },
 }
 </script>

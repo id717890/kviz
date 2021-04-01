@@ -2,11 +2,12 @@
   <div
     v-if="isShowBonusFinish"
     class="neiros__bonus finish-bonus-block ml-4"
+    :class="positions"
     :style="gradient"
   >
-    <img v-if="!image" class="img" src="/images/icons/bg-bonus.png" />
-    <img v-else :src="image" alt="" />
-    <div v-if="text" class="text">
+    <!-- <img v-if="!image" class="img ma-1" src="/images/icons/bg-bonus.png" /> -->
+    <img v-if="image" class="img" :src="image" alt="" />
+    <div v-if="text" class="text" :style="colorText">
       {{ text }}
     </div>
     <img src="/images/icons/bonus-lebel-check.png" class="icon" alt="" />
@@ -28,8 +29,18 @@ export default {
       }
       return true
     },
+    positions() {
+      if (!this.image) {
+        return 'justify-content-center'
+      }
+      return ''
+    },
+    colorText() {
+      const result = this.bonusFinish['color-text']
+      return result ? { color: `${result} !important` } : ''
+    },
     image() {
-      return this.bonusFinish?.src ?? null
+      return this.bonusFinish?.img ?? null
     },
     text() {
       return this.bonusFinish?.name ?? null

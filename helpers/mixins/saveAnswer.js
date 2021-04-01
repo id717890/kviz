@@ -84,8 +84,7 @@ export default {
     changeRadioAndImage(item) {
       this.variants.forEach((variant) => {
         if (Number(variant.id) === Number(item?.target?.value)) {
-          // TODO
-          // this.currentImage = variant?.src
+          this.currentImage = variant?.src
           variant.isSelected = true
         } else variant.isSelected = false
       })
