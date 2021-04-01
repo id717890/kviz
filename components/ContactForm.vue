@@ -55,6 +55,7 @@
       :disabled="!isValidForm"
       class="neiros__btn-left-sidebar"
       :style="buttonColor"
+      type="button"
       @click.prevent="goToThanks"
     >
       <img src="images/btn-mail.PNG" /> {{ textButton }}

@@ -8,14 +8,15 @@
       <span :style="{ width: `${progress}%` }"></span>
     </div>
     <div class="mt-9 d-flex flex-row justify-content-between">
-      <button class="neiros_kviz_btn_prev" @click="prev">
+      <button class="neiros_kviz_btn_prev" type="button" @click.prevent="prev">
         <img src="images/row-left.png" /> <span>назад</span>
       </button>
       <button
         class="neiros_kviz_btn_next"
         :disabled="isPreventNext"
         :style="buttonColor"
-        @click="next"
+        type="button"
+        @click.prevent="next"
       >
         далее <img src="images/row-right.PNG" />
       </button>

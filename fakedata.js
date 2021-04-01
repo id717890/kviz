@@ -3,80 +3,27 @@ export default {
   widget_id: null,
   data: {
     step1: {
-      title: '',
-      subtite: '',
-      button_text: '',
+      optional: false,
+      img:
+        'https://test.neiros.ru/chat_upload/f344c30e2d85b63139222aed4ad86a43.png',
+      title: 'Заголовок',
+      subtite: 'Подзаголовок',
+      button_text: 'Кнопка',
     },
     step2: [
       {
         variants: [
           {
             id: 1,
-            text: 'Вариант 1',
-          },
-          {
-            id: 2,
-            text: 'Вариант 2',
-          },
-          {
-            id: 3,
-            text: 'Вариант 3',
-          },
-          {
-            id: 4,
-            text: 'Вариант 4',
-          },
-        ],
-        tip_oprosa: 'var-otvetov',
-        optional: true,
-        diapazon_polzunka: false,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: true,
-        question: 'Вопрос 1',
-        massage: 'Здесь будет сообщение от оператора.',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Вариант 1',
-          },
-          {
-            id: 2,
-            text: 'Вариант 2',
-          },
-          {
-            id: 3,
-            text: 'Вариант 3',
-          },
-          {
-            id: 4,
-            text: 'Вариант 4',
-          },
-        ],
-        tip_oprosa: 'var-otvetov',
-        optional: true,
-        diapazon_polzunka: true,
-        neskolko: false,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос',
-        massage: 'Здесь будет сообщение от оператора!',
-      },
-      {
-        variants: [
-          {
-            id: 1,
             text: 'Ответ 1',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/0eaf0c6d5e26b514c2b3b84d515df7fa.png',
           },
           {
             id: 2,
             text: 'Ответ 2',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/8a94e8f034c88bfe3226be288fc1d118.png',
           },
           {
             id: 3,
@@ -86,6 +33,16 @@ export default {
           {
             id: 4,
             text: 'Ответ 4',
+            src: '',
+          },
+          {
+            id: 5,
+            text: 'Ответ 5',
+            src: '',
+          },
+          {
+            id: 6,
+            text: 'Ответ 6',
             src: '',
           },
         ],
@@ -104,22 +61,26 @@ export default {
           {
             id: 1,
             text: 'Вариант 1',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
           },
           {
             id: 2,
             text: 'Вариант 2',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
           },
           {
             id: 3,
             text: 'Еще Вариант',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
           },
           {
             id: 4,
             text: 'И еще',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
           },
         ],
         tip_oprosa: 'var-i-kartinka',
@@ -137,22 +98,26 @@ export default {
           {
             id: 1,
             text: 'Вариант 1',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
           },
           {
             id: 2,
             text: 'Вариант 2',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
           },
           {
             id: 3,
             text: 'Вариант 3',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
           },
           {
             id: 4,
             text: 'Вариант 4',
-            src: '',
+            src:
+              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
           },
         ],
         tip_oprosa: 'var-i-kartinka',
@@ -205,16 +170,33 @@ export default {
         primer_otveta: 'Вариант 1',
       },
       {
-        variants: [],
-        tip_oprosa: 'data',
+        variants: [
+          {
+            id: 1,
+            text: 'Вариант 1',
+          },
+          {
+            id: 2,
+            text: 'Вариант 2',
+          },
+          {
+            id: 3,
+            text: 'Вариант 3',
+          },
+          {
+            id: 4,
+            text: 'Вариант 4',
+          },
+        ],
+        tip_oprosa: 'var-otvetov',
         optional: true,
         diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: true,
+        neskolko: false,
+        vibor_diapazon_dat: false,
         vibor_vremeni: false,
         neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос с датой',
-        massage: 'Выберите дату',
+        question: 'Здесь будет вопрос',
+        massage: 'Здесь будет сообщение от оператора!',
       },
       {
         variants: [],
@@ -248,72 +230,131 @@ export default {
         question: 'Здесь будет вопрос с фалом ',
         massage: 'Здесь будет вопрос Здесь будет вопрос',
       },
+      {
+        variants: [],
+        tip_oprosa: 'data',
+        optional: true,
+        diapazon_polzunka: true,
+        neskolko: true,
+        vibor_diapazon_dat: true,
+        vibor_vremeni: false,
+        neobbyazatelnii_vopros: false,
+        question: 'Здесь будет вопрос с датой',
+        massage: 'Выберите дату',
+      },
+      {
+        variants: [
+          {
+            id: 1,
+            text: 'Вариант 1',
+          },
+          {
+            id: 2,
+            text: 'Вариант 2',
+          },
+          {
+            id: 3,
+            text: 'Вариант 3',
+          },
+          {
+            id: 4,
+            text: 'Вариант 4',
+          },
+        ],
+        tip_oprosa: 'var-otvetov',
+        optional: true,
+        diapazon_polzunka: false,
+        neskolko: true,
+        vibor_diapazon_dat: false,
+        vibor_vremeni: false,
+        neobbyazatelnii_vopros: true,
+        question: 'Вопрос 1',
+        massage: 'Здесь будет сообщение от оператора.',
+      },
+      {
+        variants: [],
+        tip_oprosa: 'data',
+        optional: true,
+        diapazon_polzunka: true,
+        neskolko: true,
+        vibor_diapazon_dat: true,
+        vibor_vremeni: true,
+        neobbyazatelnii_vopros: false,
+        question: '',
+        massage: '',
+      },
     ],
     step3: {
       konsultant: {
-        name: 'Андрей',
-        dolgnost: 'Консультант',
+        name: 'test',
+        dolgnost: 'test',
         is_checked: true,
       },
       motivaciya: {
-        'type-skidki': 'Падающая',
-        prise1: '1000',
-        prise2: '500',
+        'type-skidki': 'Растущая',
+        prise1: '1050',
+        prise2: '350',
         is_checked: true,
       },
       bonus: {
+        is_checked: true,
         first: {
-          type: 'prais',
-          name: 'Полное руковоство для бизнеса',
-          color: '#AFD4FF',
+          type: 'katalog',
+          name: '',
+          color: '#F5CAFF',
+          img: '',
+          'color-text': '#000',
           first: true,
           finish: true,
         },
         finish: {
           active: true,
-          type: 'kupon',
-          name: 'Скидка на месяц подписки',
-          color: '#EFA9FF',
+          type: 'svoi',
+          name: '',
+          color: '#FFD87B',
+          img:
+            'https://test.neiros.ru/chat_upload/1d8d7807d62a8ee3a993103f20669c1f.png',
+          'color-text': '#fff',
           first: true,
-          finish: false,
+          finish: true,
         },
       },
     },
     step4: {
       name: {
-        active: true,
-        value: '',
+        active: false,
+        value: 'test',
       },
       email: {
         active: false,
-        value: '',
+        value: 'test@mail.ru',
       },
       phone: {
         active: true,
-        value: '',
+        value: '12312312313',
       },
       comment: {
         active: false,
-        value: '',
+        value: 'testtesttesttest',
       },
-      send: false,
-      title_massenger: '',
-      text_button_massenger: '',
-      title: '',
-      text: '',
-      text_button: '',
-      messenge: '',
+      send: true,
+      title_massenger: 'test',
+      text_button_massenger: 'test',
+      title: 'test',
+      text: 'test',
+      text_button: 'test',
+      messenge: 'test',
     },
     step5: {
-      color: '#1c2eb5',
+      color: '#276a7c',
       linck: '',
       event: '',
-      'text-label': '',
-      active: 'Подключите виджет к своей кнопке',
-      icon: '/global_assets/images/icon_kviz/design/form.svg',
-      position: 'down-right',
+      'text-label': 'Пройти тест',
+      active: 'Закрепленный ярлык',
+      icon: '/global_assets/images/icon_kviz/design/chat.svg',
+      position: 'right-top',
     },
   },
-  created_at: '2021-03-29 00:00:00',
-  updated_at: '2021-03-29 00:00:00',
+  created_at: '2021-03-31 00:00:00',
+  updated_at: '2021-03-31 00:00:00',
 }

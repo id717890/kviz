@@ -2,18 +2,16 @@
   <div id="neiros_kviz" class="neiros_kviz">
     <div
       class="neiros__kviz_block_left scale-up-hor-left"
-      style="
-        background: url(images/bg-left-kviz.jpg) center center no-repeat;
-        background-size: cover;
-      "
+      style="background-size: cover"
+      :style="backgroundImage"
     ></div>
     <div class="neiros__kviz_block_right scale-up-hor-right d-flex">
       <div
         class="neiros__kviz_padding_block py-0 d-flex flex-column justify-content-center flex-grow-1"
       >
         <div v-if="title" class="neiros__kviz_block_right_text_top">
-          {{ subtitle }}
-          <p></p>
+          {{ title }}
+          <p v-if="subtitle">{{ subtitle }}</p>
         </div>
 
         <nuxt-link to="/quiz" class="neiros_kviz_btn" :style="buttonColor">
@@ -47,11 +45,16 @@ export default {
         return true
       },
     }),
+    backgroundImage() {
+      return {
+        background: `url(${this.step1?.img}) center center no-repeat`,
+      }
+    },
     title() {
       return this.step1?.title
     },
     subtitle() {
-      return this.step1?.subtitle
+      return this.step1?.subtite
     },
     buttonText() {
       const btnText = this.step1?.button_text

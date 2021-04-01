@@ -3,7 +3,6 @@ import types from './types'
 // import Constants from '~/constants'
 import QuizApi from '~/api/Quiz'
 // import fakedata from '~/fakedata'
-// import fakedata from '~/fakedata'
 import Constants from '~/constants'
 
 export const state = () => ({
