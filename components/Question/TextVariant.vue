@@ -1,9 +1,13 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="step checkbox-block active">
       <div class="neiros__kviz_polls">
-        <div class="neiros___polls_text step active flex-grow-1">
+        <div
+          class="neiros___polls_text step active flex-grow-1"
+          :style="cssVars"
+        >
           <textarea
             id="neiros___polls_textarea"
             v-model="textAnswer"
@@ -19,12 +23,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
 
 export default {
   name: 'QuestionTextVariant',
   mixins: [saveAnswerMixin],
   data: () => ({}),
+  computed: {
+    ...mapGetters('quiz', ['color']),
+    cssVars() {
+      return {
+        '--color': this.color,
+      }
+    },
+  },
   beforeMount() {
     if (this.answers?.length) {
       this.textAnswer = this.answers[0]
@@ -32,3 +45,13 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.neiros___polls_text textarea {
+  border: 1px solid var(--color);
+}
+
+.neiros___polls_text textarea:focus {
+  outline: 0.3px solid var(--color);
+}
+</style>

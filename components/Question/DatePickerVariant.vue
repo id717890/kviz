@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="step checkbox-block active">
       <div class="neiros__kviz_polls">
         <div class="neiros___polls_date active flex-grow-1">
@@ -12,7 +13,9 @@
                   :format="formatPicker"
                   class="neiros__datepicker__vue"
                   :type="typePicker"
-                  placeholder="Выберите дату"
+                  :placeholder="placeholder"
+                  :append-to-body="false"
+                  :popup-style="{ left: 0, top: ' 100%', marginTop: '10px' }"
                   @input="dateChange"
                 ></date-picker>
               </div>
@@ -22,7 +25,9 @@
                   :format="formatPicker"
                   class="neiros__datepicker__vue"
                   :type="typePicker"
-                  placeholder="Выберите дату"
+                  :placeholder="placeholder"
+                  :append-to-body="false"
+                  :popup-style="{ left: 0, top: ' 100%', marginTop: '10px' }"
                   @input="dateChange"
                 ></date-picker>
               </div>
@@ -41,6 +46,15 @@ import 'vue2-datepicker/locale/ru'
 import { parse } from 'date-fns'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
 
+DatePicker.methods.displayPopup = () => {
+  console.log(111)
+  this.position = {
+    left: 0,
+    top: '30%',
+  }
+  console.log(222)
+}
+
 export default {
   name: 'QuestionDatePickerVariant',
   components: { DatePicker },
@@ -57,8 +71,12 @@ export default {
       return 'date'
     },
     formatPicker() {
-      if (this.isTime) return 'hh:mm'
+      if (this.isTime) return 'HH:mm'
       return 'DD.MM.YYYY'
+    },
+    placeholder() {
+      if (this.isTime) return 'Выберите время'
+      return 'Выберите дату'
     },
   },
   mounted() {

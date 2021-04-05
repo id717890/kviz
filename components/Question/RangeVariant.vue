@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="step checkbox-block active">
       <div class="neiros__kviz_polls">
         <div class="neiros__slider_block flex-grow-1">
@@ -45,7 +46,7 @@ export default {
     },
     bgStyle() {
       return {
-        backgroundColor: '#1FE7FF',
+        backgroundColor: '#bbc1c5',
         boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)',
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+  <div class="d-flex flex-grow-1 justify-content-center align-items-center bg1">
     <Loading />
   </div>
 </template>
@@ -18,12 +18,10 @@ export default {
     const id = this.$route.query.id
     if (id) {
       await this[types.FETCH_QUIZ_CONFIG_ACTION](id)
-      setTimeout(() => {
-        // this.$router.push({ name: 'start' })
-        const startPageIsActive = this.step1?.optional
-        if (startPageIsActive) this.$router.push({ name: 'start' })
-        else this.$router.push({ name: 'quiz' })
-      }, 2000)
+      // this.$router.push({ name: 'start' })
+      const startPageIsActive = this.step1?.optional
+      if (startPageIsActive) this.$router.push({ name: 'start' })
+      else this.$router.push({ name: 'quiz' })
     } else {
       this.$router.push({
         name: 'error',

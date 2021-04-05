@@ -18,7 +18,7 @@
           {{ buttonText }}
         </nuxt-link>
 
-        <div class="txt1">Бонус после прохождения теста!</div>
+        <div class="txt1 mb-0">Бонус после прохождения теста!</div>
         <Bonus />
         <div class="neiros__footer">
           <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
@@ -37,13 +37,13 @@ export default {
     ...mapGetters('quiz', ['color']),
     ...mapState({
       step1: (state) => state?.quiz?.steps?.step1,
-      isShowBonus: (state) => {
-        const isShow = state?.quiz?.steps?.step3?.bonus?.finish?.active
-        if (isShow === false || isShow === true) {
-          return isShow
-        }
-        return true
-      },
+      // isShowBonus: (state) => {
+      //   const isShow = state?.quiz?.steps?.step3?.bonus?.first?.first
+      //   if (isShow === false || isShow === true) {
+      //     return isShow
+      //   }
+      //   return true
+      // },
     }),
     backgroundImage() {
       return {
@@ -65,6 +65,9 @@ export default {
         background: this.color,
       }
     },
+  },
+  async created() {
+    await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
 }
 </script>

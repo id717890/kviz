@@ -1,7 +1,11 @@
 <template>
   <section>
-    <div class="neiros__bonus bonus-step w-100 mt-4" :style="gradient">
-      <img v-if="!image" class="img" :src="image" />
+    <div
+      class="neiros__bonus bonus-step w-100 mt-4"
+      :style="gradient"
+      :class="positions"
+    >
+      <img v-if="image" class="img" :src="image" />
       <!-- <img v-else :src="image" class="img-step" alt="" /> -->
       <div v-if="text" class="text" :style="colorText">
         {{ text }}
@@ -28,6 +32,12 @@ export default {
     },
     text() {
       return this.bonus?.name ?? null
+    },
+    positions() {
+      if (!this.image) {
+        return 'justify-content-center pl-12 pr-5'
+      }
+      return ''
     },
     gradient() {
       const color = this.bonus?.color

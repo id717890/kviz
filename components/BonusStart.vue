@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isShowBonusFinish"
+    v-if="isShowBonus"
     class="neiros__bonus bonus-start mt-4"
     :class="positions"
     :style="gradient"
@@ -20,10 +20,10 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      bonusFinish: (state) => state?.quiz?.steps?.step3?.bonus?.finish,
+      bonus: (state) => state?.quiz?.steps?.step3?.bonus?.first,
     }),
-    isShowBonusFinish() {
-      const isShow = this.bonusFinish?.active
+    isShowBonus() {
+      const isShow = this.bonus?.first
       if (isShow === false || isShow === true) {
         return isShow
       }
@@ -31,22 +31,22 @@ export default {
     },
     positions() {
       if (!this.image) {
-        return 'justify-content-center'
+        return 'justify-content-center pl-12 pr-5'
       }
       return ''
     },
     colorText() {
-      const result = this.bonusFinish['color-text']
+      const result = this.bonus['color-text']
       return result ? { color: result } : ''
     },
     image() {
-      return this.bonusFinish?.img ?? null
+      return this.bonus?.img ?? null
     },
     text() {
-      return this.bonusFinish?.name ?? null
+      return this.bonus?.name ?? null
     },
     gradient() {
-      const color = this.bonusFinish?.color
+      const color = this.bonus?.color
       if (color) {
         return `background: linear-gradient(172deg, ${color} 36%, rgb(0, 0, 0) 199%)`
       }

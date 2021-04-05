@@ -51,6 +51,12 @@ export default {
   methods: {
     ...mapMutations('quiz', [types.SAVE_STEP_ANSWER]),
     ...mapActions('quiz', [types.NEXT_QUESTION_ACTION]),
+    clickChild(index) {
+      const element = this.$refs[`child${index}`][0]
+      if (element) {
+        element.click()
+      }
+    },
     convertHex(color, opacity = 1) {
       color = color.replace('#', '')
       const r = parseInt(color.substring(0, 2), 16)

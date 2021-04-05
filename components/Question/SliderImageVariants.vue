@@ -1,6 +1,7 @@
 <template>
   <div class="pb-16">
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="neiros___swiper_slider_polls step radio-block active">
       <swiper
         v-if="variants"
@@ -33,24 +34,24 @@
             </div>
           </label>
         </swiper-slide>
-        <div
-          slot="scrollbar"
-          class="swiper-scrollbar my-swiper-scrollbar"
-        ></div>
+        <div slot="scrollbar" class="swiper-scrollbar my-swiper-scrollbar">
+          <div class="swiper-scrollbar-drag" :style="cssVars"></div>
+        </div>
         <!-- <div slot="pagination" class="swiper-pagination"></div> -->
         <div
           slot="button-prev"
           class="my-swiper-button-prev"
           @click.prevent="prev"
         >
-          <img src="~/assets/images/row-swiper-left.PNG" alt="" />
+          <ArrowLeft class="slider-arrow-left" />
+          <!-- <img src="/images/row-swiper-left.PNG" alt="" /> -->
         </div>
         <div
           slot="button-next"
           class="my-swiper-button-next"
           @click.prevent="next"
         >
-          <img src="~/assets/images/row-swiper-right.PNG" alt="" />
+          <img src="/images/row-swiper-right.PNG" alt="" />
         </div>
       </swiper>
     </div>
@@ -66,12 +67,13 @@ import SvgSlider from '~/components/SVG/SliderVariantSvg'
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
+import ArrowLeft from '~/components/SVG/AngleCircleArrowLeft'
 
 SwiperClass.use([Pagination, Scrollbar])
 
 export default {
   name: 'SliderImageVariants',
-  components: { Swiper, SwiperSlide, SvgSlider },
+  components: { Swiper, SwiperSlide, SvgSlider, ArrowLeft },
   mixins: [saveAnswerMixin],
   data: () => ({
     swiperOption: {
@@ -104,31 +106,6 @@ export default {
       },
     },
   }),
-  // data: () => ({
-  //   slides: [
-  //     {
-  //       id: 1,
-  //       img: '/images/polls-img.JPG',
-  //       text: 'Текст описывающие данный пункт1',
-  //     },
-  //     {
-  //       id: 2,
-  //       img: '/images/polls-img-2.JPG',
-  //       text: 'Продвижение бизнеса',
-  //     },
-  //     {
-  //       id: 3,
-  //       img: '/images/polls-img.JPG',
-  //       text: 'Текст описывающие данный пункт2',
-  //     },
-  //     {
-  //       id: 4,
-  //       img: '/images/polls-img.JPG',
-  //       text: 'Продвижение бизнеса2',
-  //     },
-  //   ],
-
-  // }),
   computed: {
     ...mapState({
       color: (state) =>
@@ -158,5 +135,9 @@ export default {
 <style scoped>
 .swiper-slide .swiper-slide-block.select-poll {
   border: 1px solid var(--slide-border-color) !important;
+}
+
+.swiper-scrollbar-drag {
+  background: var(--slide-border-color) !important;
 }
 </style>

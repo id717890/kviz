@@ -586,12 +586,12 @@ html {
 
 .neiros__kviz_polls-right-img .polls-right-part img {
   border-radius: 5px;
-  width: 98%;
+  /* width: 98%; */
   margin-left: 11px;
 }
 .neiros__xs .neiros__kviz_polls-right-img .polls-right-part img {
   margin-left: 0px;
-  width: 100%;
+  /* width: 100%; */
 }
 .neiros__xs .neiros___polls_select {
   padding-bottom: 180px;

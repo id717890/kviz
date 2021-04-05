@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="neiros__kviz_polls-right-img step radio-block active">
       <div class="neiros__kviz_polls">
         <div class="polls-left-part">
@@ -24,9 +25,9 @@
             </label>
           </div>
         </div>
-        <div class="polls-right-part">
+        <div class="polls-right-part d-flex justify-content-center">
           <!-- <img src="~/assets/images/polls-img.JPG" /> -->
-          <img :src="currentImage" />
+          <img class="radio-image-variant" :src="currentImage" />
         </div>
       </div>
     </div>
@@ -62,8 +63,8 @@ export default {
   },
   mounted() {
     if (this.variants?.length) {
-      this.currentImage = this.variants[0]?.src
-      // this.currentImage = '/images/polls-img.JPG'
+      // this.currentImage = this.variants[0]?.src
+      this.currentImage = '/images/polls-img-2.JPG'
     }
   },
 }

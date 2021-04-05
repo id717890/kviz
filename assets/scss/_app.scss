@@ -11,13 +11,13 @@
 }
 
 .mx-datepicker-main.mx-datepicker-popup {
-  .mx-table.mx-table-date thead{
-    color: #FF9A19 !important;
+  .mx-table.mx-table-date thead {
+    color: #ff9a19 !important;
   }
 
   .mx-table-year {
     .cell.active {
-      background-color: #5CC4EE;
+      background-color: #5cc4ee;
       border-radius: 5px;
       height: 100%;
 
@@ -32,7 +32,7 @@
 
   .mx-table-month {
     .cell.active {
-      background-color: #5CC4EE;
+      background-color: #5cc4ee;
       border-radius: 5px;
       height: 100%;
 
@@ -47,7 +47,7 @@
 
   .mx-date-row {
     .cell.active {
-      background-color: #5CC4EE;
+      background-color: #5cc4ee;
       border-radius: 5px;
 
       div {
@@ -59,8 +59,6 @@
 
 .neiros__datepicker__vue {
   width: 100% !important;
-
-  
 
   .mx-input-wrapper {
     .mx-input {
@@ -131,7 +129,7 @@ a {
   font-family: 'Roboto Light';
   font-style: normal;
   font-weight: normal;
-  font-size: 13px;
+  // font-size: 13px;
   box-sizing: content-box;
   scrollbar-width: none;
 }

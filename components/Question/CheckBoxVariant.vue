@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="step checkbox-block active">
       <div v-if="variants" class="neiros__kviz_polls">
         <div
@@ -9,9 +10,11 @@
           class="neiros__answer-variants__textVariant"
           :class="{ active: variant.isSelected }"
           :style="cssVars"
+          @click.self.prevent="clickChild(index)"
         >
           <input
             :id="`cb${index}`"
+            :ref="'child' + index"
             v-model="variant.isSelected"
             type="checkbox"
             :name="`checkbox-polls-${index}`"

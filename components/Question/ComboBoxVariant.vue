@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="step checkbox-block active">
       <div class="neiros__kviz_polls">
         <div class="neiros___polls_select step active w100">
           <vue-select
             v-model="selectedItems"
-            placeholder="Выберите вариант из списка"
+            :placeholder="placeholder"
             :clearable="false"
             class="kviz-select-field"
             name="select1"
@@ -41,6 +42,11 @@ export default {
     'vue-select': VueSelect,
   },
   mixins: [saveAnswerMixin],
+  computed: {
+    placeholder() {
+      return this.question?.primer_otveta || 'Выберите вариант из списка'
+    },
+  },
   mounted() {
     if (this.answers) {
       this.selectedItems = this.answers

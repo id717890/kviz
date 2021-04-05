@@ -7,6 +7,7 @@
           <div class="neiros__progress_block_two overflow-visible">
             <div
               class="progress-bar quiz-bar quiz-blue quiz-stripes overflow-visible"
+              :style="cssVars"
             >
               <span style="width: 98%">
                 <div class="neiros__procent_top">98%</div>
@@ -69,7 +70,7 @@ export default {
   components: { BonusFinish1, BonusFinish2, ContactForm },
 
   computed: {
-    ...mapGetters('quiz', ['currentQuestion']),
+    ...mapGetters('quiz', ['currentQuestion', 'color']),
     ...mapState({
       isShowBonus1Finish: (state) => {
         const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
@@ -89,6 +90,11 @@ export default {
         'Заполните форму, чтобы получить результаты прохождения теста'
       )
     },
+    cssVars() {
+      return {
+        '--color': this.color,
+      }
+    },
     question() {
       return this.currentQuestion?.type
     },
@@ -101,3 +107,14 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.quiz-blue span {
+  background-color: var(--color) !important;
+}
+
+.neiros__procent_top,
+.neiros__procent_top::before {
+  color: var(--color) !important;
+}
+</style>

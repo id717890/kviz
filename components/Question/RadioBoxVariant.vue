@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="step radio-block active">
       <div class="neiros__kviz_polls">
         <div

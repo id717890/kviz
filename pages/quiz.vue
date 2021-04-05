@@ -10,75 +10,33 @@
               увеличения продаж</span
             >
           </div>
-          <div class="d-flex flex-column flex-grow-1">
-            <component :is="question" v-if="question"></component>
-            <!-- <RadioBoxVariantImage :items="[]" /> -->
-            <!-- <CheckBoxVariant :items="[]" />
-            <RadioBoxVariant :items="[]" />
-            <RadioBoxVariantImage :items="[]" />
-            <RadioBoxSwiperSlider :items="[]" />
-            <ComboBoxVariant :items="[]" />
-            <TextVariant :items="[]" />
-            <DatePickerVariant :items="[]" />
-            <SliderVariant :items="[]" /> -->
+          <div class="quiz-container">
+            <component :is="question" v-if="question">
+              <div v-if="isAllowSkip" class="mb-5">
+                <a
+                  href="#"
+                  class="btn btn-skip-step btn-sm"
+                  @click.prevent="skipStep"
+                >
+                  Можно пропустить
+                </a>
+              </div>
+            </component>
           </div>
           <div>
             <QuizProgress />
           </div>
-          <!-- <div class="neiros__block_kviz_btn_footer">
-            <div class="neiros__kviz_progress_block">
-              <div class="neiros__kviz_progress_block_xs">
-                <div class="neiros__kviz_progress_text">
-                  Вопрос <span id="current-step">1</span> из
-                  <span id="all-step">7</span>
-                </div>
-                <div class="progress-bar blue stripes">
-                  <span style="width: 20%"></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="neiros__block_btn_footer">
-              <div class="neiros__block_kviz_btn_left">
-                <button id="neiros__prev" disabled="disabled">
-                  <img src="images/row-left.png" /> <span>назад</span>
-                </button>
-              </div>
-              <div class="neiros__block_kviz_btn_right">
-                <button id="neiros__next">
-                  далее <img src="images/row-right.PNG" />
-                </button>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
       <div class="neiros__block_kviz_right ferst_polls_block">
         <div class="neiros__right_sidebar">
           <Discount />
-
           <Operator />
-
           <StepBonus v-if="isShowBonus1">
             <div class="text-bonus-dop">
-              Пройдите тест до конца, чтобы получить<br />
-              подробные инструкци
+              Пройдите тест до конца, чтобы получить бонус
             </div>
           </StepBonus>
-
-          <!-- <div class="neiros__block_bonus">
-            <img src="images/bonus-img2.PNG" alt="" />
-            <div class="neiros__text_bonus">
-              + Полное рукводство<br />
-              для вашего бизнеса<br />
-              <span>в подарок</span>
-            </div>
-            <div class="neiros__text_bonus_dop">
-              Пройдите тест до конца, чтобы получить<br />
-              подробные инструкци
-            </div>
-          </div> -->
-
           <div class="neiros__footer">
             <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
           </div>
@@ -89,7 +47,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import CheckBoxVariant from '~/components/Question/CheckBoxVariant'
 import CheckBoxImageVariant from '~/components/Question/CheckBoxImageVariant'
 import RadioBoxVariant from '~/components/Question/RadioBoxVariant'
@@ -103,7 +61,7 @@ import FileVariant from '~/components/Question/FileVariant'
 import QuizProgress from '~/components/QuizProgress'
 import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
-// import types from '~/store/types'
+import types from '~/store/types'
 import Operator from '~/components/Operator'
 import Discount from '~/components/Discount'
 import StepBonus from '~/components/BonusSteps'
@@ -138,17 +96,20 @@ export default {
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
   },
   computed: {
-    ...mapGetters('quiz', ['currentQuestion']),
+    ...mapGetters('quiz', ['currentQuestion', 'currentQuestionAnswers']),
     ...mapState({
       kviz: (state) => state.kviz.steps,
       isShowBonus1: (state) => {
-        const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
+        const isShow = state?.quiz?.steps?.step3?.bonus?.first.first
         if (isShow === false || isShow === true) {
           return isShow
         }
         return true
       },
     }),
+    isAllowSkip() {
+      return this.currentQuestion?.neobbyazatelnii_vopros === true
+    },
     chatMessage() {
       return this.currentQuestion?.massage
     },
@@ -195,11 +156,15 @@ export default {
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
     },
   },
-  async mounted() {},
   async created() {
     // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
+    await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
   methods: {
+    ...mapActions('quiz', [types.NEXT_QUESTION_ACTION]),
+    skipStep() {
+      this[types.NEXT_QUESTION_ACTION]()
+    },
     // ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
   },
 }

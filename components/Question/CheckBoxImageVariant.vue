@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot>
     <div class="neiros__kviz_polls-right-img step checkbox-block active">
       <div class="neiros__kviz_polls">
         <div class="polls-left-part">
@@ -11,9 +12,11 @@
             data-img-src="~/assets/images/polls-img.JPG"
             :class="{ active: variant.isSelected }"
             :style="cssVars"
+            @click.self.prevent="clickChild(index)"
           >
             <input
               :id="`cb${index}`"
+              :ref="'child' + index"
               v-model="variant.isSelected"
               type="checkbox"
               :name="`checkbox-polls-${index}`"
@@ -25,9 +28,12 @@
           </div>
         </div>
 
-        <div v-if="currentImage" class="polls-right-part">
+        <div
+          v-if="currentImage"
+          class="polls-right-part d-flex justify-content-center"
+        >
           <!-- <img src="~/assets/images/polls-img.JPG" /> -->
-          <img :src="currentImage" />
+          <img class="radio-image-variant" :src="currentImage" />
         </div>
       </div>
     </div>
@@ -63,14 +69,14 @@ export default {
   },
   mounted() {
     if (this.variants?.length) {
-      this.currentImage = this.variants[0]?.src
-      // this.currentImage = '/images/polls-img.JPG'
+      // this.currentImage = this.variants[0]?.src
+      this.currentImage = '/images/polls-img-2.JPG'
     }
   },
   methods: {
     changeCheckBoxAndImage(variant) {
-      this.currentImage = variant?.src
-      // this.currentImage = '/images/polls-img.JPG'
+      // this.currentImage = variant?.src
+      this.currentImage = '/images/polls-img-2.JPG'
       this.saveAnswer()
     },
   },

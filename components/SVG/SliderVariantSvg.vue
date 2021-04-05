@@ -43,16 +43,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import svgColorMixin from '~/helpers/mixins/svgColor'
 
 export default {
-  computed: {
-    ...mapGetters('quiz', ['color']),
-    cssVars() {
-      return {
-        '--svg-color': this.color,
-      }
-    },
-  },
+  mixins: [svgColorMixin],
 }
 </script>
