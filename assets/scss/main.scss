@@ -589,4 +589,24 @@
 .slider-arrow-left {
   width: 30px;
   height: 30px;
+
+  path {
+    fill: #bbc1c5;
+  }
+}
+
+.rotate180x {
+  transform: rotate(180deg);
+}
+
+.check-square-svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tooltip-svg {
+  width: 10px;
+  height: 10px;
+  margin-top: -20px;
+  position: relative;
 }

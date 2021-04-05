@@ -3,12 +3,13 @@
     <div class="neiros__container_kviz">
       <div class="neiros__block_kviz_left ferst_polls_block">
         <div class="neiros__block_kviz_cov">
-          <div class="neiros__top_copyright">
-            <img src="~/assets/images/check-element.PNG" />
-            <span
-              >Пройдите тест и узнайте какие инструменты использовать для
-              увеличения продаж</span
-            >
+          <div class="neiros__top_copyright d-flex align-items-center">
+            <CheckSquareSvg class="check-square-svg mr-1" />
+            <!-- <img src="~/assets/images/check-element.PNG" /> -->
+            <span class="mt-1">
+              Пройдите тест и узнайте какие инструменты использовать для
+              увеличения продаж
+            </span>
           </div>
           <div class="quiz-container">
             <component :is="question" v-if="question">
@@ -65,6 +66,7 @@ import types from '~/store/types'
 import Operator from '~/components/Operator'
 import Discount from '~/components/Discount'
 import StepBonus from '~/components/BonusSteps'
+import CheckSquareSvg from '~/components/SVG/CheckSquare'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
@@ -94,6 +96,7 @@ export default {
     [Constants.QUESTION_TYPE.FILE_VARIANTS]: FileVariant,
     QuizProgress,
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
+    CheckSquareSvg,
   },
   computed: {
     ...mapGetters('quiz', ['currentQuestion', 'currentQuestionAnswers']),

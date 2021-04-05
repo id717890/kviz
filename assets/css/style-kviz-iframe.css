@@ -847,7 +847,7 @@ html {
   font-family: 'Roboto Bold';
 }
 .neiros__progress_block_two .neiros__procent_top:before {
-  content: '';
+  /* content: ''; */
   position: absolute;
   width: 10px;
   right: 10px;

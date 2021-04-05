@@ -9,7 +9,6 @@
     width="122.883px"
     height="122.882px"
     viewBox="0 0 122.883 122.882"
-    :style="cssVars"
     enable-background="new 0 0 122.883 122.882"
     xml:space="preserve"
   >

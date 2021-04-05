@@ -9,6 +9,7 @@
         class="swiper"
         :options="swiperOption"
         @click-slide="debouncedClickSlide"
+        @slide-change="slideChange"
       >
         <swiper-slide
           v-for="slide in variants"
@@ -43,7 +44,7 @@
           class="my-swiper-button-prev"
           @click.prevent="prev"
         >
-          <ArrowLeft class="slider-arrow-left" />
+          <ArrowLeft v-if="showLeftBtn" class="slider-arrow-left" />
           <!-- <img src="/images/row-swiper-left.PNG" alt="" /> -->
         </div>
         <div
@@ -51,7 +52,9 @@
           class="my-swiper-button-next"
           @click.prevent="next"
         >
-          <img src="/images/row-swiper-right.PNG" alt="" />
+          <ArrowLeft v-if="showRightBtn" class="slider-arrow-left rotate180x" />
+
+          <!-- <img src="/images/row-swiper-right.PNG" alt="" /> -->
         </div>
       </swiper>
     </div>
@@ -76,22 +79,17 @@ export default {
   components: { Swiper, SwiperSlide, SvgSlider, ArrowLeft },
   mixins: [saveAnswerMixin],
   data: () => ({
+    showLeftBtn: false,
+    showRightBtn: true,
     swiperOption: {
       followFinger: false,
       allowTouchMove: true,
       updateOnWindowResize: false,
       grabCursor: true,
-      // slidesOffsetBefore: 35,
-      // autoHeight: true,
       slidesPerView: 4,
       // slidesPerGroup: 1,
       slidesPerGroupSkip: 1,
-      // centeredSlides: false,
       // loop: true,
-      // width: 200,
-      // height:300,
-      // centeredSlides: true,
-      // spaceBetween: 8,
       // breakpoints: { 769: { slidesPerView: 4, slidesPerGroup: 1 } },
       scrollbar: {
         el: '.swiper-scrollbar',
@@ -122,6 +120,18 @@ export default {
     },
   },
   methods: {
+    slideChange(event) {
+      const { isEnd, isBegining } = event
+      this.showLeftBtn = true
+      this.showRightBtn = true
+      if (isEnd) {
+        this.showLeftBtn = true
+        this.showRightBtn = false
+      } else if (isBegining) {
+        this.showLeftBtn = false
+        this.showRightBtn = true
+      }
+    },
     prev() {
       this.swiper.slidePrev()
     },

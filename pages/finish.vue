@@ -10,7 +10,10 @@
               :style="cssVars"
             >
               <span style="width: 98%">
-                <div class="neiros__procent_top">98%</div>
+                <div class="neiros__procent_top" :style="cssVars">
+                  <div>98%</div>
+                  <ToolTipSvg class="tooltip-svg" />
+                </div>
               </span>
             </div>
           </div>
@@ -66,8 +69,10 @@ import { mapGetters, mapState } from 'vuex'
 import BonusFinish1 from '~/components/BonusFinish1'
 import BonusFinish2 from '~/components/BonusFinish2'
 import ContactForm from '~/components/ContactForm'
+import ToolTipSvg from '~/components/SVG/TooltipTriangle'
+
 export default {
-  components: { BonusFinish1, BonusFinish2, ContactForm },
+  components: { BonusFinish1, BonusFinish2, ContactForm, ToolTipSvg },
 
   computed: {
     ...mapGetters('quiz', ['currentQuestion', 'color']),
