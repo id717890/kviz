@@ -2,7 +2,8 @@
   <section v-if="isShowOperator">
     <div class="neiros__block_operator">
       <div class="neiros___left">
-        <img src="images/operator3.JPG" />
+        <!-- <img src="images/operator3.JPG" /> -->
+        <img :src="operator.img" />
       </div>
       <div class="neiros___right">
         <div class="neiros__status">
