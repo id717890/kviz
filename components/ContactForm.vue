@@ -1,74 +1,80 @@
 <template>
-  <div class="neiros__sidebar_form">
-    <div v-if="hasName" class="neiros__input_form">
-      <span>Введите Ваше имя*</span>
-      <input
-        v-model="name"
-        type="text"
-        name="name"
-        class=""
-        placeholder="Иванов Иван"
-      />
-    </div>
-    <div v-if="hasEmail" class="neiros__input_form">
-      <span>На какую почту отправить результаты?</span>
-      <input
-        v-model="email"
-        type="text"
-        name="email"
-        class=""
-        placeholder="Ваш e-mail"
-      />
-    </div>
-    <div v-if="hasPhone" class="neiros__input_form">
-      <span>Введите Ваш телефон*</span>
-      <input
-        v-model="phone"
-        type="text"
-        name="phone"
-        class=""
-        placeholder="+7 922-000-00-00"
-      />
-    </div>
-    <div v-if="hasComment" class="neiros__input_form">
-      <span>Введите Ваш коментарий*</span>
-      <textarea
-        v-model="comment"
-        name="comment"
-        class="comment-textarea"
-        placeholder="Ваш коментарий"
-        maxlength="250"
-        rows="3"
-        autocomplete="off"
-      ></textarea>
-    </div>
-    <div class="neiros__social_block">
-      <span>Использовать месседжеры</span>
-      <div>
-        <a href="#"><img src="images/icons/social/facebook.PNG" /></a>
-        <a href="#"><img src="images/icons/social/telegram.PNG" /></a>
-        <a href="#"><img src="images/icons/social/vk.PNG" /></a>
-        <a href="#"><img src="images/icons/social/viber.PNG" /></a>
+  <div class="neiros__right_sidebar" :style="stylesForm">
+    <div class="neiros__sidebar_form">
+      <div v-if="hasName" class="neiros__input_form">
+        <span>Введите Ваше имя*</span>
+        <input
+          ref="textfield"
+          v-model="name"
+          type="text"
+          name="name"
+          class=""
+          placeholder="Иванов Иван"
+        />
       </div>
-    </div>
-    <button
-      :disabled="!isValidForm"
-      class="neiros__btn-left-sidebar"
-      :style="buttonColor"
-      type="button"
-      @click.prevent="goToThanks"
-    >
-      <img src="images/btn-mail.PNG" /> {{ textButton }}
-    </button>
-    <div class="neiros__privacy_policy_block">
-      <input id="neiros__privacy_policy" type="checkbox" checked />
-      <label for="neiros__privacy_policy"
-        >С <a href="">политикой конфиденциальности</a> ознакомлен</label
+      <div v-if="hasEmail" class="neiros__input_form">
+        <span>На какую почту отправить результаты?</span>
+        <input
+          ref="textfield"
+          v-model="email"
+          type="text"
+          name="email"
+          class=""
+          placeholder="Ваш e-mail"
+        />
+      </div>
+      <div v-if="hasPhone" class="neiros__input_form">
+        <span>Введите Ваш телефон*</span>
+        <input
+          ref="textfield"
+          v-model="phone"
+          type="text"
+          name="phone"
+          class=""
+          placeholder="+7 922-000-00-00"
+        />
+      </div>
+      <div v-if="hasComment" class="neiros__input_form">
+        <span>Введите Ваш коментарий*</span>
+        <textarea
+          ref="textarea"
+          v-model="comment"
+          name="comment"
+          class="comment-textarea"
+          placeholder="Ваш коментарий"
+          maxlength="250"
+          rows="3"
+          autocomplete="off"
+        ></textarea>
+      </div>
+      <div class="neiros__social_block">
+        <span>Использовать месседжеры</span>
+        <div>
+          <a href="#"><img src="images/icons/social/facebook.PNG" /></a>
+          <a href="#"><img src="images/icons/social/telegram.PNG" /></a>
+          <a href="#"><img src="images/icons/social/vk.PNG" /></a>
+          <a href="#"><img src="images/icons/social/viber.PNG" /></a>
+        </div>
+      </div>
+      <button
+        :disabled="!isValidForm"
+        class="neiros__btn-left-sidebar"
+        :style="buttonColor"
+        type="button"
+        @click.prevent="goToThanks"
       >
-    </div>
-    <div class="neiros__block_present">
-      <img src="images/present.png" />
-      <span class="txt-14 pt-1">+ 7 дней безлимита в подарок</span>
+        <img src="images/btn-mail.PNG" /> {{ textButton }}
+      </button>
+      <div class="neiros__privacy_policy_block">
+        <input id="neiros__privacy_policy" type="checkbox" checked />
+        <label for="neiros__privacy_policy"
+          >С <a href="">политикой конфиденциальности</a> ознакомлен</label
+        >
+      </div>
+      <div class="neiros__block_present">
+        <img src="images/present.png" />
+        <span class="txt-14 pt-1">+ 7 дней безлимита в подарок</span>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +93,34 @@ export default {
     ...mapState({
       contacts: (state) => state?.quiz?.steps?.step4,
     }),
+    stylesForm() {
+      let countFields = 0
+      let margitTop = 0
+      if (this.hasName) countFields++
+      if (this.hasPhone) countFields++
+      if (this.hasEmail) countFields++
+      if (this.hasComment) countFields++
+
+      if (this.hasComment) {
+        switch (countFields) {
+          case 1:
+            margitTop = 60
+            break
+          case 2:
+            margitTop = 35
+            break
+          case 3:
+            break
+        }
+      }
+      if (countFields > 3) {
+        return {
+          'margin-top': margitTop,
+        }
+      }
+      console.log('refs', this.$refs)
+      return ''
+    },
     buttonColor() {
       return {
         background: this.color,

@@ -97,6 +97,10 @@ html {
   height: auto;
 }
 .neiros__container_kviz .neiros__block_kviz_right {
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column;
+  /* justify-content: center; */
   border-left: 3px solid #ecf0f7;
   background: #ffffff;
   position: absolute;
@@ -938,10 +942,10 @@ html {
 }
 
 .neiros__sidebar_form {
-  margin-top: 70px;
+  /* margin-top: 70px; */
 }
 .neiros__xs .neiros__sidebar_form {
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .neiros__sidebar_form .neiros__input_form {
   margin-bottom: 20px;

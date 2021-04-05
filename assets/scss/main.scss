@@ -610,3 +610,16 @@
   margin-top: -20px;
   position: relative;
 }
+
+.neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-thumb {
+  background-color: rgb(218, 218, 218);
+  outline: 1px solid rgb(255, 255, 255);
+}
