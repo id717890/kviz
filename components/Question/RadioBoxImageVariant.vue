@@ -63,8 +63,8 @@ export default {
   },
   mounted() {
     if (this.variants?.length) {
-      // this.currentImage = this.variants[0]?.src
-      this.currentImage = '/images/polls-img-2.JPG'
+      this.currentImage = this.variants[0]?.src
+      // this.currentImage = '/images/polls-img-2.JPG'
     }
   },
 }
