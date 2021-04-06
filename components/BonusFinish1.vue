@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="isShowBonusFinish"
     class="neiros__bonus finish-bonus-block"
     :class="positions"
     :style="styles"
@@ -20,7 +21,16 @@ export default {
   computed: {
     ...mapState({
       bonus: (state) => state?.quiz?.steps?.step3?.bonus?.first,
+      isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
     }),
+    isShowBonusFinish() {
+      const isShow = this.bonus?.finish
+      if (!this.isActiveBonus) return false
+      if (isShow === false || isShow === true) {
+        return isShow
+      }
+      return true
+    },
     image() {
       return this.bonus?.img ?? null
     },

@@ -39,7 +39,8 @@
                 для бизнеса
               </div>
             </div> -->
-            <BonusFinish1 v-if="isShowBonus1Finish" />
+            <!-- <BonusFinish1 v-if="isShowBonus1Finish" /> -->
+            <BonusFinish1 />
             <BonusFinish2 />
           </div>
           <!-- <div class="neiros__final_block_bonus">
@@ -78,13 +79,13 @@ export default {
   computed: {
     ...mapGetters('quiz', ['currentQuestion', 'color']),
     ...mapState({
-      isShowBonus1Finish: (state) => {
-        const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
-        if (isShow === false || isShow === true) {
-          return isShow
-        }
-        return true
-      },
+      // isShowBonus1Finish: (state) => {
+      //   const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
+      //   if (isShow === false || isShow === true) {
+      //     return isShow
+      //   }
+      //   return true
+      // },
       settings: (state) => state?.quiz?.steps?.step4,
     }),
     title() {

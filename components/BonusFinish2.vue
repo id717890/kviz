@@ -21,9 +21,11 @@ export default {
   computed: {
     ...mapState({
       bonusFinish: (state) => state?.quiz?.steps?.step3?.bonus?.finish,
+      isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
     }),
     isShowBonusFinish() {
-      const isShow = this.bonusFinish?.active
+      const isShow = this.bonusFinish?.finish
+      if (!this.isActiveBonus) return false
       if (isShow === false || isShow === true) {
         return isShow
       }

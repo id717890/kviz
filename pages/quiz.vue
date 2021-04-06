@@ -102,14 +102,17 @@ export default {
     ...mapGetters('quiz', ['currentQuestion', 'currentQuestionAnswers']),
     ...mapState({
       kviz: (state) => state.kviz.steps,
-      isShowBonus1: (state) => {
-        const isShow = state?.quiz?.steps?.step3?.bonus?.first.first
-        if (isShow === false || isShow === true) {
-          return isShow
-        }
-        return true
-      },
+      isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
+      bonusStep: (state) => state?.quiz?.steps?.step3?.bonus?.first,
     }),
+    isShowBonus1() {
+      const isShow = this.bonusStep?.first
+      if (!this.isActiveBonus) return false
+      if (isShow === false || isShow === true) {
+        return isShow
+      }
+      return true
+    },
     isAllowSkip() {
       return this.currentQuestion?.neobbyazatelnii_vopros === true
     },
