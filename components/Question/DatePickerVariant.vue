@@ -15,7 +15,10 @@
                   :type="typePicker"
                   :placeholder="placeholder"
                   :append-to-body="false"
-                  :popup-style="{ left: 0, top: ' 100%', marginTop: '10px' }"
+                  :popup-style="{
+                    left: '10px',
+                    marginTop: '10px',
+                  }"
                   @input="dateChange"
                 ></date-picker>
               </div>
@@ -27,7 +30,10 @@
                   :type="typePicker"
                   :placeholder="placeholder"
                   :append-to-body="false"
-                  :popup-style="{ left: 0, top: ' 100%', marginTop: '10px' }"
+                  :popup-style="{
+                    left: '10px',
+                    marginTop: '10px',
+                  }"
                   @input="dateChange"
                 ></date-picker>
               </div>

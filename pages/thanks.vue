@@ -8,7 +8,7 @@
           <img src="images/icons/check.PNG" />
         </div>
         <div class="kviz_success_h1">Спасибо!</div>
-        <div class="kviz_success_h2">
+        <div class="kviz_success_h1">
           {{ message }} <img src="images/icons/like.PNG" />
         </div>
       </div>

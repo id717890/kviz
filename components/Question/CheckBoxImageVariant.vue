@@ -89,7 +89,8 @@ input[type='checkbox']:checked + label span::after {
   border-bottom: 2.5px solid var(--cb-color);
 }
 
-.neiros__answer-variants__textVariant.active {
+.neiros__answer-variants__textVariant.active,
+.neiros__answer-variants__textVariant:hover {
   box-shadow: var(--cb-shadow);
   border: var(--cb-border);
 }

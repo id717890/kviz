@@ -973,9 +973,12 @@ html {
   padding-right: 15px;
 }
 
+.comment-textarea::-moz-placeholder,
 .neiros__sidebar_form .neiros__input_form input::-moz-placeholder {
   color: #b1b1b1;
 }
+
+.comment-textarea::placeholder,
 .neiros__sidebar_form .neiros__input_form input::placeholder {
   color: #b1b1b1;
 }

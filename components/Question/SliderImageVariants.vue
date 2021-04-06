@@ -65,6 +65,8 @@
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Swiper as SwiperClass, Pagination, Scrollbar } from 'swiper/swiper.esm'
 import { mapState } from 'vuex'
+import { debounce } from 'lodash'
+
 import Constants from '~/constants'
 import SvgSlider from '~/components/SVG/SliderVariantSvg'
 import 'swiper/swiper-bundle.css'
@@ -82,7 +84,10 @@ export default {
     showLeftBtn: false,
     showRightBtn: true,
     swiperOption: {
-      followFinger: false,
+      // slidesOffsetAfter: 80,
+      direction: 'horizontal',
+      mousewheel: true,
+      // followFinger: false,
       allowTouchMove: true,
       updateOnWindowResize: false,
       grabCursor: true,
@@ -93,6 +98,7 @@ export default {
       // breakpoints: { 769: { slidesPerView: 4, slidesPerGroup: 1 } },
       scrollbar: {
         el: '.swiper-scrollbar',
+        clickable: true,
       },
       pagination: {
         el: '.swiper-pagination',
@@ -119,15 +125,42 @@ export default {
       return this.$refs['my-swiper'].$swiper
     },
   },
+  created() {
+    this.debouncedWheel = debounce(this.handleScroll, 100)
+  },
+  mounted() {
+    // eslint-disable-next-line nuxt/no-globals-in-created
+    const el = document.getElementsByClassName('swiper-container')[0]
+    el.addEventListener('wheel', this.handleScroll, true)
+    //   .addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    const el = document.getElementsByClassName('swiper-container')[0]
+    // document
+    //   .getElementsByClassName('swiper-container')
+    el?.removeEventListener('wheel', this.handleScroll)
+  },
   methods: {
+    handleScroll(event) {
+      event.preventDefault()
+      // event.stopPropagation()
+      // event.stopImmediatePropagation()
+      const { deltaY } = event
+      if (deltaY > 0) {
+        this.next()
+      } else if (deltaY < 0) {
+        this.prev()
+      }
+    },
     slideChange(event) {
-      const { isEnd, isBegining } = event
+      console.log(event)
+      const { isEnd, isBeginning } = event
       this.showLeftBtn = true
       this.showRightBtn = true
       if (isEnd) {
         this.showLeftBtn = true
         this.showRightBtn = false
-      } else if (isBegining) {
+      } else if (isBeginning) {
         this.showLeftBtn = false
         this.showRightBtn = true
       }
@@ -143,6 +176,7 @@ export default {
 </script>
 
 <style scoped>
+.swiper-slide .swiper-slide-block:hover,
 .swiper-slide .swiper-slide-block.select-poll {
   border: 1px solid var(--slide-border-color) !important;
 }

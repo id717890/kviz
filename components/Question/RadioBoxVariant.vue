@@ -59,7 +59,8 @@ input:checked + span::before {
   background: var(--rb-color) !important;
 }
 
-.neiros__answer-variants__textVariant.active {
+.neiros__answer-variants__textVariant.active,
+.neiros__answer-variants__textVariant:hover {
   box-shadow: var(--rb-shadow);
   border: var(--rb-border);
 }

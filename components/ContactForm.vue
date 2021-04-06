@@ -1,6 +1,6 @@
 <template>
   <div class="neiros__right_sidebar" :style="stylesForm">
-    <div class="neiros__sidebar_form">
+    <div class="neiros__sidebar_form" :style="cssVars">
       <div v-if="hasName" class="neiros__input_form">
         <span>Введите Ваше имя*</span>
         <input
@@ -8,7 +8,7 @@
           v-model="name"
           type="text"
           name="name"
-          class=""
+          :class="{ error: errors.name }"
           placeholder="Иванов Иван"
         />
       </div>
@@ -19,7 +19,7 @@
           v-model="email"
           type="text"
           name="email"
-          class=""
+          :class="{ error: errors.name }"
           placeholder="Ваш e-mail"
         />
       </div>
@@ -30,7 +30,7 @@
           v-model="phone"
           type="text"
           name="phone"
-          class=""
+          :class="{ error: errors.name }"
           placeholder="+7 922-000-00-00"
         />
       </div>
@@ -41,13 +41,14 @@
           v-model="comment"
           name="comment"
           class="comment-textarea"
+          :class="{ error: errors.name }"
           placeholder="Ваш коментарий"
           maxlength="250"
           rows="3"
           autocomplete="off"
         ></textarea>
       </div>
-      <div class="neiros__social_block">
+      <div v-if="hasSocial" class="neiros__social_block">
         <span>Использовать месседжеры</span>
         <div>
           <a href="#"><img src="images/icons/social/facebook.PNG" /></a>
@@ -57,7 +58,6 @@
         </div>
       </div>
       <button
-        :disabled="!isValidForm"
         class="neiros__btn-left-sidebar"
         :style="buttonColor"
         type="button"
@@ -87,39 +87,27 @@ export default {
     email: null,
     phone: null,
     comment: null,
+    errors: {
+      name: false,
+      email: false,
+      phone: false,
+      comment: false,
+    },
   }),
   computed: {
     ...mapGetters('quiz', ['color']),
     ...mapState({
       contacts: (state) => state?.quiz?.steps?.step4,
     }),
+    cssVars() {
+      return {
+        '--color': this.color,
+      }
+    },
     stylesForm() {
-      let countFields = 0
-      let margitTop = 0
-      if (this.hasName) countFields++
-      if (this.hasPhone) countFields++
-      if (this.hasEmail) countFields++
-      if (this.hasComment) countFields++
-
-      if (this.hasComment) {
-        switch (countFields) {
-          case 1:
-            margitTop = 60
-            break
-          case 2:
-            margitTop = 35
-            break
-          case 3:
-            break
-        }
+      return {
+        marginTop: this.hasComment ? 0 : '30px',
       }
-      if (countFields > 3) {
-        return {
-          'margin-top': margitTop,
-        }
-      }
-      console.log('refs', this.$refs)
-      return ''
     },
     buttonColor() {
       return {
@@ -128,22 +116,6 @@ export default {
     },
     textButton() {
       return this.contacts?.text_button || 'Получить результаты'
-    },
-    isValidForm() {
-      let isValid = true
-      if (this.hasEmail && !this.email) {
-        isValid = false
-      }
-      if (this.hasName && !this.name) {
-        isValid = false
-      }
-      if (this.hasPhone && !this.phone) {
-        isValid = false
-      }
-      if (this.hasComment && !this.comment) {
-        isValid = false
-      }
-      return isValid
     },
     hasName() {
       return this.contacts?.name?.active
@@ -157,11 +129,52 @@ export default {
     hasComment() {
       return this.contacts?.comment?.active
     },
+    hasSocial() {
+      return this.contacts?.send
+    },
   },
   methods: {
+    resetErrors() {
+      this.errors.name = false
+      this.errors.email = false
+      this.errors.phone = false
+      this.errors.comment = false
+    },
+    validateForm() {
+      this.resetErrors()
+      let isValid = true
+      if (this.hasEmail && !this.email) {
+        this.errors.email = true
+        isValid = false
+      }
+      if (this.hasName && !this.name) {
+        this.errors.name = true
+        isValid = false
+      }
+      if (this.hasPhone && !this.phone) {
+        this.errors.phone = true
+        isValid = false
+      }
+      if (this.hasComment && !this.comment) {
+        this.errors.comment = true
+        isValid = false
+      }
+      return isValid
+    },
     goToThanks() {
-      this.$router.push('/thanks')
+      const isValid = this.validateForm()
+      // console.log(isValid)
+      if (isValid) {
+        this.$router.push('/thanks')
+      }
     },
   },
 }
 </script>
+
+<style scoped>
+.neiros__sidebar_form .neiros__input_form input:focus,
+.comment-textarea:focus {
+  border: 1px solid var(--color);
+}
+</style>

@@ -3,7 +3,7 @@
     <div class="neiros__container_kviz">
       <div class="neiros__block_kviz_left two_polls_block">
         <div class="neiros__block_kviz_cov">
-          <div class="neiros__final_h1">{{ title }}</div>
+          <div class="neiros__final_h1">Отлично! Остался всего один шаг!</div>
           <div class="neiros__progress_block_two overflow-visible">
             <div
               class="progress-bar quiz-bar quiz-blue quiz-stripes overflow-visible"
@@ -20,12 +20,13 @@
           <div class="neiros__final_block_text">
             <div class="neiros__final_h2">
               <!-- Заполните форму, чтобы получить результаты<br />прохождения теста -->
-              {{ text1 }}
+              {{ title }}
             </div>
             <div class="neiros__final_h2_description">
-              Мы рассмотрели ваши ответы и в течении 5 минут вышлем Вам
+              <!-- Мы рассмотрели ваши ответы и в течении 5 минут вышлем Вам
               подробную<br />
-              инструкцию <b>+ заработаные бонусы!</b>
+              инструкцию <b>+ заработаные бонусы!</b> -->
+              {{ text1 }}
             </div>
           </div>
 

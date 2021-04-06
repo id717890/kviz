@@ -21,15 +21,26 @@ import { mapState } from 'vuex'
 import Constants from '~/constants'
 
 export default {
+  data: () => ({}),
   computed: {
     ...mapState({
       discount: (state) => state?.quiz?.steps?.step3?.motivaciya,
+      questionIndex: (state) => state?.quiz?.currentQuestionIndex,
     }),
     isShowDiscount() {
       return this.discount?.is_checked ?? false
     },
     price1() {
-      return this.discount?.prise1 ?? 0
+      const discountStartValue = Number(this.discount?.prise1) || 0
+      const discountStep = Number(this.price2)
+      const step = this.questionIndex
+      let discountValue = 0
+      if (this.isGrowing) {
+        discountValue = discountStartValue + step * discountStep
+      } else if (this.isFalling) {
+        discountValue = discountStartValue - step * discountStep
+      }
+      return discountValue <= 0 ? 0 : discountValue
     },
     price2() {
       return this.discount?.prise2 ?? 0
