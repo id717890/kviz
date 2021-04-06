@@ -19,7 +19,7 @@
           v-model="email"
           type="text"
           name="email"
-          :class="{ error: errors.name }"
+          :class="{ error: errors.email }"
           placeholder="Ваш e-mail"
         />
       </div>
@@ -28,9 +28,10 @@
         <input
           ref="textfield"
           v-model="phone"
+          v-mask="'+# (###) ###-##-##'"
           type="text"
           name="phone"
-          :class="{ error: errors.name }"
+          :class="{ error: errors.phone }"
           placeholder="+7 922-000-00-00"
         />
       </div>
@@ -41,7 +42,7 @@
           v-model="comment"
           name="comment"
           class="comment-textarea"
-          :class="{ error: errors.name }"
+          :class="{ error: errors.comment }"
           placeholder="Ваш коментарий"
           maxlength="250"
           rows="3"
@@ -81,7 +82,10 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import { mask } from 'vue-the-mask'
+
 export default {
+  directives: { mask },
   data: () => ({
     name: null,
     email: null,
@@ -132,6 +136,12 @@ export default {
     hasSocial() {
       return this.contacts?.send
     },
+    validateEmail() {
+      return /.+@.+/.test(this.email)
+    },
+    validatePhone() {
+      return this.phone?.length === 18
+    },
   },
   methods: {
     resetErrors() {
@@ -143,7 +153,8 @@ export default {
     validateForm() {
       this.resetErrors()
       let isValid = true
-      if (this.hasEmail && !this.email) {
+      if (this.hasEmail && (!this.email || !this.validateEmail)) {
+        console.log('email invalid')
         this.errors.email = true
         isValid = false
       }
@@ -151,7 +162,7 @@ export default {
         this.errors.name = true
         isValid = false
       }
-      if (this.hasPhone && !this.phone) {
+      if (this.hasPhone && (!this.phone || !this.validatePhone)) {
         this.errors.phone = true
         isValid = false
       }
