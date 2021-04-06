@@ -8,6 +8,7 @@
           :key="index"
           class="neiros__answer-variants__textVariant"
           :class="{ active: variant.isSelected }"
+          :style="cssVars"
         >
           <label class="radio">
             <input
@@ -17,7 +18,7 @@
               :value="variant.id"
               @change="changeRadio"
             />
-            <span>{{ variant.text }}</span>
+            <span :style="cssVars">{{ variant.text }}</span>
           </label>
         </div>
       </div>
@@ -26,10 +27,39 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
-
 export default {
   name: 'QuestionRadioBoxVariant',
   mixins: [saveAnswerMixin],
+  computed: {
+    ...mapGetters('quiz', ['color']),
+    cssVars() {
+      return {
+        '--rb-color': this.color,
+        '--rb-shadow': this.shadow,
+        '--rb-border': this.border,
+      }
+    },
+    shadow() {
+      const rgb = this.convertHex(this.color, 0.3)
+      return `0px 0px 5px ${rgb}`
+    },
+    border() {
+      const rgb = this.convertHex(this.color, 0.55)
+      return `1px solid ${rgb}`
+    },
+  },
 }
 </script>
+
+<style scoped>
+input:checked + span::before {
+  background: var(--rb-color) !important;
+}
+
+.neiros__answer-variants__textVariant.active {
+  box-shadow: var(--rb-shadow);
+  border: var(--rb-border);
+}
+</style>

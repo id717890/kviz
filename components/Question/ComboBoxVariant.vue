@@ -1,16 +1,19 @@
 <template>
   <div>
-    <div class="neiros__kviz_polls_h1">Первый вопрос по данной теме? CB</div>
+    <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
     <div class="step checkbox-block active">
       <div class="neiros__kviz_polls">
         <div class="neiros___polls_select step active w100">
           <vue-select
+            v-model="selectedItems"
             placeholder="Выберите вариант из списка"
             :clearable="false"
             class="kviz-select-field"
             name="select1"
-            :options="options1"
-            :model="result1"
+            label="text"
+            :options="variants"
+            :multiple="isMultiple"
+            @input="selectChange"
           >
           </vue-select>
           <!-- <VueSelect :options="['qwe', 'www']" /> -->
@@ -30,27 +33,18 @@
 
 <script>
 import VueSelect from 'vue-select'
+import saveAnswerMixin from '~/helpers/mixins/saveAnswer'
+
 export default {
   name: 'QuestionComboBoxVariant',
   components: {
     'vue-select': VueSelect,
   },
-  props: {
-    items: {
-      type: Array,
-      required: true,
-      default: () => [],
-    },
+  mixins: [saveAnswerMixin],
+  mounted() {
+    if (this.answers) {
+      this.selectedItems = this.answers
+    }
   },
-  data: () => ({
-    options1: [
-      'Продвижение бизнеса5',
-      'Количество прибыли5',
-      'Поиск сотрудников',
-      'Услуги',
-      'Для себя',
-    ],
-    result1: null,
-  }),
 }
 </script>

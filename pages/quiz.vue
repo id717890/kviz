@@ -12,6 +12,7 @@
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <component :is="question" v-if="question"></component>
+            <!-- <RadioBoxVariantImage :items="[]" /> -->
             <!-- <CheckBoxVariant :items="[]" />
             <RadioBoxVariant :items="[]" />
             <RadioBoxVariantImage :items="[]" />
@@ -54,34 +55,18 @@
       </div>
       <div class="neiros__block_kviz_right ferst_polls_block">
         <div class="neiros__right_sidebar">
-          <div class="neiros__block_seles_top">
-            <div class="neiros__border_sb">
-              <div class="neiros__left_sele">
-                <div class="neiros__top_descr">Ваша скидка</div>
-                <div class="neiros__top_price">2345 Р</div>
-              </div>
-              <div class="neiros__right_sele">
-                <div><img src="images/lightning.PNG" /></div>
-                <div>+ 500 Р за ответ</div>
-              </div>
-            </div>
-          </div>
+          <Discount />
 
-          <div class="neiros__block_operator">
-            <div class="neiros___left">
-              <img src="images/operator3.JPG" />
-            </div>
-            <div class="neiros___right">
-              <div class="neiros__status">
-                <div class="neiros__status_icon"></div>
-                Онлайн
-              </div>
-              <div class="neiros__name_operator">Владимир</div>
-              <div class="neiros__work_operator">Ведущий программист</div>
-            </div>
-          </div>
+          <Operator />
 
-          <div class="neiros__block_bonus">
+          <StepBonus v-if="isShowBonus1">
+            <div class="text-bonus-dop">
+              Пройдите тест до конца, чтобы получить<br />
+              подробные инструкци
+            </div>
+          </StepBonus>
+
+          <!-- <div class="neiros__block_bonus">
             <img src="images/bonus-img2.PNG" alt="" />
             <div class="neiros__text_bonus">
               + Полное рукводство<br />
@@ -92,7 +77,7 @@
               Пройдите тест до конца, чтобы получить<br />
               подробные инструкци
             </div>
-          </div>
+          </div> -->
 
           <div class="neiros__footer">
             <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
@@ -105,59 +90,109 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import CheckBoxVariant from '~/components/Question/CheckBoxVariants'
-import RadioBoxVariant from '~/components/Question/RadioBoxVariants'
-import RadioBoxVariantImage from '~/components/Question/RadioBoxVariantsImage'
+import CheckBoxVariant from '~/components/Question/CheckBoxVariant'
+import CheckBoxImageVariant from '~/components/Question/CheckBoxImageVariant'
+import RadioBoxVariant from '~/components/Question/RadioBoxVariant'
+import RadioBoxImageVariant from '~/components/Question/RadioBoxImageVariant'
 import SliderImageVariants from '~/components/Question/SliderImageVariants'
-import ComboBoxVariant from '~/components/Question/ComboBoxVariants'
+import ComboBoxVariant from '~/components/Question/ComboBoxVariant'
 import TextVariant from '~/components/Question/TextVariant'
 import DatePickerVariant from '~/components/Question/DatePickerVariant'
-import SliderVariant from '~/components/Question/SliderVariant'
+import RangeVariant from '~/components/Question/RangeVariant'
+import FileVariant from '~/components/Question/FileVariant'
 import QuizProgress from '~/components/QuizProgress'
+import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
 import types from '~/store/types'
+import Operator from '~/components/Operator'
+import Discount from '~/components/Discount'
+import StepBonus from '~/components/BonusSteps'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
+const CHECK_OR_RADIO_AND_IMAGE_VARIANTS = 'VAR-I-KARTINKA'
+const TEXT_VARIANT = 'POLE-DLYA-VVODA'
+const COMBOBOX_VARIANT = 'VIPADAYSHII-SPISOK'
+const DATE_PICKER = 'DATA'
+const RANGE = 'POLZYNOK'
+const FILE_VARIANT = 'TIME-PAGE'
 
 export default {
   components: {
+    Operator,
+    Discount,
+    StepBonus,
     [Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS]: CheckBoxVariant,
+    [Constants.QUESTION_TYPE
+      .CHECK_BOX_TEXT_AND_IMAGE_VARIANTS]: CheckBoxImageVariant,
     [Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS]: RadioBoxVariant,
-    RadioBoxVariantImage,
+    [Constants.QUESTION_TYPE
+      .RADIO_BOX_TEXT_AND_IMAGE_VARIANTS]: RadioBoxImageVariant,
     [Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER]: SliderImageVariants,
+    [Constants.QUESTION_TYPE.TEXT_VARIANT]: TextVariant,
     [Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS]: ComboBoxVariant,
-    TextVariant,
     [Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS]: DatePickerVariant,
-    SliderVariant,
+    [Constants.QUESTION_TYPE.RANGE_VARIANTS]: RangeVariant,
+    [Constants.QUESTION_TYPE.FILE_VARIANTS]: FileVariant,
     QuizProgress,
+    [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
   },
   computed: {
     ...mapGetters('quiz', ['currentQuestion']),
     ...mapState({
       kviz: (state) => state.kviz.steps,
+      isShowBonus1: (state) => {
+        const isShow = state?.quiz?.steps?.step3?.bonus?.first.finish
+        if (isShow === false || isShow === true) {
+          return isShow
+        }
+        return true
+      },
     }),
+    chatMessage() {
+      return this.currentQuestion?.massage
+    },
     question() {
       const questionType = this.currentQuestion?.tip_oprosa?.toUpperCase()
       // console.log(questionType)
       switch (questionType) {
-        case CHECK_OR_RADIO_VARIANTS:
-          {
-            const multiple = this.currentQuestion?.neskolko
-            if (multiple === true) {
-              return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
-            }
-            if (multiple === false) {
-              return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
-            }
+        case CHECK_OR_RADIO_VARIANTS: {
+          const multiple = this.currentQuestion?.neskolko
+          if (multiple) {
+            return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_VARIANTS
+          } else {
+            return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_VARIANTS
           }
-          break
+        }
         case CHECK_OR_RADIO_IMAGE_VARIANTS: {
           // const multiple = this.currentQuestion?.neskolko
           return Constants.QUESTION_TYPE.RADIO_BOX_SWIPER_SLIDER
         }
+        case CHECK_OR_RADIO_AND_IMAGE_VARIANTS: {
+          const multiple = this.currentQuestion?.neskolko
+          if (multiple) {
+            return Constants.QUESTION_TYPE.CHECK_BOX_TEXT_AND_IMAGE_VARIANTS
+          } else {
+            return Constants.QUESTION_TYPE.RADIO_BOX_TEXT_AND_IMAGE_VARIANTS
+          }
+        }
+        case TEXT_VARIANT: {
+          return Constants.QUESTION_TYPE.TEXT_VARIANT
+        }
+        case COMBOBOX_VARIANT: {
+          return Constants.QUESTION_TYPE.COMBO_BOX_VARIANTS
+        }
+        case DATE_PICKER: {
+          return Constants.QUESTION_TYPE.DATE_PICKER_VARIANTS
+        }
+        case RANGE: {
+          return Constants.QUESTION_TYPE.RANGE_VARIANTS
+        }
+        case FILE_VARIANT: {
+          return Constants.QUESTION_TYPE.FILE_VARIANTS
+        }
       }
-      return questionType
+      return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
     },
   },
   async mounted() {},
