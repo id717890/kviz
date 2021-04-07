@@ -2,6 +2,29 @@
   background: #07e9bb;
 }
 
+.start-page-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.start-page-footer{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  left: 0;
+  right: 25px;
+}
+
+.pl-100 {
+  padding-left: 100px;
+}
+
 .start-wrapper {
   height: 100%;
   display: flex;

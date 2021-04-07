@@ -9,6 +9,7 @@
       <div
         class="neiros__kviz_padding_block py-0 d-flex flex-column justify-content-center flex-grow-1"
       >
+        <StartHeader />
         <div v-if="title" class="neiros__kviz_block_right_text_top">
           {{ title }}
           <p v-if="subtitle">{{ subtitle }}</p>
@@ -20,9 +21,7 @@
 
         <div class="txt1 mb-0">Бонус после прохождения теста!</div>
         <Bonus />
-        <div class="neiros__footer">
-          <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
-        </div>
+        <StartFooter />
       </div>
     </div>
   </div>
@@ -31,8 +30,10 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import Bonus from '~/components/BonusStart'
+import StartHeader from '~/components/StartPage/Header'
+import StartFooter from '~/components/StartPage/Footer'
 export default {
-  components: { Bonus },
+  components: { Bonus, StartHeader, StartFooter },
   computed: {
     ...mapGetters('quiz', ['color']),
     ...mapState({

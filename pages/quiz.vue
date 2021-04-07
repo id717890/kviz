@@ -7,8 +7,9 @@
             <CheckSquareSvg class="check-square-svg mr-1" />
             <!-- <img src="~/assets/images/check-element.PNG" /> -->
             <span class="mt-1">
-              Пройдите тест и узнайте какие инструменты использовать для
-              увеличения продаж
+              {{ quizName }}
+              <!-- Пройдите тест и узнайте какие инструменты использовать для -->
+              <!-- увеличения продаж -->
             </span>
           </div>
           <div class="quiz-container">
@@ -101,10 +102,13 @@ export default {
   computed: {
     ...mapGetters('quiz', ['currentQuestion', 'currentQuestionAnswers']),
     ...mapState({
-      kviz: (state) => state.kviz.steps,
+      quiz: (state) => state?.quiz?.steps,
       isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
       bonusStep: (state) => state?.quiz?.steps?.step3?.bonus?.first,
     }),
+    quizName() {
+      return this.quiz?.name || 'Название квиза'
+    },
     isShowBonus1() {
       const isShow = this.bonusStep?.first
       if (!this.isActiveBonus) return false
