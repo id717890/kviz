@@ -1,3 +1,7 @@
+body {
+  background: none !important;
+}
+
 .bg1 {
   background: #07e9bb;
 }
@@ -658,4 +662,77 @@
 .neiros__answer-variants__textVariant,
 .swiper-slide .swiper-slide-block {
   transition: all 0.2s ease-in-out;
+}
+
+
+.neiros__xs {
+  .finish-bonuses {
+    flex-flow: row wrap;
+  }
+  
+  .finish-bonus-block {
+    flex-basis: 100%;
+    margin: 0 0 20px;
+
+    .text {
+      font-size: 21px;
+    }
+  }
+
+  .neiros__footer {
+    position: relative !important;
+  }
+
+  .quiz-progress-mobile {
+    display: flex;
+  }
+
+  .quiz-progress-desktop{
+    display: none;
+  }
+}
+
+.quiz-progress-desktop{
+  display: block;
+}
+
+.finish-bonuses {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.quiz-progress-mobile{
+  padding: 10px 20px;
+  z-index: 2;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #86878A;
+
+  .progress-block {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-right: 15px;
+  }
+
+  .btn-block,
+  .progress-block{
+    flex-basis: 50%;
+  }
+
+  .neiros_kviz_btn_prev{
+    background-color: white;
+    height: 60px;
+    width: 60px;
+    border: none;
+  }
+
+  .neiros_kviz_btn_next{
+    height: 60px;
+  }
 }

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isShowBonusFinish"
-    class="neiros__bonus finish-bonus-block ml-4"
+    class="neiros__bonus finish-bonus-block"
     :class="positions"
     :style="gradient"
   >
@@ -16,13 +16,18 @@
 
 <script>
 import { mapState } from 'vuex'
+import Constants from '~/constants'
 
 export default {
   computed: {
     ...mapState({
       bonusFinish: (state) => state?.quiz?.steps?.step3?.bonus?.finish,
       isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
+      size: (state) => state?.quiz?.size,
     }),
+    isXsSize() {
+      return this.size === Constants?.SIZES?.XS
+    },
     isShowBonusFinish() {
       const isShow = this.bonusFinish?.finish
       if (!this.isActiveBonus) return false
@@ -32,10 +37,14 @@ export default {
       return true
     },
     positions() {
-      if (!this.image) {
-        return 'justify-content-center'
+      let result = ''
+      if (!this.isXsSize) {
+        result += 'ml-3 '
       }
-      return ''
+      if (!this.image) {
+        result += 'justify-content-center'
+      }
+      return result
     },
     colorText() {
       const result = this.bonusFinish['color-text']

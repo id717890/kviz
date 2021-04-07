@@ -1,19 +1,20 @@
 <template>
-  <div class="quiz-progress-desktop">
-    <div class="neiros__kviz_progress_text txt-13">
-      Вопрос <span id="current-step">{{ currentQuestionIndex + 1 }}</span> из
-      <span id="all-step">{{ totalQuestions }}</span>
+  <div class="quiz-progress-mobile">
+    <div class="progress-block">
+      <div class="neiros__kviz_progress_text txt-13 mb-3 white--text">
+        Вопрос <span id="current-step">{{ currentQuestionIndex + 1 }}</span> из
+        <span id="all-step">{{ totalQuestions }}</span>
+      </div>
+      <div
+        class="progress-bar quiz-bar quiz-blue quiz-stripes w-100"
+        :style="cssVars"
+      >
+        <span :style="{ width: `${progress}%` }"></span>
+      </div>
     </div>
-    <div
-      class="progress-bar quiz-bar quiz-blue quiz-stripes w-100"
-      :style="cssVars"
-    >
-      <span :style="{ width: `${progress}%` }"></span>
-    </div>
-    <div class="mt-9 d-flex flex-row justify-content-between">
+    <div class="d-flex flex-row justify-content-between btn-block">
       <button class="neiros_kviz_btn_prev" type="button" @click.prevent="prev">
         <img src="images/row-left.png" />
-        <span class="txt-13 txt-grey1 mr-2">назад</span>
       </button>
       <button
         class="neiros_kviz_btn_next txt-13"

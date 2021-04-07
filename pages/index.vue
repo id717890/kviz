@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-grow-1 justify-content-center align-items-center bg1">
+  <div class="d-flex flex-grow-1 justify-content-center align-items-center">
     <Loading />
   </div>
 </template>

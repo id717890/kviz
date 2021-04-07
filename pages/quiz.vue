@@ -27,6 +27,7 @@
           </div>
           <div>
             <QuizProgress />
+            <QuizProgressMobile />
           </div>
         </div>
       </div>
@@ -61,6 +62,7 @@ import DatePickerVariant from '~/components/Question/DatePickerVariant'
 import RangeVariant from '~/components/Question/RangeVariant'
 import FileVariant from '~/components/Question/FileVariant'
 import QuizProgress from '~/components/QuizProgress'
+import QuizProgressMobile from '~/components/QuizProgressMobile'
 import QuestionNotFound from '~/components/Question/NotFound'
 import Constants from '~/constants'
 import types from '~/store/types'
@@ -96,6 +98,7 @@ export default {
     [Constants.QUESTION_TYPE.RANGE_VARIANTS]: RangeVariant,
     [Constants.QUESTION_TYPE.FILE_VARIANTS]: FileVariant,
     QuizProgress,
+    QuizProgressMobile,
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
     CheckSquareSvg,
   },

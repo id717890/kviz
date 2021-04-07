@@ -7,7 +7,7 @@
         v-if="variants"
         ref="my-swiper"
         class="swiper"
-        :options="swiperOption"
+        :options="swiperConfig"
         @click-slide="debouncedClickSlide"
         @slide-change="slideChange"
       >
@@ -65,7 +65,7 @@
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Swiper as SwiperClass, Pagination, Scrollbar } from 'swiper/swiper.esm'
 import { mapState } from 'vuex'
-import { debounce } from 'lodash'
+import { debounce, cloneDeep } from 'lodash'
 
 import Constants from '~/constants'
 import SvgSlider from '~/components/SVG/SliderVariantSvg'
@@ -114,7 +114,23 @@ export default {
     ...mapState({
       color: (state) =>
         state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
+      size: (state) => state?.quiz?.size,
     }),
+    swiperConfig() {
+      const config = cloneDeep(this.swiperOption)
+      switch (this.size) {
+        case Constants?.SIZES?.XS:
+          config.slidesPerView = 1
+          break
+        case Constants?.SIZES?.MD:
+          config.slidesPerView = 2
+          break
+        default:
+          config.slidesPerView = 4
+          break
+      }
+      return config
+    },
     cssVars() {
       return {
         '--slide-border-color': this.color,

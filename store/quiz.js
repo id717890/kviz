@@ -10,6 +10,7 @@ export const state = () => ({
   answers: [],
   currentQuestionIndex: 0,
   steps: null,
+  size: null,
 })
 
 export const getters = {
@@ -31,6 +32,45 @@ export const getters = {
 }
 
 export const actions = {
+  [types.LOAD_DOC_ACTION]: ({ commit }) => {
+    // let divise
+    const windowWight = window.screen.availWidth
+    console.log('WINDOW', windowWight)
+    if (windowWight <= 1267 && windowWight >= 1001) {
+      document
+        ?.querySelector('#neiros__kviz_before_iframe')
+        ?.classList?.add('neiros__lg')
+      commit(types.SET_APP_SIZE, Constants?.SIZES?.LG)
+      document.querySelector('#neiros_kviz').classList?.add('neiros__lg')
+      // divise = 'neiros__lg resize'
+    }
+    if (windowWight <= 1000 && windowWight >= 768) {
+      document
+        ?.querySelector('#neiros__kviz_before_iframe')
+        ?.classList.add('neiros__md')
+      document?.querySelector('#neiros_kviz')?.classList?.add('neiros__md')
+      commit(types.SET_APP_SIZE, Constants?.SIZES?.MD)
+      // divise = 'neiros__md resize'
+    }
+    // if (windowWight <= 864 && windowWight >= 500) {
+    if (windowWight <= 767.9) {
+      // document?.querySelector('#neiros_kviz')?.classList?.add('neiros__md_s')
+      document?.querySelector('#neiros_kviz')?.classList?.add('neiros__xs')
+      commit(types.SET_APP_SIZE, Constants?.SIZES?.XS)
+    }
+    // if (windowWight <= 499) {
+    //   document?.querySelector('#neiros_kviz')?.classList?.add('neiros__xs')
+    // }
+    // if (windowWight <= 864) {
+    //   document
+    //     ?.querySelector('#neiros__kviz_before_iframe')
+    //     ?.classList?.add('neiros__xs')
+    //   document
+    //     ?.querySelector('.neiros__kviz_before_iframe_bg')
+    //     ?.classList?.add('neiros__xs')
+    //   // divise = 'neiros__xs resize'
+    // }
+  },
   [types.SAVE_STEP_ANSWER_ACTION]: ({ commit }, data) => {
     console.log(data)
   },
@@ -66,6 +106,9 @@ export const actions = {
 }
 
 export const mutations = {
+  [types.SET_APP_SIZE]: (state, size) => {
+    state.size = size
+  },
   [types.SAVE_STEP_ANSWER]: (state, data) => {
     const { index, answers } = data
     if (!state?.answers || !state?.answers?.length) {

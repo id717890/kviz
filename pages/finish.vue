@@ -30,7 +30,7 @@
             </div>
           </div>
 
-          <div class="d-flex pt-5 mt-5">
+          <div class="finish-bonuses">
             <!-- <div class="neiros__bonus">
               <img src="images/bonus-img-final2.PNG" />
               <div>
