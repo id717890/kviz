@@ -1,7 +1,7 @@
 import ApiBase from './_ApiBase'
 
 export default {
-  getQuizConfig() {
-    return ApiBase.get('api/getkviz')
+  getQuizConfig(id) {
+    return ApiBase.get(`api/getkviz?id=${id}`)
   },
 }

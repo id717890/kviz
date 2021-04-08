@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>ERROR</h1>
     <h3>
       {{ message }}
     </h3>
@@ -9,6 +8,7 @@
 
 <script>
 export default {
+  layout: 'error',
   computed: {
     message() {
       return this.$route.params.message

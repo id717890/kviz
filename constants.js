@@ -1,4 +1,10 @@
 export default {
+  BONUS_TYPE: {
+    CATALOG: 'katalog',
+    CUPON: 'cupon',
+    PRICE: 'price',
+    CUSTOM: 'svoi',
+  },
   SIZES: {
     XS: 'XS',
     MD: 'MD',

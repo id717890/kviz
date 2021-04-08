@@ -13,7 +13,7 @@
         </div>
         <div class="col-sm-12 col-lg-4 d-flex flex-row align-items-end">
           <span>Сделано в</span>
-          <img class="mb-1" src="images/logo-kviz.PNG" />
+          <img class="mb-1 logo-neiros" src="/logo_neiros.svg" />
         </div>
       </div>
     </div>
@@ -29,16 +29,13 @@ export default {
       config: (state) => state?.quiz?.steps?.step1,
     }),
     companyRequisites() {
-      return (
-        this.config?.company_requisites ||
-        `ООО 'Компания' ИНН:7000000 КПП:7777777`
-      )
+      return this.config?.company_requisites
     },
     companyPhone() {
-      return this.config?.phone_company || '+7 (495) 000-00-00'
+      return this.config?.phone_company
     },
     isActiveCompany() {
-      return true
+      return this.config?.company
     },
   },
 }

@@ -41,7 +41,8 @@
             </div>
           </StepBonus>
           <div class="neiros__footer">
-            <span>Сделано в</span> <img src="images/logo-kviz.PNG" />
+            <span>Сделано в</span>
+            <img class="logo-neiros" src="/logo_neiros.svg" />
           </div>
         </div>
       </div>

@@ -13,7 +13,11 @@
       </div>
     </div>
     <div class="d-flex flex-row justify-content-between btn-block">
-      <button class="neiros_kviz_btn_prev" type="button" @click.prevent="prev">
+      <button
+        class="neiros_kviz_btn_prev mr-2"
+        type="button"
+        @click.prevent="prev"
+      >
         <img src="images/row-left.png" />
       </button>
       <button

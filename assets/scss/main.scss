@@ -23,6 +23,7 @@ body {
   align-items: flex-end;
   left: 0;
   right: 25px;
+  padding-top: 30px;
 }
 
 .pl-100 {
@@ -666,6 +667,10 @@ body {
 
 
 .neiros__xs {
+  // .neiros__right_sidebar {
+  //   padding-bottom: 20px !important;
+  // }
+
   .start-page-header{
     margin-bottom: 20px;
   }
@@ -764,4 +769,8 @@ body {
   flex-flow: column;
   flex-grow: 1;
   justify-content: center;
+}
+
+.logo-neiros{
+  height: 20px;
 }
