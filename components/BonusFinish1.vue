@@ -6,7 +6,7 @@
     :style="styles"
   >
     <!-- <img v-if="!image" class="img" src="/images/icons/bg-bonus.png" /> -->
-    <img v-if="image" :src="image" alt="" />
+    <img v-if="image" :src="image" class="img" alt="" />
     <div v-if="text" class="text" :style="colorText">
       {{ text }}
     </div>
@@ -16,6 +16,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import Constants from '~/constants'
 
 export default {
   computed: {
@@ -32,8 +33,25 @@ export default {
       return true
     },
     image() {
-      return this.bonus?.img ?? null
+      if (this.isCustom) {
+        return this.bonus?.img || '/images/bg-bonus.png'
+      }
+      switch (this.bonus?.type) {
+        case Constants?.BONUS_TYPE?.PRICE:
+          return '/images/lebel-price.png'
+        case Constants?.BONUS_TYPE?.CATALOG:
+          return '/images/lebel-catalog.png'
+        case Constants?.BONUS_TYPE?.CUPON:
+          return '/images/lebel-cupon.png'
+      }
+      return null
     },
+    isCustom() {
+      return this.bonus?.type === Constants?.BONUS_TYPE?.CUSTOM
+    },
+    // image() {
+    //   return this.bonus?.img ?? null
+    // },
     text() {
       return this.bonus?.name ?? null
     },

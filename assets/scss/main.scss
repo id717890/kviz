@@ -667,10 +667,6 @@ body {
 
 
 .neiros__xs {
-  // .neiros__right_sidebar {
-  //   padding-bottom: 20px !important;
-  // }
-
   .start-page-header{
     margin-bottom: 20px;
   }
@@ -700,9 +696,16 @@ body {
   .finish-bonus-block {
     flex-basis: 100%;
     margin: 0 0 20px;
+    min-height: 140px;
 
     .text {
       font-size: 21px;
+      margin-right: 50px;
+    }
+
+    .img {
+      height: 110px;
+      margin: 7px 25px 7px 25px !important;
     }
   }
 

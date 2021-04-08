@@ -172,7 +172,7 @@ export default {
   },
   async created() {
     // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
-    await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
+    // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
   methods: {
     ...mapActions('quiz', [types.NEXT_QUESTION_ACTION]),

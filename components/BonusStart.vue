@@ -16,6 +16,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import Constants from '~/constants'
 
 export default {
   computed: {
@@ -42,7 +43,21 @@ export default {
       return result ? { color: result } : ''
     },
     image() {
-      return this.bonus?.img ?? null
+      if (this.isCustom) {
+        return this.bonus?.img || '/images/bg-bonus.png'
+      }
+      switch (this.bonus?.type) {
+        case Constants?.BONUS_TYPE?.PRICE:
+          return '/images/lebel-price.png'
+        case Constants?.BONUS_TYPE?.CATALOG:
+          return '/images/lebel-catalog.png'
+        case Constants?.BONUS_TYPE?.CUPON:
+          return '/images/lebel-cupon.png'
+      }
+      return null
+    },
+    isCustom() {
+      return this.bonus?.type === Constants?.BONUS_TYPE?.CUSTOM
     },
     text() {
       return this.bonus?.name ?? null

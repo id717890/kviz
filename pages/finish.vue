@@ -107,7 +107,7 @@ export default {
     },
   },
   async created() {
-    await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
+    // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
     // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
   },
   methods: {
