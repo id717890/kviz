@@ -6,21 +6,21 @@
       :style="backgroundImage"
     ></div>
     <div class="neiros__kviz_block_right scale-up-hor-right d-flex">
-      <div
-        class="neiros__kviz_padding_block py-0 d-flex flex-column justify-content-center flex-grow-1"
-      >
+      <div class="neiros__kviz_padding_block d-flex flex-column">
         <StartHeader />
-        <div v-if="title" class="neiros__kviz_block_right_text_top">
-          {{ title }}
-          <p v-if="subtitle">{{ subtitle }}</p>
+        <div class="start-page-btn-and-bonus">
+          <div v-if="title" class="neiros__kviz_block_right_text_top">
+            {{ title }}
+            <p v-if="subtitle">{{ subtitle }}</p>
+          </div>
+
+          <nuxt-link to="/quiz" class="neiros_kviz_btn" :style="buttonColor">
+            {{ buttonText }}
+          </nuxt-link>
+
+          <div class="txt1 mb-0">Бонус после прохождения теста!</div>
+          <Bonus />
         </div>
-
-        <nuxt-link to="/quiz" class="neiros_kviz_btn" :style="buttonColor">
-          {{ buttonText }}
-        </nuxt-link>
-
-        <div class="txt1 mb-0">Бонус после прохождения теста!</div>
-        <Bonus />
         <StartFooter />
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isActiveCompany" class="start-page-header pl-100">
+  <div v-if="isActiveCompany" class="start-page-header">
     <img :src="logo" class="mr-3" alt="" />
     <span>{{ companyName }}</span>
   </div>

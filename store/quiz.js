@@ -1,8 +1,8 @@
 import { cloneDeep } from 'lodash'
 import types from './types'
 // import Constants from '~/constants'
-import QuizApi from '~/api/Quiz'
-// import fakedata from '~/fakedata'
+// import QuizApi from '~/api/Quiz'
+import fakedata from '~/fakedata'
 import Constants from '~/constants'
 
 export const state = () => ({
@@ -44,7 +44,7 @@ export const actions = {
       document.querySelector('#neiros_kviz').classList?.add('neiros__lg')
       // divise = 'neiros__lg resize'
     }
-    if (windowWight <= 1000 && windowWight >= 768) {
+    if (windowWight <= 1000.9 && windowWight >= 768) {
       document
         ?.querySelector('#neiros__kviz_before_iframe')
         ?.classList.add('neiros__md')
@@ -76,10 +76,11 @@ export const actions = {
   },
   [types.FETCH_QUIZ_CONFIG_ACTION]: async ({ commit }, id) => {
     try {
-      const { data } = await QuizApi.getQuizConfig()
+      // const { data } = await QuizApi.getQuizConfig()
       commit(types.SET_QUIZ_ID, id)
-      const steps = cloneDeep(data?.data)
-      // const steps = cloneDeep(fakedata?.data)
+      // const steps = cloneDeep(data?.data.data)
+      // console.log('steps', steps)
+      const steps = cloneDeep(fakedata?.data)
       steps.step2 = steps.step2.filter((x) => x.optional !== false)
       commit(types.SET_QUIZ_STEPS, steps)
       // commit(types.SET_QUIZ_STEPS, data?.data)

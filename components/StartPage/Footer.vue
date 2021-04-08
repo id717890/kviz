@@ -1,11 +1,22 @@
 <template>
-  <div class="pl-100 neiros__footer start-page-footer">
-    <div v-if="isActiveCompany" class="d-flex flex-column pr-16 flex-grow-1">
-      <div class="font-weight-bold">{{ companyPhone }}</div>
-      <div>{{ companyRequisites }}</div>
+  <!-- <div class="neiros__footer start-page-footer"> -->
+  <div class="start-page-footer">
+    <div class="w-100">
+      <div class="row">
+        <div v-if="isActiveCompany" class="col-sm-12 col-lg-8">
+          <div class="d-flex flex-column pr-3 flex-grow-1">
+            <div v-if="companyPhone" class="font-weight-bold">
+              {{ companyPhone }}
+            </div>
+            <div v-if="companyRequisites">{{ companyRequisites }}</div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-4 d-flex flex-row align-items-end">
+          <span>Сделано в</span>
+          <img class="mb-1" src="images/logo-kviz.PNG" />
+        </div>
+      </div>
     </div>
-    <span>Сделано в</span>
-    <img class="mb-1" src="images/logo-kviz.PNG" />
   </div>
 </template>
 

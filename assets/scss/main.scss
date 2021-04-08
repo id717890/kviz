@@ -7,10 +7,10 @@ body {
 }
 
 .start-page-header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // left: 0;
   padding: 10px 0;
   display: flex;
   flex-flow: row nowrap;
@@ -666,6 +666,28 @@ body {
 
 
 .neiros__xs {
+  .start-page-header{
+    margin-bottom: 20px;
+  }
+  .neiros_kviz_btn {
+    width: 100%;
+  }
+
+  .bonus-start {
+    width: 100%;
+  }
+  
+  .start-page-btn-and-bonus {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  // #neiros_kviz .neiros__kviz_block_right{
+  //   top: 150px;
+  // }
+  
   .finish-bonuses {
     flex-flow: row wrap;
   }
@@ -735,4 +757,11 @@ body {
   .neiros_kviz_btn_next{
     height: 60px;
   }
+}
+
+.start-page-btn-and-bonus {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  justify-content: center;
 }

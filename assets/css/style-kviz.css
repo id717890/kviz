@@ -269,17 +269,18 @@ body {
   padding-bottom: 17px;
 }
 #neiros_kviz .neiros__kviz_padding_block {
-  padding: 140px 50px 50px 100px;
+  padding: 0px 0px 0px 60px;
+  width: 100%;
 }
 #neiros_kviz.neiros__lg .neiros__kviz_padding_block,
 #neiros_kviz.neiros__md .neiros__kviz_padding_block {
-  padding: 20px 50px 50px 50px;
+  padding: 20px 0px 0px 50px;
 }
 #neiros_kviz.neiros__md_s .neiros__kviz_padding_block {
-  padding: 20px 20px 20px 20px;
+  padding: 20px 0px 0px 20px;
 }
 #neiros_kviz.neiros__xs .neiros__kviz_padding_block {
-  padding: 160px 20px 20px 20px;
+  padding: 160px 20px 0px 20px;
 }
 .neiros__kviz_block_right .neiros__kviz_btn {
   box-shadow: none;
