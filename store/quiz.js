@@ -7,6 +7,8 @@ import Constants from '~/constants'
 
 export const state = () => ({
   id: null,
+  metrikaId: null,
+  neirosVisit: null,
   answers: [],
   currentQuestionIndex: 0,
   steps: null,
@@ -32,6 +34,22 @@ export const getters = {
 }
 
 export const actions = {
+  [types.SAVE_RESULT_QUIZ_ACTION]: async ({ state }, { email, phone }) => {
+    const metrika = state?.metrikaId
+    const neirosVisit = state?.neirosVisit
+    const answers = state?.answers
+    const id = state?.id
+
+    const data = {
+      id,
+      email,
+      phone,
+      metrika_id: metrika,
+      neiros_visit: neirosVisit,
+      data: answers,
+    }
+    return QuizApi.saveResults(data)
+  },
   [types.LOAD_DOC_ACTION]: ({ commit }) => {
     // let divise
     const windowWight = window.screen.availWidth
@@ -79,7 +97,7 @@ export const actions = {
       // id = 13
       const { data } = await QuizApi.getQuizConfig(id)
       commit(types.SET_QUIZ_ID, id)
-      const steps = cloneDeep(data?.data.data)
+      const steps = cloneDeep(data?.data?.data)
       // console.log('steps', steps)
       // const steps = cloneDeep(fakedata?.data)
       steps.step2 = steps.step2.filter((x) => x.optional !== false)
@@ -108,6 +126,12 @@ export const actions = {
 }
 
 export const mutations = {
+  [types.SET_METRIKA_ID]: (state, payload) => {
+    state.metrikaId = payload
+  },
+  [types.SET_NEIROS_VISIT]: (state, payload) => {
+    state.neirosVisit = payload
+  },
   [types.SET_APP_SIZE]: (state, size) => {
     state.size = size
   },

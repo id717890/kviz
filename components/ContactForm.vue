@@ -61,10 +61,14 @@
       <button
         class="neiros__btn-left-sidebar"
         :style="buttonColor"
+        :disabled="loading"
         type="button"
         @click.prevent="goToThanks"
       >
-        <img src="images/btn-mail.PNG" /> {{ textButton }}
+        <div class="d-flex align-items-center justify-content-center">
+          <img src="images/btn-mail.PNG" /> {{ textButton }}
+          <Loading v-if="loading" :color="'white'" :size="26" class="ml-3" />
+        </div>
       </button>
       <div class="neiros__privacy_policy_block">
         <input id="neiros__privacy_policy" type="checkbox" checked />
@@ -81,16 +85,22 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import { mask } from 'vue-the-mask'
+import types from '~/store/types'
 
 export default {
   directives: { mask },
   data: () => ({
+    loading: false,
     name: null,
     email: null,
     phone: null,
     comment: null,
+    // name: 'test',
+    // email: 'test@test.ru',
+    // phone: '79924870500',
+    // comment: '123',
     errors: {
       name: false,
       email: false,
@@ -144,6 +154,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions('quiz', [types.SAVE_RESULT_QUIZ_ACTION]),
     resetErrors() {
       this.errors.name = false
       this.errors.email = false
@@ -172,11 +183,22 @@ export default {
       }
       return isValid
     },
-    goToThanks() {
+    async goToThanks() {
       const isValid = this.validateForm()
       // console.log(isValid)
       if (isValid) {
-        this.$router.push('/thanks')
+        try {
+          this.loading = true
+          await this[types.SAVE_RESULT_QUIZ_ACTION]({
+            email: this.email,
+            phone: this.phone,
+          })
+          setTimeout(() => {
+            this.$router.push('/thanks')
+          }, 300)
+        } catch (e) {
+          this.loading = false
+        }
       }
     },
   },
