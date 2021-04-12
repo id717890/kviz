@@ -1,429 +1,347 @@
 export default {
-  id: 1,
-  widget_id: null,
+  id: 18,
+  widget_id: 8356,
   data: {
-    step1: {
-      optional: true,
-      img:
-        'https://test.neiros.ru/chat_upload/f344c30e2d85b63139222aed4ad86a43.png',
-      title: 'Заголовок',
-      subtite: 'Подзаголовок',
-      button_text: 'Кнопка',
-    },
-    step2: [
-      {
-        variants: [],
-        tip_oprosa: 'polzynok',
+    data: {
+      name: 'Пройдите тест на выявление необходимости лечения зубов',
+      id: '18',
+      status: '1',
+      step1: {
         optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: true,
-        question: 'Здесь будет вопрос с ползунком',
-        massage: 'Здесь будет вопрос Здесь будет вопрос Здесь будет вопрос',
-        diapazon_dat_ot: '1',
-        diapazon_dat_do: '150',
-        diapazon_dat_step: '1',
+        company: false,
+        img: '',
+        logo: '',
+        title: '',
+        subtite: '',
+        button_text: '',
+        name_company: '',
+        phone_company: '',
+        company_requisites: '',
       },
-      {
-        variants: [
-          {
-            type_files: 'all',
-            checked: true,
-          },
-        ],
-        tip_oprosa: 'time-page',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос с фалом ',
-        massage: 'Здесь будет вопрос Здесь будет вопрос',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'data',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: true,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос с датой',
-        massage: 'Выберите дату',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'data',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: true,
-        vibor_vremeni: true,
-        neobbyazatelnii_vopros: false,
-        question: '',
-        massage: '',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: '',
-          },
-        ],
-        tip_oprosa: 'vipadayshii-spisok',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: '',
-        massage: '',
-        primer_otveta: '',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'data',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Ворпос',
-        massage: 'ывсвысвы',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Вариант 1',
-          },
-          {
-            id: 2,
-            text: 'Вариант 2',
-          },
-          {
-            id: 3,
-            text: 'Вариант 3',
-          },
-          {
-            id: 4,
-            text: 'Вариант 4',
-          },
-        ],
-        tip_oprosa: 'var-otvetov',
-        optional: true,
-        diapazon_polzunka: false,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: true,
-        question: 'Вопрос 1',
-        massage: 'Здесь будет сообщение от оператора.',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'pole-dlya-vvoda',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос',
-        massage: 'Напиши произвольный ответ',
-        primer_otveta: 'текст что надо писать',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Вариант2',
-          },
-          {
-            id: 2,
-            text: 'Вариант 3',
-          },
-          {
-            id: 3,
-            text: 'Вариант 4',
-          },
-        ],
-        tip_oprosa: 'vipadayshii-spisok',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: false,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос со списком',
-        massage: 'Выбери вариант из списка',
-        primer_otveta: 'Текст в списке вариантов',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Ответ 1',
-            src:
-              'https://test.neiros.ru/chat_upload/0eaf0c6d5e26b514c2b3b84d515df7fa.png',
-          },
-          {
-            id: 2,
-            text: 'Ответ 2',
-            src:
-              'https://test.neiros.ru/chat_upload/8a94e8f034c88bfe3226be288fc1d118.png',
-          },
-          {
-            id: 3,
-            text: 'Ответ 3',
-            src: '',
-          },
-          {
-            id: 4,
-            text: 'Ответ 4',
-            src: '',
-          },
-          {
-            id: 5,
-            text: 'Ответ 5',
-            src: '',
-          },
-          {
-            id: 6,
-            text: 'Ответ 6',
-            src: '',
-          },
-        ],
-        tip_oprosa: 'var-s-kartinami',
-        optional: true,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: true,
-        question: 'Здесь будет вопрос с картинками',
-        massage: 'Здесь будет вопрос Здесь будет вопрос Здесь будет вопрос',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Вариант 1',
-            src:
-              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
-          },
-          {
-            id: 2,
-            text: 'Вариант 2',
-            src:
-              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
-          },
-          {
-            id: 3,
-            text: 'Еще Вариант',
-            src:
-              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
-          },
-          {
-            id: 4,
-            text: 'И еще',
-            src:
-              'https://test.neiros.ru/chat_upload/d1bf07fb06fa157764eae95bd30d1b38.png',
-          },
-        ],
-        tip_oprosa: 'var-i-kartinka',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: true,
-        question: 'Здесь будет текст вопроса',
-        massage: 'Привет!',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Вариант 1',
-            src:
-              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
-          },
-          {
-            id: 2,
-            text: 'Вариант 2',
-            src:
-              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
-          },
-          {
-            id: 3,
-            text: 'Вариант 3',
-            src:
-              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
-          },
-          {
-            id: 4,
-            text: 'Вариант 4',
-            src:
-              'https://test.neiros.ru/chat_upload/a9282b6afd417d76170b6bea6c46fbc4.png',
-          },
-        ],
-        tip_oprosa: 'var-i-kartinka',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: false,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: true,
-        question: 'Здесь будет вопрос',
-        massage: 'Привет!',
-      },
-      {
-        variants: [
-          {
-            id: 1,
-            text: 'Вариант 1',
-          },
-          {
-            id: 2,
-            text: 'Вариант 2',
-          },
-          {
-            id: 3,
-            text: 'Вариант 3',
-          },
-          {
-            id: 4,
-            text: 'Вариант 4',
-          },
-        ],
-        tip_oprosa: 'var-otvetov',
-        optional: true,
-        diapazon_polzunka: true,
-        neskolko: false,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: 'Здесь будет вопрос',
-        massage: 'Здесь будет сообщение от оператора!',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'var-otvetov',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: '',
-        massage: '',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'var-otvetov',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: '',
-        massage: '',
-      },
-      {
-        variants: [],
-        tip_oprosa: 'var-otvetov',
-        optional: false,
-        diapazon_polzunka: true,
-        neskolko: true,
-        vibor_diapazon_dat: false,
-        vibor_vremeni: false,
-        neobbyazatelnii_vopros: false,
-        question: '',
-        massage: '',
-      },
-    ],
-    step3: {
-      konsultant: {
-        name: 'Яндекс',
-        dolgnost: 'Новый лого',
-        img:
-          'https://test.neiros.ru/chat_upload/8abf8d0b91624db2916531bca60c0b8a.jpg',
-        is_checked: true,
-      },
-      motivaciya: {
-        'type-skidki': 'Падающая',
-        // 'type-skidki': 'Растущая',
-        prise1: '100',
-        prise2: '10',
-        is_checked: true,
-      },
-      bonus: {
-        is_checked: true,
-        first: {
-          type: 'svoi',
-          name: 'Скидка на месяц подписки',
-          color: '#DEEEFE',
-          img: '',
-          'color-text': '#000',
-          first: true,
-          finish: true,
+      step2: [
+        {
+          variants: [
+            {
+              id: 1,
+              text: '1',
+            },
+            {
+              id: 2,
+              text: '2',
+            },
+            {
+              id: 3,
+              text: '3',
+            },
+            {
+              id: 4,
+              text: '4',
+            },
+            {
+              id: 5,
+              text: '5',
+            },
+            {
+              id: 6,
+              text: '6',
+            },
+            {
+              id: 7,
+              text: '7',
+            },
+            {
+              id: 8,
+              text: '8',
+            },
+            {
+              id: 9,
+              text: '9',
+            },
+            {
+              id: 10,
+              text: '10 и более',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: true,
+          question: 'Сколько зубов вы хотите вылечить?',
+          massage: '',
         },
-        finish: {
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Острая боль',
+            },
+            {
+              id: 2,
+              text: 'Иногда побаливает, реагирует на горячее-холодное',
+            },
+            {
+              id: 3,
+              text: 'Не болит, но вижу темное пятно на зубе',
+            },
+            {
+              id: 4,
+              text: 'Замена старых пломб',
+            },
+            {
+              id: 5,
+              text: 'Давно не был, хочу проверить состояние зубов',
+            },
+            {
+              id: 6,
+              text: 'Появился неприятный запах изо рта',
+            },
+            {
+              id: 7,
+              text:
+                'Необходимо лечение зубов при подготовке к установке брекетов/имплантации и другому лечению',
+            },
+            {
+              id: 8,
+              text: 'Необходимо лечение зубов при подготовке к беременности',
+            },
+            {
+              id: 9,
+              text: 'Другое',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Какая у Вас ситуация c зубами?',
+          massage: '',
+        },
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Возможность лечения без сверления',
+            },
+            {
+              id: 2,
+              text: 'Самый лучший',
+            },
+            {
+              id: 3,
+              text: 'Очень качественный',
+            },
+            {
+              id: 4,
+              text: 'Самый дешевый',
+            },
+            {
+              id: 5,
+              text: 'Нужна консультация',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Какой вариант лечения Вам предпочтителен?',
+          massage: '',
+        },
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Лечение каналов',
+            },
+            {
+              id: 2,
+              text: 'Восстановление керамической вкладки',
+            },
+            {
+              id: 3,
+              text: 'Восстановление коронкой',
+            },
+            {
+              id: 4,
+              text: 'Другое',
+            },
+            {
+              id: 5,
+              text: 'Посоветоваться с врачом',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Требуется ли Вам?',
+          massage: '',
+        },
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Имплантация/Протезирование',
+            },
+            {
+              id: 2,
+              text: 'Лечение кариеса',
+            },
+            {
+              id: 3,
+              text: 'Ультразвуковая чистка',
+            },
+            {
+              id: 4,
+              text: 'Лечение десен',
+            },
+            {
+              id: 5,
+              text: 'Брекеты',
+            },
+            {
+              id: 6,
+              text: 'Отбеливание',
+            },
+            {
+              id: 7,
+              text: 'Удаление',
+            },
+            {
+              id: 8,
+              text: 'Коррекция формы и цвета зубов винирами',
+            },
+            {
+              id: 9,
+              text: 'Нужна консультация',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Какие дополнительные опции Вам интересны?',
+          massage: '',
+        },
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Как можно скорее',
+            },
+            {
+              id: 2,
+              text: 'В ближайшие 2 недели',
+            },
+            {
+              id: 3,
+              text: 'В ближайшие месяцы',
+            },
+            {
+              id: 4,
+              text: 'Через пол года и позже',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Когда планируете начать лечение?',
+          massage: '',
+        },
+      ],
+      step3: {
+        konsultant: {
+          name: '',
+          dolgnost: '',
+          is_checked: false,
+        },
+        motivaciya: {
+          'type-skidki': 'Растущая',
+          prise1: '1000',
+          prise2: '500',
+          is_checked: false,
+        },
+        bonus: {
+          is_checked: false,
+          first: {
+            name: '',
+            img: '',
+            first: false,
+            finish: false,
+          },
+          finish: {
+            active: false,
+            name: '',
+            img: '',
+            first: false,
+            finish: false,
+          },
+        },
+      },
+      step4: {
+        name: {
+          active: false,
+          value: '',
+        },
+        email: {
+          active: false,
+          value: '',
+        },
+        phone: {
           active: true,
-          type: 'svoi',
-          name: 'Скидка на год подписки',
-          color: '#FFD87B',
-          img:
-            'https://test.neiros.ru/chat_upload/1d8d7807d62a8ee3a993103f20669c1f.png',
-          'color-text': '#fff',
-          first: false,
-          finish: false,
+          value: '',
         },
+        comment: {
+          active: false,
+          value: '',
+        },
+        send: false,
+        title_massenger: '',
+        text_button_massenger: '',
+        title: '',
+        text: '',
+        text_button: '',
+        messenge: '',
       },
+      step5: {
+        color: '#00B9EE',
+        linck: '',
+        event: '',
+        'text-label': 'Пройти тест',
+        active: 'Закрепленный ярлык',
+        icon: '/global_assets/images/icon_kviz/design/form.svg',
+        position: 'down-left',
+      },
+      step6: [
+        {
+          type: 'url_page',
+          pravilo: 'like',
+          url: '/lechenie-zubov/',
+        },
+      ],
     },
-    step4: {
-      name: {
-        active: true,
-        value: 'Имя',
-      },
-      email: {
-        active: false,
-        value: 'E-mail',
-      },
-      phone: {
-        active: false,
-        value: 'Номер телефона',
-      },
-      comment: {
-        active: false,
-        value: 'Комментарий',
-      },
-      send: false,
-      title_massenger: 'Заголовок страницы мессенджеров',
-      text_button_massenger: 'Текст на кнопке мессенджеров',
-      title: 'Заголовок',
-      text: 'Текст',
-      text_button: 'Текст на кнопке',
-      messenge: 'Сообщение после отправки формы',
-    },
-    step5: {
-      color: '#E30613',
-      linck: '',
-      event: '',
-      'text-label': 'Пройти тест',
-      active: 'Закрепленный ярлык',
-      icon: '/global_assets/images/icon_kviz/design/chat.svg',
-      position: 'left-top',
-    },
+    name: 'Пройдите тест на выявление необходимости лечения зубов',
   },
-  created_at: '2021-04-05 00:00:00',
-  updated_at: '2021-04-05 00:00:00',
+  created_at: '2021-04-12 00:00:00',
+  updated_at: '2021-04-12 00:00:00',
+  name: 'Пройдите тест на выявление необходимости лечения зубов',
+  status: 1,
 }
