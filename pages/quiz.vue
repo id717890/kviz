@@ -1,37 +1,45 @@
 <template>
   <div id="neiros__kviz_iframe">
     <div class="neiros__container_kviz">
-      <div class="neiros__block_kviz_left ferst_polls_block">
+      <div
+        class="neiros__block_kviz_left ferst_polls_block animate-show"
+        :class="{ w100: !isVisibleRightBlock }"
+      >
         <div class="neiros__block_kviz_cov">
           <div class="neiros__top_copyright d-flex align-items-center">
             <CheckSquareSvg class="check-square-svg mr-1" />
-            <!-- <img src="~/assets/images/check-element.PNG" /> -->
             <span class="mt-1">
               {{ quizName }}
-              <!-- Пройдите тест и узнайте какие инструменты использовать для -->
-              <!-- увеличения продаж -->
             </span>
           </div>
-          <div class="quiz-container">
-            <component :is="question" v-if="question">
-              <div v-if="isAllowSkip" class="mb-5">
-                <a
-                  href="#"
+          <div class="quiz-container" :style="cssVars">
+            <component
+              :is="question"
+              v-if="question"
+              :key="currentQuestionIndex"
+              class="w100"
+            >
+              <div v-if="isAllowSkip" class="ml-3 mt-4">
+                <button
+                  type="button"
                   class="btn btn-skip-step btn-sm"
                   @click.prevent="skipStep"
                 >
                   Можно пропустить
-                </a>
+                </button>
               </div>
             </component>
           </div>
-          <div>
+          <div class="quiz-progress">
             <QuizProgress />
             <QuizProgressMobile />
           </div>
         </div>
       </div>
-      <div class="neiros__block_kviz_right ferst_polls_block">
+      <div
+        class="neiros__block_kviz_right ferst_polls_block grow-rl"
+        :class="{ 'd-none': !isVisibleRightBlock }"
+      >
         <div class="neiros__right_sidebar">
           <Discount />
           <Operator />
@@ -104,12 +112,29 @@ export default {
     CheckSquareSvg,
   },
   computed: {
-    ...mapGetters('quiz', ['currentQuestion', 'currentQuestionAnswers']),
+    ...mapGetters('quiz', [
+      'currentQuestion',
+      'currentQuestionAnswers',
+      'color',
+    ]),
     ...mapState({
       quiz: (state) => state?.quiz?.steps,
       isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
       bonusStep: (state) => state?.quiz?.steps?.step3?.bonus?.first,
+      currentQuestionIndex: (state) => state?.quiz?.currentQuestionIndex,
     }),
+    cssVars() {
+      return {
+        '--color': this.color,
+      }
+    },
+    isVisibleRightBlock() {
+      return (
+        this.quiz?.step3?.bonus?.is_checked ||
+        this.quiz?.step3?.konsultant?.is_checked ||
+        this.quiz?.step3?.motivaciya?.is_checked
+      )
+    },
     quizName() {
       return this.quiz?.name || 'Название квиза'
     },
@@ -170,6 +195,12 @@ export default {
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
     },
   },
+  // watch: {
+  //   currentQuestionIndex(newValue) {
+  //     console.log(newValue)
+  //     this.$forceUpdate()
+  //   },
+  // },
   async created() {
     // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
     // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
@@ -183,3 +214,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.quiz-container::-webkit-scrollbar-thumb,
+.neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-thumb {
+  background-color: var(--color);
+}
+</style>

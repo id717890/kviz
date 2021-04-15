@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
-    <slot></slot>
+    <!-- <div class="neiros__kviz_polls_h1">{{ question.question }}</div> -->
+    <!-- <slot></slot> -->
+    <div class="d-flex flex-row flex-nowrap">
+      <div class="neiros__kviz_polls_h1 flex-grow-1">
+        {{ question.question }}
+      </div>
+      <slot></slot>
+    </div>
     <div class="step checkbox-block active">
       <div v-if="variants" class="neiros__kviz_polls">
         <div

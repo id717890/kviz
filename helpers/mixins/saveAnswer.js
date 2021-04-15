@@ -66,7 +66,7 @@ export default {
     },
     saveAnswer() {
       const answers = cloneDeep(this.variants?.filter((x) => x.isSelected))
-      console.log(answers)
+      console.log(answers.length)
       // console.log(answers.length > 0)
       // if (answers && answers.length > 0) {
       this[types.SAVE_STEP_ANSWER]({

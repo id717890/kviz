@@ -3,7 +3,7 @@
   <div class="start-page-footer">
     <div class="w-100">
       <div class="row">
-        <div v-if="isActiveCompany" class="col-sm-12 col-lg-8">
+        <div v-if="isActiveCompany" class="col-sm-12 col-md-8">
           <div class="d-flex flex-column pr-3 flex-grow-1">
             <div v-if="companyPhone" class="font-weight-bold">
               {{ companyPhone }}
@@ -11,8 +11,8 @@
             <div v-if="companyRequisites">{{ companyRequisites }}</div>
           </div>
         </div>
-        <div class="col-sm-12 col-lg-4 d-flex flex-row align-items-end">
-          <span>Сделано в</span>
+        <div class="col-sm-12 col-md-4 d-flex flex-row align-items-end">
+          <span style="white-space: nowrap">Сделано в</span>
           <img class="mb-1 logo-neiros" src="/logo_neiros.svg" />
         </div>
       </div>

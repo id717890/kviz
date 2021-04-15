@@ -1,6 +1,6 @@
 <template>
   <div class="py-10">
-    <h1 class="text-danger">Тип вопроса не реализован</h1>
+    <h1 class="text-danger">Добавить вопрос</h1>
   </div>
 </template>
 

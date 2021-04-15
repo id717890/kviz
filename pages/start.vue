@@ -1,13 +1,11 @@
 <template>
   <div id="neiros_kviz" class="neiros_kviz">
-    <div
-      class="neiros__kviz_block_left scale-up-hor-left"
-      style="background-size: cover"
-      :style="backgroundImage"
-    ></div>
-    <div class="neiros__kviz_block_right scale-up-hor-right d-flex">
-      <div class="neiros__kviz_padding_block d-flex flex-column">
-        <StartHeader />
+    <div class="neiros__kviz_block_left" style="background-size: cover">
+      <img :src="imageBg" alt="" />
+    </div>
+    <div class="neiros__kviz_block_right d-flex flex-column">
+      <StartHeader />
+      <div class="neiros__kviz_padding_block d-flex flex-column flex-grow-1">
         <div class="start-page-btn-and-bonus">
           <div v-if="title" class="neiros__kviz_block_right_text_top">
             {{ title }}
@@ -50,6 +48,9 @@ export default {
       return {
         background: `url(${this.step1?.img}) center center no-repeat`,
       }
+    },
+    imageBg() {
+      return this.step1?.img
     },
     title() {
       return this.step1?.title

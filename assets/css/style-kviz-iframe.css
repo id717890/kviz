@@ -121,6 +121,7 @@ html {
   width: 100%;
 }
 .neiros__top_copyright {
+  /* position: absolute; */
   font-family: 'Roboto Light';
   font-size: 12px;
 }
@@ -140,7 +141,7 @@ html {
   height: 100%;
 }
 .neiros__xs .neiros__block_kviz_cov {
-  padding: 20px;
+  /* padding: 20px; */
 }
 .neiros__block_kviz_btn_footer {
   position: absolute;
@@ -327,8 +328,8 @@ html {
   padding: 20px;
 }
 .neiros__kviz_polls_h1 {
-  margin-bottom: 20px;
-  margin-top: 40px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   font-size: 20px;
   font-family: 'Roboto Light';
 }
@@ -355,6 +356,7 @@ html {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
 }
 .neiros__xs .neiros__answer-variants__textVariant {
   flex: none;
@@ -1009,6 +1011,7 @@ html {
 }
 
 .neiros__btn-left-sidebar {
+  font-size: 13px;
   box-shadow: none;
   border: none;
   outline: none;
@@ -1029,8 +1032,11 @@ html {
   position: relative;
 }
 .neiros__btn-left-sidebar img {
-  width: 15px;
+  /* width: 15px; */
   padding-right: 5px;
+  width: 19px;
+  padding-right: 5px;
+  margin-top: -3px;
 }
 .neiros__btn-left-sidebar:hover {
   background: #03a7d5;
@@ -1621,8 +1627,10 @@ html {
   transition: all 0.9s ease 0s;
 }
 
-.neiros__sidebar_form .neiros__input_form input.error {
+.neiros__sidebar_form .neiros__input_form textarea.error1,
+.neiros__sidebar_form .neiros__input_form input.error1 {
   border: 1px solid #ff0004;
+  background-color: none !important;
 }
 
 #custom-handle {
@@ -1756,7 +1764,7 @@ html {
   content: '';
   position: absolute;
   left: 16px;
-  top: 14px;
+  top: 17px;
   width: 11px;
   height: 11px;
   border: 1px solid #dddddd;
@@ -1783,7 +1791,7 @@ html {
 
 .checkbox-block input[type='checkbox']:checked + label span:after {
   left: 19px;
-  top: 17px;
+  top: 20px;
   width: 5.5px;
   height: 2.5px;
   border-radius: 1px;

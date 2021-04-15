@@ -8,7 +8,7 @@
           v-model="name"
           type="text"
           name="name"
-          :class="{ error: errors.name }"
+          :class="{ error1: errors.name }"
           placeholder="Иванов Иван"
         />
       </div>
@@ -19,7 +19,7 @@
           v-model="email"
           type="text"
           name="email"
-          :class="{ error: errors.email }"
+          :class="{ error1: errors.email }"
           placeholder="Ваш e-mail"
         />
       </div>
@@ -31,7 +31,7 @@
           v-mask="'+# (###) ###-##-##'"
           type="text"
           name="phone"
-          :class="{ error: errors.phone }"
+          :class="{ error1: errors.phone }"
           placeholder="+7 922-000-00-00"
         />
       </div>
@@ -42,23 +42,30 @@
           v-model="comment"
           name="comment"
           class="comment-textarea"
-          :class="{ error: errors.comment }"
+          :class="{ error1: errors.comment }"
           placeholder="Ваш коментарий"
           maxlength="250"
           rows="3"
           autocomplete="off"
         ></textarea>
       </div>
-      <div v-if="hasSocial" class="neiros__social_block">
+      <div v-if="showSocialIcons" class="neiros__social_block">
         <span>Использовать месседжеры</span>
         <div>
-          <a href="#"><img src="images/icons/social/facebook.PNG" /></a>
-          <a href="#"><img src="images/icons/social/telegram.PNG" /></a>
-          <a href="#"><img src="images/icons/social/vk.PNG" /></a>
-          <a href="#"><img src="images/icons/social/viber.PNG" /></a>
+          <a v-if="showFb" href="#">
+            <img src="images/icons/social/facebook.PNG" />
+          </a>
+          <a v-if="showTg" href="#"
+            ><img src="images/icons/social/telegram.PNG"
+          /></a>
+          <a v-if="showVk" href="#"><img src="images/icons/social/vk.PNG" /></a>
+          <a v-if="showViber" href="#"
+            ><img src="images/icons/social/viber.PNG"
+          /></a>
         </div>
       </div>
       <button
+        v-if="hasName || hasEmail || hasPhone || hasComment"
         class="neiros__btn-left-sidebar"
         :style="buttonColor"
         :disabled="loading"
@@ -72,14 +79,18 @@
       </button>
       <div class="neiros__privacy_policy_block">
         <input id="neiros__privacy_policy" type="checkbox" checked />
-        <label for="neiros__privacy_policy"
-          >С <a href="">политикой конфиденциальности</a> ознакомлен</label
-        >
+        <label for="neiros__privacy_policy">
+          С
+          <a href="https://neiros.ru/policy/" target="_blank">
+            политикой конфиденциальности
+          </a>
+          ознакомлен
+        </label>
       </div>
-      <div class="neiros__block_present">
+      <!-- <div class="neiros__block_present">
         <img src="images/present.png" />
         <span class="txt-14 pt-1">+ 7 дней безлимита в подарок</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -113,6 +124,21 @@ export default {
     ...mapState({
       contacts: (state) => state?.quiz?.steps?.step4,
     }),
+    showSocialIcons() {
+      return this.showFb || this.showTg || this.showVk || this.showViber
+    },
+    showFb() {
+      return this.contacts?.active_massenger?.fb
+    },
+    showTg() {
+      return this.contacts?.active_massenger?.telegram
+    },
+    showViber() {
+      return this.contacts?.active_massenger?.viber
+    },
+    showVk() {
+      return this.contacts?.active_massenger?.vk
+    },
     cssVars() {
       return {
         '--color': this.color,
@@ -143,9 +169,9 @@ export default {
     hasComment() {
       return this.contacts?.comment?.active
     },
-    hasSocial() {
-      return this.contacts?.send
-    },
+    // hasSocial() {
+    //   return this.contacts?.send
+    // },
     validateEmail() {
       return /.+@.+/.test(this.email)
     },

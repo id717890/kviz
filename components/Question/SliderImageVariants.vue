@@ -1,7 +1,13 @@
 <template>
   <div class="pb-16">
-    <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
-    <slot></slot>
+    <!-- <div class="neiros__kviz_polls_h1">{{ question.question }}</div>
+    <slot></slot> -->
+    <div class="d-flex flex-row flex-nowrap">
+      <div class="neiros__kviz_polls_h1 flex-grow-1">
+        {{ question.question }}
+      </div>
+      <slot></slot>
+    </div>
     <div class="neiros___swiper_slider_polls step radio-block active">
       <swiper
         v-if="variants"

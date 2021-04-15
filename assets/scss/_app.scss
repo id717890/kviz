@@ -10,6 +10,10 @@
   border: 1px solid red !important;
 }
 
+.t3 {
+  border: 1px solid green !important;
+}
+
 .mx-datepicker-main.mx-datepicker-popup {
   .mx-table.mx-table-date thead {
     color: #ff9a19 !important;
@@ -153,5 +157,5 @@ button:focus {
 }
 
 .w100 {
-  width: 100%;
+  width: 100% !important;
 }

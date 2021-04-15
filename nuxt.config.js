@@ -13,6 +13,7 @@ export default {
     title: 'kviz',
     htmlAttrs: {
       lang: 'en',
+      style: 'overflow: hidden;',
     },
     meta: [
       { charset: 'utf-8' },
