@@ -68,9 +68,11 @@ export default {
       const answers = cloneDeep(this.variants?.filter((x) => x.isSelected))
       console.log(answers.length)
       // console.log(answers.length > 0)
+      // console.log(this.question)
       // if (answers && answers.length > 0) {
       this[types.SAVE_STEP_ANSWER]({
         index: this.currentQuestionIndex,
+        questionId: this.question?.id,
         answers,
       })
       // }
@@ -128,6 +130,7 @@ export default {
     changeTextVariant() {
       this[types.SAVE_STEP_ANSWER]({
         index: this.currentQuestionIndex,
+        questionId: this.question?.id,
         answers: [this.textAnswer],
       })
     },
@@ -179,6 +182,7 @@ export default {
         ) {
           this[types.SAVE_STEP_ANSWER]({
             index: this.currentQuestionIndex,
+            questionId: this.question?.id,
             answers,
           })
         }
@@ -189,6 +193,7 @@ export default {
     changeRange(value) {
       this[types.SAVE_STEP_ANSWER]({
         index: this.currentQuestionIndex,
+        questionId: this.question?.id,
         answers: [value],
       })
     },
@@ -196,6 +201,7 @@ export default {
       this.files = event.target.files
       this[types.SAVE_STEP_ANSWER]({
         index: this.currentQuestionIndex,
+        questionId: this.question?.id,
         answers: [this.files],
       })
     },

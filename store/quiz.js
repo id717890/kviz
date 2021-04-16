@@ -9,6 +9,7 @@ export const state = () => ({
   id: null,
   metrikaId: null,
   neirosVisit: null,
+  sessionId: null,
   answers: [],
   currentQuestionIndex: 0,
   steps: null,
@@ -38,6 +39,7 @@ export const actions = {
     const metrika = state?.metrikaId
     const neirosVisit = state?.neirosVisit
     const answers = state?.answers
+    const sessionId = state?.sessionId
     const id = state?.id
 
     const data = {
@@ -46,6 +48,7 @@ export const actions = {
       phone,
       metrika_id: metrika,
       neiros_visit: neirosVisit,
+      session_id: sessionId,
       data: answers,
     }
     return QuizApi.saveResults(data)
@@ -126,6 +129,9 @@ export const actions = {
 }
 
 export const mutations = {
+  [types.SET_SESSION_ID]: (state, payload) => {
+    state.sessionId = payload
+  },
   [types.SET_METRIKA_ID]: (state, payload) => {
     state.metrikaId = payload
   },
@@ -136,19 +142,20 @@ export const mutations = {
     state.size = size
   },
   [types.SAVE_STEP_ANSWER]: (state, data) => {
-    const { index, answers } = data
+    const { index, answers, questionId } = data
     if (!state?.answers || !state?.answers?.length) {
-      state.answers.push({ index, answers })
+      state.answers.push({ questionId, index, answers })
     } else {
       const findIndex = state.answers.find((x) => x.index === index)
       // console.log('findIndex', findIndex, index)
       if (findIndex) {
         state.answers.splice(state.answers.indexOf(findIndex), 1, {
+          questionId,
           index,
           answers,
         })
       } else {
-        state.answers.push({ index, answers })
+        state.answers.push({ questionId, index, answers })
       }
     }
   },

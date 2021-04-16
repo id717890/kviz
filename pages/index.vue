@@ -16,13 +16,16 @@ export default {
   },
   async mounted() {
     /* eslint-disable camelcase */
-    const { id, metrika_id, neiros_visit } = this.$route.query
-    console.log('PARAMS', id, metrika_id, neiros_visit)
+    const { id, metrika_id, neiros_visit, session_id } = this.$route.query
+    console.log('PARAMS', id, metrika_id, neiros_visit, session_id)
     if (metrika_id) {
       this[types.SET_METRIKA_ID](metrika_id)
     }
     if (neiros_visit) {
       this[types.SET_NEIROS_VISIT](neiros_visit)
+    }
+    if (session_id) {
+      this[types.SET_SESSION_ID](session_id)
     }
     if (id) {
       await this[types.FETCH_QUIZ_CONFIG_ACTION](id)
@@ -39,7 +42,11 @@ export default {
   },
   methods: {
     ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
-    ...mapMutations('quiz', [types.SET_METRIKA_ID, types.SET_NEIROS_VISIT]),
+    ...mapMutations('quiz', [
+      types.SET_METRIKA_ID,
+      types.SET_NEIROS_VISIT,
+      types.SET_SESSION_ID,
+    ]),
     // ...mapMutations('quiz', [types.SET_QUIZ_ID]),
   },
 }
