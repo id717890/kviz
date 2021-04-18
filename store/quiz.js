@@ -97,9 +97,9 @@ export const actions = {
   },
   [types.FETCH_QUIZ_CONFIG_ACTION]: async ({ commit }, id) => {
     try {
-      // id = 13
-      const { data } = await QuizApi.getQuizConfig(id)
+      // id = 31
       commit(types.SET_QUIZ_ID, id)
+      const { data } = await QuizApi.getQuizConfig(id)
       const steps = cloneDeep(data?.data?.data)
       // console.log('steps', steps)
       // const steps = cloneDeep(fakedata?.data?.data)

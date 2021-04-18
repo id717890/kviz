@@ -18,8 +18,9 @@
         @slide-change="slideChange"
       >
         <swiper-slide
-          v-for="slide in variants"
+          v-for="(slide, index) in variants"
           :key="slide.id"
+          :ref="'my-slide-' + index"
           class="my-slide mr-3"
         >
           <!-- <img height="100%" :src="slide.img" alt="" /> -->
@@ -46,6 +47,7 @@
         </div>
         <!-- <div slot="pagination" class="swiper-pagination"></div> -->
         <div
+          v-if="isShowArrows"
           slot="button-prev"
           class="my-swiper-button-prev"
           @click.prevent="prev"
@@ -54,6 +56,7 @@
           <!-- <img src="/images/row-swiper-left.PNG" alt="" /> -->
         </div>
         <div
+          v-if="isShowArrows"
           slot="button-next"
           class="my-swiper-button-next"
           @click.prevent="next"
@@ -90,7 +93,7 @@ export default {
     showLeftBtn: false,
     showRightBtn: true,
     swiperOption: {
-      // slidesOffsetAfter: 80,
+      slidesOffsetAfter: 50,
       direction: 'horizontal',
       mousewheel: true,
       // followFinger: false,
@@ -122,6 +125,9 @@ export default {
         state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
       size: (state) => state?.quiz?.size,
     }),
+    isShowArrows() {
+      return this.variants?.length > 4
+    },
     swiperConfig() {
       const config = cloneDeep(this.swiperOption)
       switch (this.size) {
@@ -132,7 +138,11 @@ export default {
           config.slidesPerView = 2
           break
         default:
-          config.slidesPerView = 4
+          if (this.variants?.length >= 4) {
+            config.slidesPerView = 4
+          } else {
+            config.slidesPerView = this.variants?.length
+          }
           break
       }
       return config
@@ -163,6 +173,21 @@ export default {
     el?.removeEventListener('wheel', this.handleScroll)
   },
   methods: {
+    // setLastSlideWidth() {
+    //   try {
+    //     const index = this.variants?.length - 1
+    //     const el = this.$refs['my-slide-' + index][0]
+    //     if (el) {
+    //       console.log(el.$el.style.width)
+    //       el.$el.style.width = `${
+    //         Number(el.$el.style.width.replace('px', '')) - 13
+    //       }px`
+    //       console.log(el.$el.style.width)
+    //     }
+    //   } catch {
+    //     console.log('setLastSlideWidth error')
+    //   }
+    // },
     handleScroll(event) {
       event.preventDefault()
       // event.stopPropagation()

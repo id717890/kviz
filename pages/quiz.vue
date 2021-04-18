@@ -13,6 +13,7 @@
             </span>
           </div>
           <div class="quiz-container" :style="cssVars">
+            <!-- <transition name="fade" mode="out-in"> -->
             <component
               :is="question"
               v-if="question"
@@ -29,6 +30,7 @@
                 </button>
               </div>
             </component>
+            <!-- </transition> -->
           </div>
           <div class="quiz-progress">
             <QuizProgress />
@@ -195,14 +197,7 @@ export default {
       return Constants.QUESTION_TYPE.QUESTION_NOT_FOUND
     },
   },
-  // watch: {
-  //   currentQuestionIndex(newValue) {
-  //     console.log(newValue)
-  //     this.$forceUpdate()
-  //   },
-  // },
   async created() {
-    // await this[types.FETCH_QUIZ_CONFIG_ACTION]('qweqwe')
     // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
   methods: {
@@ -210,7 +205,6 @@ export default {
     skipStep() {
       this[types.NEXT_QUESTION_ACTION]()
     },
-    // ...mapActions('quiz', [types.FETCH_QUIZ_CONFIG_ACTION]),
   },
 }
 </script>

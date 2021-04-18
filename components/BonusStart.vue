@@ -25,12 +25,7 @@ export default {
       isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
     }),
     isShowBonus() {
-      const isShow = this.bonus?.first
-      if (!this.isActiveBonus) return false
-      if (isShow === false || isShow === true) {
-        return isShow
-      }
-      return true
+      return this.isActiveBonus
     },
     positions() {
       if (!this.image) {

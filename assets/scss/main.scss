@@ -412,7 +412,7 @@ body,
   // box-shadow: 1px 1px 5px 0px rgb(50 50 50 / 75%);
 
   .img {
-    margin: 7px 40px 7px 25px !important;
+    margin: 7px 25px 7px 25px !important;
     width: auto !important;
     box-shadow: none !important;
     height: 90px;
@@ -429,7 +429,7 @@ body,
 
   .text {
     position: relative !important;
-    font-size: 19px;
+    font-size: 16px;
     color: white;
     margin-right: 40px;
   }
@@ -454,7 +454,7 @@ body,
   }
 
   .img-start {
-    margin: 7px 30px 7px 25px !important;
+    margin: 7px 25px 7px 25px !important;
     width: auto !important;
     box-shadow: none !important;
     height: 90px;
@@ -503,13 +503,13 @@ body,
   background: linear-gradient(172deg, #001c60 36%, #000 199%);
   position: relative;
   // box-shadow: 1px 1px 5px 0px rgb(50 50 50 / 75%);
-  flex-basis: 50%;
+  // flex-basis: 50%;
 
   .img {
-    margin: 7px 70px 7px 25px !important;
+    margin: 7px 25px 7px 25px !important;
     width: auto !important;
     box-shadow: none !important;
-    height: 160px;
+    height: 132px;
   }
 
   .icon {
@@ -737,6 +737,13 @@ body,
 
   .neiros__footer {
     position: relative !important;
+    display: flex;
+    justify-content: flex-end;
+
+    // span,
+    // img {
+    //   float: right !important;
+    // }
   }
 
   .quiz-progress-mobile {
@@ -806,4 +813,16 @@ body,
 
 .quiz-progress-desktop_btns {
   margin: 30px 0 15px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }

@@ -29,12 +29,7 @@ export default {
       return this.size === Constants?.SIZES?.XS
     },
     isShowBonusFinish() {
-      const isShow = this.bonus?.finish
-      if (!this.isActiveBonus || !this.bonus?.active) return false
-      if (isShow === false || isShow === true) {
-        return isShow
-      }
-      return true
+      return this.isActiveBonus && this.bonus?.active
     },
     positions() {
       let result = ''

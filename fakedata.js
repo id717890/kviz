@@ -1,25 +1,92 @@
 export default {
-  id: 18,
-  widget_id: 8356,
+  id: 31,
+  widget_id: 8398,
   data: {
     data: {
-      name: 'Пройдите тест на выявление необходимости лечения зубов',
-      id: '18',
+      name: 'Квиз по модульным зданиям',
+      id: '31',
       status: '1',
       step1: {
         optional: true,
-        company: true,
-        img: '/images/bg-left-kviz.jpg',
-        logo: '/images/logo-kviz.PNG',
-        title:
-          'Пройдите тест и узнайте какие инструменты использовать для увеличения продаж',
-        subtite: 'В конце теста бонус - профессиональная консультация',
-        button_text: '',
-        name_company: 'OOO TEST',
-        phone_company: '+7 922 000 0000',
-        company_requisites: 'ИНН 4646466546464',
+        company: false,
+        img:
+          'https://test.neiros.ru/chat_upload/3e57b8fe6b0052757ee42926f7db9807.jpg',
+        logo: '',
+        title: 'Ответьте на 7 вопрос чтобы получить персональное предложение',
+        subtite: 'После прохождения теста - персональный проект',
+        button_text: 'Пройти тест',
+        name_company: '',
+        phone_company: '',
+        company_requisites: '',
       },
       step2: [
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Общежитие',
+              src: '/images/polls-img-2.JPG',
+            },
+            {
+              id: 2,
+              text: 'Столовая',
+              src: '/images/polls-img-2.JPG',
+            },
+            {
+              id: 3,
+              text: 'Столовая',
+              src: '/images/polls-img-2.JPG',
+            },
+            {
+              id: 4,
+              text: 'Столовая',
+              src: '/images/polls-img-2.JPG',
+            },
+            {
+              id: 5,
+              text: 'Столовая',
+              src: '/images/polls-img-2.JPG',
+            },
+          ],
+          tip_oprosa: 'var-s-kartinami',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Как планируете использовать модульное здание?',
+          massage:
+            'Если не знаете или хотите узнать подробнее об условиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          id: 246,
+        },
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Сэндвич панели',
+            },
+            {
+              id: 2,
+              text: 'Оцинкованный профлист',
+            },
+            {
+              id: 3,
+              text: 'Еще не определился',
+            },
+          ],
+          tip_oprosa: 'var-otvetov',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: false,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Какой вид Контейнера вас заинтересовал?',
+          massage:
+            'Если не знаете или хотите узнать подробнее о типах блок-контейнеров - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          id: 247,
+        },
         {
           variants: [
             {
@@ -32,35 +99,7 @@ export default {
             },
             {
               id: 3,
-              text: '3',
-            },
-            {
-              id: 4,
-              text: '4',
-            },
-            {
-              id: 5,
-              text: '5',
-            },
-            {
-              id: 6,
-              text: '6',
-            },
-            {
-              id: 7,
-              text: '7',
-            },
-            {
-              id: 8,
-              text: '8',
-            },
-            {
-              id: 9,
-              text: '9',
-            },
-            {
-              id: 10,
-              text: '10 и более',
+              text: 'Еще не определился',
             },
           ],
           tip_oprosa: 'var-otvetov',
@@ -69,114 +108,50 @@ export default {
           neskolko: false,
           vibor_diapazon_dat: false,
           vibor_vremeni: false,
-          neobbyazatelnii_vopros: true,
-          question: 'Сколько зубов вы хотите вылечить?',
-          massage: '',
+          neobbyazatelnii_vopros: false,
+          question: 'Сколько этажей планируется в модульном здании?',
+          massage:
+            'Если не знаете или хотите узнать подробнее о модульных зданиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          id: 248,
         },
         {
-          variants: [
-            {
-              id: 1,
-              text: 'Острая боль',
-            },
-            {
-              id: 2,
-              text: 'Иногда побаливает, реагирует на горячее-холодное',
-            },
-            {
-              id: 3,
-              text: 'Не болит, но вижу темное пятно на зубе',
-            },
-            {
-              id: 4,
-              text: 'Замена старых пломб',
-            },
-            {
-              id: 5,
-              text: 'Давно не был, хочу проверить состояние зубов',
-            },
-            {
-              id: 6,
-              text: 'Появился неприятный запах изо рта',
-            },
-            {
-              id: 7,
-              text:
-                'Необходимо лечение зубов при подготовке к установке брекетов/имплантации и другому лечению',
-            },
-            {
-              id: 8,
-              text: 'Необходимо лечение зубов при подготовке к беременности',
-            },
-            {
-              id: 9,
-              text: 'Другое',
-            },
-          ],
-          tip_oprosa: 'var-otvetov',
-          optional: false,
+          variants: [],
+          tip_oprosa: 'polzynok',
+          optional: true,
           diapazon_polzunka: true,
           neskolko: true,
           vibor_diapazon_dat: false,
           vibor_vremeni: false,
           neobbyazatelnii_vopros: false,
-          question: 'Какая у Вас ситуация c зубами?',
-          massage: '',
+          question: 'Планируемое кол-во человек для размещения',
+          massage:
+            'Если не знаете или хотите узнать подробнее о модульных зданиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          diapazon_dat_ot: '1',
+          diapazon_dat_do: '500',
+          diapazon_dat_step: '10',
+          id: 249,
         },
         {
           variants: [
             {
               id: 1,
-              text: 'Возможность лечения без сверления',
+              text: 'Мебель',
             },
             {
               id: 2,
-              text: 'Самый лучший',
+              text: 'Оборудование',
             },
             {
               id: 3,
-              text: 'Очень качественный',
+              text: 'Выезд на объект',
             },
             {
               id: 4,
-              text: 'Самый дешевый',
+              text: 'Доставка',
             },
             {
               id: 5,
-              text: 'Нужна консультация',
-            },
-          ],
-          tip_oprosa: 'var-otvetov',
-          optional: false,
-          diapazon_polzunka: true,
-          neskolko: true,
-          vibor_diapazon_dat: false,
-          vibor_vremeni: false,
-          neobbyazatelnii_vopros: false,
-          question: 'Какой вариант лечения Вам предпочтителен?',
-          massage: '',
-        },
-        {
-          variants: [
-            {
-              id: 1,
-              text: 'Лечение каналов',
-            },
-            {
-              id: 2,
-              text: 'Восстановление керамической вкладки',
-            },
-            {
-              id: 3,
-              text: 'Восстановление коронкой',
-            },
-            {
-              id: 4,
-              text: 'Другое',
-            },
-            {
-              id: 5,
-              text: 'Посоветоваться с врачом',
+              text: 'Монтаж',
             },
           ],
           tip_oprosa: 'var-otvetov',
@@ -186,120 +161,69 @@ export default {
           vibor_diapazon_dat: false,
           vibor_vremeni: false,
           neobbyazatelnii_vopros: true,
-          question: 'Требуется ли Вам?',
-          massage: '',
+          question: 'Требуется ли дополнительная комплектация и услуги?',
+          massage:
+            'Если не знаете или хотите узнать подробнее о возможных комплектациях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          id: 250,
         },
         {
           variants: [
             {
-              id: 1,
-              text: 'Имплантация/Протезирование',
-            },
-            {
-              id: 2,
-              text: 'Лечение кариеса',
-            },
-            {
-              id: 3,
-              text: 'Ультразвуковая чистка',
-            },
-            {
-              id: 4,
-              text: 'Лечение десен',
-            },
-            {
-              id: 5,
-              text: 'Брекеты',
-            },
-            {
-              id: 6,
-              text: 'Отбеливание',
-            },
-            {
-              id: 7,
-              text: 'Удаление',
-            },
-            {
-              id: 8,
-              text: 'Коррекция формы и цвета зубов винирами',
-            },
-            {
-              id: 9,
-              text: 'Нужна консультация',
+              type_files: 'all',
+              checked: true,
             },
           ],
-          tip_oprosa: 'var-otvetov',
+          tip_oprosa: 'time-page',
           optional: true,
           diapazon_polzunka: true,
           neskolko: true,
           vibor_diapazon_dat: false,
           vibor_vremeni: false,
           neobbyazatelnii_vopros: true,
-          question: 'Какие дополнительные опции Вам интересны?',
-          massage: '',
-        },
-        {
-          variants: [
-            {
-              id: 1,
-              text: 'Как можно скорее',
-            },
-            {
-              id: 2,
-              text: 'В ближайшие 2 недели',
-            },
-            {
-              id: 3,
-              text: 'В ближайшие месяцы',
-            },
-            {
-              id: 4,
-              text: 'Через пол года и позже',
-            },
-          ],
-          tip_oprosa: 'var-otvetov',
-          optional: true,
-          diapazon_polzunka: true,
-          neskolko: true,
-          vibor_diapazon_dat: false,
-          vibor_vremeni: false,
-          neobbyazatelnii_vopros: true,
-          question: 'Когда планируете начать лечение?',
-          massage: '',
+          question: 'У вас есть техническое задание или схема?',
+          massage:
+            'Если не знаете или хотите узнать подробнее о модульных зданиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          id: 251,
         },
       ],
       step3: {
         konsultant: {
-          name: '',
-          dolgnost: '',
-          is_checked: false,
+          name: 'Максим Вячеславович',
+          dolgnost: 'Консультант-менеджер',
+          img:
+            'https://test.neiros.ru/chat_upload/8faa76fbac901b972cc10aa689ed189f.png',
+          is_checked: true,
         },
         motivaciya: {
-          'type-skidki': 'Растущая',
-          prise1: '1000',
-          prise2: '500',
-          is_checked: false,
+          'type-skidki': 'Падающая',
+          prise1: '5000',
+          prise2: '1000',
+          is_checked: true,
         },
         bonus: {
           is_checked: true,
           first: {
-            name: '',
+            type: 'katalog',
+            name: 'Проектирование',
+            color: '#AFD4FF',
             img: '',
+            'color-text': '#fff',
             first: true,
             finish: true,
           },
           finish: {
             active: true,
-            name: '',
+            type: 'price',
+            name: 'Скидка на месяц подписки',
             img: '',
-            first: true,
-            finish: true,
+            first: false,
+            finish: false,
           },
         },
       },
       step4: {
         name: {
-          active: false,
+          active: true,
           value: '',
         },
         email: {
@@ -307,7 +231,7 @@ export default {
           value: '',
         },
         phone: {
-          active: false,
+          active: true,
           value: '',
         },
         comment: {
@@ -315,34 +239,48 @@ export default {
           value: '',
         },
         send: false,
+        active_massenger: {
+          fb: false,
+          telegram: false,
+          vk: false,
+          viber: false,
+        },
         title_massenger: '',
         text_button_massenger: '',
-        title: '',
-        text: '',
-        text_button: '',
+        title:
+          'Спасибо за ваши ответы! Мы отправим Вам результаты расчета в ближайшее время.',
+        text:
+          'Получите подарок: при заказе модульного здания от 72 м2 в течение 14 дней - конвектора на всю площадь здания в подарок!',
+        text_button: 'Получить расчет стоимости',
         messenge: '',
       },
       step5: {
         color: '#00B9EE',
-        linck: '',
+        color_text: '#fff',
+        linck: '.neiros_popup_quiz',
         event: '',
         'text-label': 'Пройти тест',
-        active: 'Закрепленный ярлык',
+        active: 'Плавающий ярлык',
         icon: '/global_assets/images/icon_kviz/design/form.svg',
         position: 'down-left',
       },
-      step6: [
-        {
-          type: 'url_page',
-          pravilo: 'like',
-          url: '/lechenie-zubov/',
-        },
-      ],
+      step6: {
+        on_off: false,
+        time: '',
+        everyday: false,
+        rules: [
+          {
+            type: 'url_page',
+            pravilo: 'like',
+            url: 'vologda.smart-module.ru/catalog/modulnye-zdaniya/',
+          },
+        ],
+      },
     },
-    name: 'Пройдите тест на выявление необходимости лечения зубов',
+    name: 'Квиз по модульным зданиям',
   },
-  created_at: '2021-04-12 00:00:00',
-  updated_at: '2021-04-12 00:00:00',
-  name: 'Пройдите тест на выявление необходимости лечения зубов',
+  created_at: '2021-04-16 00:00:00',
+  updated_at: '2021-04-16 00:00:00',
+  name: 'Квиз по модульным зданиям',
   status: 1,
 }

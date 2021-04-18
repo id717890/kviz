@@ -230,7 +230,8 @@ body {
 #neiros_kviz .neiros__footer {
   font-family: 'Roboto Light';
   position: absolute;
-  bottom: 25px;
+  bottom: 20px;
+  right: 20px;
 }
 #neiros_kviz .neiros__footer span {
   display: block;
@@ -554,8 +555,9 @@ body {
 }
 
 .grow-rl {
-  -webkit-animation: grow-right-to-left 0.7s ease-in-out;
-  animation: grow-right-to-left 0.7s ease-in-out;
+  -webkit-animation: grow-right-to-left 0.8s ease-in-out;
+  animation: grow-right-to-left 0.8s ease-in-out;
+  animation-duration: 1.3s;
 }
 
 .grow-lr {
@@ -566,6 +568,11 @@ body {
 .animate-show {
   -webkit-animation: opacity-show 0.7s ease-in-out;
   animation: opacity-show 0.7s ease-in-out;
+}
+
+.animate-show2 {
+  -webkit-animation: opacity-show 1.4s ease-in-out;
+  animation: opacity-show 1.4s ease-in-out;
 }
 
 @-webkit-keyframes scale-up-hor-left {
@@ -599,19 +606,19 @@ body {
 
 @keyframes grow-right-to-left {
   0% {
-    width: 0;
+    right: -100%;
   }
   100% {
-    width: 25%;
+    right: 0;
   }
 }
 
 @-webkit-keyframes grow-right-to-left {
   0% {
-    width: 0;
+    right: -100%;
   }
   100% {
-    width: 25%;
+    right: 0;
   }
 }
 
