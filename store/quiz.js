@@ -14,7 +14,7 @@ export const state = () => ({
   currentQuestionIndex: 0,
   steps: null,
   size: null,
-  testMode: true,
+  testMode: false,
 })
 
 export const getters = {
@@ -98,7 +98,7 @@ export const actions = {
   },
   [types.FETCH_QUIZ_CONFIG_ACTION]: async ({ commit }, id) => {
     try {
-      id = 13
+      // id = 13
       commit(types.SET_QUIZ_ID, id)
       const { data } = await QuizApi.getQuizConfig(id)
       const steps = cloneDeep(data?.data?.data)
