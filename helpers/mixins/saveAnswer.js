@@ -23,6 +23,7 @@ export default {
     )
     this.debouncedChangeRange = debounce(this.changeRange, debounceTimeout)
     this.debouncedClickSlide = debounce(this.clickSlide, 100)
+    this.debouncedClickNoSlide = debounce(this.clickNoSlide, 100)
   },
   beforeMount() {
     this.variants = this.question?.variants?.map((variant) => {
@@ -100,6 +101,27 @@ export default {
       setTimeout(() => {
         this[types.NEXT_QUESTION_ACTION]()
       }, 750)
+    },
+    clickNoSlide(index) {
+      if (!this.isMultiple) {
+        this.resetSelection()
+      }
+      this.variants?.forEach((variant, variantIndex) => {
+        if (variantIndex === index) {
+          console.log('find')
+          if (variant.isSelected === true) {
+            console.log('deselect')
+            variant.isSelected = false
+          } else {
+            console.log('select')
+            variant.isSelected = true
+          }
+        }
+      })
+      this.saveAnswer()
+      if (!this.isMultiple) {
+        this[types.NEXT_QUESTION_ACTION]()
+      }
     },
     clickSlide(index, reallyIndex) {
       if (!this.isMultiple) {

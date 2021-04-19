@@ -24,46 +24,6 @@ export default {
           variants: [
             {
               id: 1,
-              text: 'Общежитие',
-              src: '/images/polls-img-2.JPG',
-            },
-            {
-              id: 2,
-              text: 'Столовая',
-              src: '/images/polls-img-2.JPG',
-            },
-            {
-              id: 3,
-              text: 'Столовая',
-              src: '/images/polls-img-2.JPG',
-            },
-            {
-              id: 4,
-              text: 'Столовая',
-              src: '/images/polls-img-2.JPG',
-            },
-            {
-              id: 5,
-              text: 'Столовая',
-              src: '/images/polls-img-2.JPG',
-            },
-          ],
-          tip_oprosa: 'var-s-kartinami',
-          optional: true,
-          diapazon_polzunka: true,
-          neskolko: true,
-          vibor_diapazon_dat: false,
-          vibor_vremeni: false,
-          neobbyazatelnii_vopros: false,
-          question: 'Как планируете использовать модульное здание?',
-          massage:
-            'Если не знаете или хотите узнать подробнее об условиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
-          id: 246,
-        },
-        {
-          variants: [
-            {
-              id: 1,
               text: 'Сэндвич панели',
             },
             {
@@ -76,7 +36,7 @@ export default {
             },
           ],
           tip_oprosa: 'var-otvetov',
-          optional: true,
+          optional: false,
           diapazon_polzunka: true,
           neskolko: false,
           vibor_diapazon_dat: false,
@@ -85,7 +45,7 @@ export default {
           question: 'Какой вид Контейнера вас заинтересовал?',
           massage:
             'Если не знаете или хотите узнать подробнее о типах блок-контейнеров - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
-          id: 247,
+          id: 618,
         },
         {
           variants: [
@@ -103,7 +63,7 @@ export default {
             },
           ],
           tip_oprosa: 'var-otvetov',
-          optional: true,
+          optional: false,
           diapazon_polzunka: true,
           neskolko: false,
           vibor_diapazon_dat: false,
@@ -112,12 +72,12 @@ export default {
           question: 'Сколько этажей планируется в модульном здании?',
           massage:
             'Если не знаете или хотите узнать подробнее о модульных зданиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
-          id: 248,
+          id: 619,
         },
         {
           variants: [],
           tip_oprosa: 'polzynok',
-          optional: true,
+          optional: false,
           diapazon_polzunka: true,
           neskolko: true,
           vibor_diapazon_dat: false,
@@ -129,7 +89,7 @@ export default {
           diapazon_dat_ot: '1',
           diapazon_dat_do: '500',
           diapazon_dat_step: '10',
-          id: 249,
+          id: 620,
         },
         {
           variants: [
@@ -155,7 +115,7 @@ export default {
             },
           ],
           tip_oprosa: 'var-otvetov',
-          optional: true,
+          optional: false,
           diapazon_polzunka: true,
           neskolko: true,
           vibor_diapazon_dat: false,
@@ -164,7 +124,7 @@ export default {
           question: 'Требуется ли дополнительная комплектация и услуги?',
           massage:
             'Если не знаете или хотите узнать подробнее о возможных комплектациях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
-          id: 250,
+          id: 621,
         },
         {
           variants: [
@@ -174,7 +134,7 @@ export default {
             },
           ],
           tip_oprosa: 'time-page',
-          optional: true,
+          optional: false,
           diapazon_polzunka: true,
           neskolko: true,
           vibor_diapazon_dat: false,
@@ -183,7 +143,52 @@ export default {
           question: 'У вас есть техническое задание или схема?',
           massage:
             'Если не знаете или хотите узнать подробнее о модульных зданиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
-          id: 251,
+          id: 622,
+        },
+        {
+          variants: [
+            {
+              id: 1,
+              text: 'Общежитие',
+              src:
+                'https://test.neiros.ru/chat_upload/07470320a84a45fecdfefd03e7b5b1c9.jpg',
+            },
+            {
+              id: 2,
+              text: 'Столовая',
+              src:
+                'https://test.neiros.ru/chat_upload/4d3b654b3494cec485151f2ef4e67f76.jpg',
+            },
+            {
+              id: 3,
+              text: 'Столовая',
+              src:
+                'https://test.neiros.ru/chat_upload/4d3b654b3494cec485151f2ef4e67f76.jpg',
+            },
+            {
+              id: 4,
+              text: 'Столовая',
+              src:
+                'https://test.neiros.ru/chat_upload/4d3b654b3494cec485151f2ef4e67f76.jpg',
+            },
+            // {
+            //   id: 5,
+            //   text: 'Столовая',
+            //   src:
+            //     'https://test.neiros.ru/chat_upload/4d3b654b3494cec485151f2ef4e67f76.jpg',
+            // },
+          ],
+          tip_oprosa: 'var-s-kartinami',
+          optional: true,
+          diapazon_polzunka: true,
+          neskolko: true,
+          vibor_diapazon_dat: false,
+          vibor_vremeni: false,
+          neobbyazatelnii_vopros: false,
+          question: 'Как планируете использовать модульное здание?',
+          massage:
+            'Если не знаете или хотите узнать подробнее об условиях - звоните нам: 8 (800) 511-78-77 мы поможем Вам с выбором.',
+          id: 623,
         },
       ],
       step3: {
@@ -192,7 +197,7 @@ export default {
           dolgnost: 'Консультант-менеджер',
           img:
             'https://test.neiros.ru/chat_upload/8faa76fbac901b972cc10aa689ed189f.png',
-          is_checked: true,
+          is_checked: false,
         },
         motivaciya: {
           'type-skidki': 'Падающая',
@@ -203,21 +208,24 @@ export default {
         bonus: {
           is_checked: true,
           first: {
-            type: 'katalog',
-            name: 'Проектирование',
+            type: 'cupon',
+            name: 'Проектирование модульных конструкций бесплатно',
             color: '#AFD4FF',
-            img: '',
-            'color-text': '#fff',
-            first: true,
+            img:
+              'https://test.neiros.ru/chat_upload/b76abce5b22ddc26884ff54682b8984e.jpg',
+            'color-text': '#000',
+            first: false,
             finish: true,
           },
           finish: {
             active: true,
             type: 'price',
-            name: 'Скидка на месяц подписки',
+            name: 'Тест',
+            color: '#AFD4FF',
             img: '',
+            'color-text': '#000',
             first: false,
-            finish: false,
+            finish: true,
           },
         },
       },
@@ -280,7 +288,7 @@ export default {
     name: 'Квиз по модульным зданиям',
   },
   created_at: '2021-04-16 00:00:00',
-  updated_at: '2021-04-16 00:00:00',
+  updated_at: '2021-04-18 00:00:00',
   name: 'Квиз по модульным зданиям',
   status: 1,
 }

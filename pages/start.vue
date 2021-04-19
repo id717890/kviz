@@ -36,6 +36,7 @@ export default {
     ...mapGetters('quiz', ['color']),
     ...mapState({
       step1: (state) => state?.quiz?.steps?.step1,
+      testMode: (state) => state?.quiz?.testMode,
       // isShowBonus: (state) => {
       //   const isShow = state?.quiz?.steps?.step3?.bonus?.first?.first
       //   if (isShow === false || isShow === true) {
@@ -69,7 +70,8 @@ export default {
     },
   },
   async created() {
-    // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
+    if (this.testMode)
+      await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
 }
 </script>

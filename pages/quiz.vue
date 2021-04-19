@@ -124,6 +124,7 @@ export default {
       isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
       bonusStep: (state) => state?.quiz?.steps?.step3?.bonus?.first,
       currentQuestionIndex: (state) => state?.quiz?.currentQuestionIndex,
+      testMode: (state) => state?.quiz?.testMode,
     }),
     cssVars() {
       return {
@@ -198,7 +199,8 @@ export default {
     },
   },
   async created() {
-    // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
+    if (this.testMode)
+      await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
   methods: {
     ...mapActions('quiz', [types.NEXT_QUESTION_ACTION]),

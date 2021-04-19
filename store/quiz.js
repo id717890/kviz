@@ -2,7 +2,7 @@ import { cloneDeep } from 'lodash'
 import types from './types'
 // import Constants from '~/constants'
 import QuizApi from '~/api/Quiz'
-// import fakedata from '~/fakedata'
+import fakedata from '~/fakedata'
 import Constants from '~/constants'
 
 export const state = () => ({
@@ -14,6 +14,7 @@ export const state = () => ({
   currentQuestionIndex: 0,
   steps: null,
   size: null,
+  testMode: true,
 })
 
 export const getters = {
@@ -97,12 +98,12 @@ export const actions = {
   },
   [types.FETCH_QUIZ_CONFIG_ACTION]: async ({ commit }, id) => {
     try {
-      // id = 31
+      id = 31
       commit(types.SET_QUIZ_ID, id)
-      const { data } = await QuizApi.getQuizConfig(id)
-      const steps = cloneDeep(data?.data?.data)
+      // const { data } = await QuizApi.getQuizConfig(id)
+      // const steps = cloneDeep(data?.data?.data)
       // console.log('steps', steps)
-      // const steps = cloneDeep(fakedata?.data?.data)
+      const steps = cloneDeep(fakedata?.data?.data)
       steps.step2 = steps.step2.filter((x) => x.optional !== false)
       commit(types.SET_QUIZ_STEPS, steps)
       // commit(types.SET_QUIZ_STEPS, data?.data)

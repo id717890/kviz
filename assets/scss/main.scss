@@ -826,3 +826,11 @@ body,
 .fade-leave-active {
   opacity: 0;
 }
+
+.no-swiper {
+  display: flex;
+
+  label {
+    outline: none;
+  }
+}

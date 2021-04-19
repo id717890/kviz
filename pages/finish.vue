@@ -87,6 +87,7 @@ export default {
       //   return true
       // },
       settings: (state) => state?.quiz?.steps?.step4,
+      testMode: (state) => state?.quiz?.testMode,
     }),
     title() {
       return this.settings?.title || 'Отлично! Остался всего один шаг!'

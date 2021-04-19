@@ -8,7 +8,44 @@
       </div>
       <slot></slot>
     </div>
-    <div class="neiros___swiper_slider_polls step radio-block active">
+    <div
+      v-if="!isShowArrows"
+      class="neiros___swiper_slider_polls step radio-block active"
+    >
+      <div class="no-swiper">
+        <div class="container">
+          <div class="row">
+            <div
+              v-for="(slide, index) in variants"
+              :key="slide.id"
+              :ref="'my-slide-' + index"
+              class="my-slide swiper-slide"
+              :class="getCols"
+              @click="debouncedClickNoSlide(index)"
+            >
+              <label tabindex="0" class="d-block">
+                <input type="radio" name="b-radio" value="вопрос 1" />
+                <div
+                  :class="{ 'select-poll': slide.isSelected }"
+                  class="swiper-slide-block"
+                  :style="cssVars"
+                >
+                  <svg-slider />
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img :src="slide.src" />
+                  </div>
+                  <span>{{ slide.text }}</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="isShowArrows"
+      class="neiros___swiper_slider_polls step radio-block active"
+    >
       <swiper
         v-if="variants"
         ref="my-swiper"
@@ -125,6 +162,19 @@ export default {
         state?.quiz?.steps?.step5?.color || Constants.DEFAULT_COLOR_CHECK_BOX,
       size: (state) => state?.quiz?.size,
     }),
+    getCols() {
+      switch (this.count) {
+        case 3:
+          return 'col-4'
+        case 4:
+          return 'col-3'
+        default:
+          return 'col-6'
+      }
+    },
+    count() {
+      return this.variants?.length
+    },
     isShowArrows() {
       return this.variants?.length > 4
     },
@@ -163,7 +213,7 @@ export default {
   mounted() {
     // eslint-disable-next-line nuxt/no-globals-in-created
     const el = document.getElementsByClassName('swiper-container')[0]
-    el.addEventListener('wheel', this.handleScroll, true)
+    el?.addEventListener('wheel', this.handleScroll, true)
     //   .addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
