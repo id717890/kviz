@@ -77,7 +77,7 @@ export default {
         {
           variants: [],
           tip_oprosa: 'polzynok',
-          optional: false,
+          optional: true,
           diapazon_polzunka: true,
           neskolko: true,
           vibor_diapazon_dat: false,

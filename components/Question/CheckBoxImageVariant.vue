@@ -8,7 +8,7 @@
     </div>
     <div class="neiros__kviz_polls-right-img step checkbox-block active">
       <div class="neiros__kviz_polls">
-        <div class="polls-left-part">
+        <div class="polls-left-part" :style="cssVars">
           <div
             v-for="(variant, index) in variants"
             :key="index"
@@ -97,5 +97,9 @@ input[type='checkbox']:checked + label span::after {
 .neiros__answer-variants__textVariant:hover {
   box-shadow: var(--cb-shadow);
   border: var(--cb-border);
+}
+
+.polls-left-part::-webkit-scrollbar-thumb {
+  background-color: var(--cb-color);
 }
 </style>

@@ -590,7 +590,9 @@ body,
 // }
 
 .radio-image-variant {
-  max-height: 300px;
+  width: 100%;
+  max-width: 350px;
+  // max-height: 300px;
   // height: 800px;
 }
 
@@ -666,6 +668,7 @@ body,
   position: relative;
 }
 
+.polls-left-part::-webkit-scrollbar,
 .quiz-container::-webkit-scrollbar,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar {
   // width: 5px;
@@ -673,6 +676,7 @@ body,
   background-color: rgba(209, 209, 209, 0.3);
 }
 
+.polls-left-part::-webkit-scrollbar-track,
 .quiz-container::-webkit-scrollbar-track,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-track {
   // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -680,6 +684,7 @@ body,
   background-color: #f5f5f5;
 }
 
+.polls-left-part::-webkit-scrollbar-thumb,
 .quiz-container::-webkit-scrollbar-thumb,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-thumb {
   // background-color: rgb(218, 218, 218);

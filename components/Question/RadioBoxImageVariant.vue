@@ -10,7 +10,7 @@
     </div>
     <div class="neiros__kviz_polls-right-img step radio-block active">
       <div class="neiros__kviz_polls">
-        <div class="polls-left-part">
+        <div class="polls-left-part" :style="cssVars">
           <div
             v-for="(variant, index) in variants"
             :key="index"
@@ -85,5 +85,9 @@ input:checked + span::before {
 .neiros__answer-variants__textVariant:hover {
   box-shadow: var(--rb-shadow);
   border: var(--rb-border);
+}
+
+.polls-left-part::-webkit-scrollbar-thumb {
+  background-color: var(--rb-color);
 }
 </style>
