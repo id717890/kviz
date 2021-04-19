@@ -79,7 +79,7 @@ import Constants from '~/constants'
 import types from '~/store/types'
 import Operator from '~/components/Operator'
 import Discount from '~/components/Discount'
-import StepBonus from '~/components/BonusSteps'
+import StepBonus from '~/components/BonusStepsNew'
 import CheckSquareSvg from '~/components/SVG/CheckSquare'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
@@ -144,10 +144,7 @@ export default {
     isShowBonus1() {
       const isShow = this.bonusStep?.first
       if (!this.isActiveBonus) return false
-      if (isShow === false || isShow === true) {
-        return isShow
-      }
-      return true
+      return this.isActiveBonus && isShow
     },
     isAllowSkip() {
       return this.currentQuestion?.neobbyazatelnii_vopros === true

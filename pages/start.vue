@@ -16,7 +16,9 @@
             {{ buttonText }}
           </nuxt-link>
 
-          <div class="txt1 mb-0">Бонус после прохождения теста!</div>
+          <div v-if="isActiveBonus" class="txt1 mb-0">
+            Бонус после прохождения теста!
+          </div>
           <Bonus />
         </div>
         <StartFooter />
@@ -27,7 +29,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import Bonus from '~/components/BonusStart'
+import Bonus from '~/components/BonusStartNew'
 import StartHeader from '~/components/StartPage/Header'
 import StartFooter from '~/components/StartPage/Footer'
 export default {
@@ -37,6 +39,7 @@ export default {
     ...mapState({
       step1: (state) => state?.quiz?.steps?.step1,
       testMode: (state) => state?.quiz?.testMode,
+      isActiveBonus: (state) => state?.quiz?.steps?.step3?.bonus?.is_checked,
       // isShowBonus: (state) => {
       //   const isShow = state?.quiz?.steps?.step3?.bonus?.first?.first
       //   if (isShow === false || isShow === true) {

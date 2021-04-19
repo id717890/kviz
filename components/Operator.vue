@@ -1,6 +1,6 @@
 <template>
-  <section v-if="isShowOperator">
-    <div class="neiros__block_operator">
+  <section>
+    <div v-if="isShowOperator" class="neiros__block_operator">
       <div class="neiros___left">
         <!-- <img src="images/operator3.JPG" /> -->
         <img :src="operator.img" />
@@ -15,7 +15,9 @@
       </div>
     </div>
     <div v-if="chatMessage" class="message-chat-question">
-      <div class="tolltip">{{ chatMessage }}</div>
+      <div class="tolltip" :class="{ 'wo-after': !isShowOperator }">
+        {{ chatMessage }}
+      </div>
     </div>
   </section>
 </template>

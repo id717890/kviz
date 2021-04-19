@@ -87,6 +87,9 @@ export default {
     if (this.answers?.length === 1) {
       this.rangeValue = this.answers[0]
     }
+    if (this.answers?.length === 0) {
+      this.changeRange(this.rangeValue)
+    }
   },
 }
 </script>

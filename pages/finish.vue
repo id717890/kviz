@@ -40,7 +40,7 @@
               </div>
             </div> -->
             <!-- <BonusFinish1 v-if="isShowBonus1Finish" /> -->
-            <BonusFinish1 />
+            <BonusFinish1 class="mr-4 mb-4" />
             <BonusFinish2 />
           </div>
           <!-- <div class="neiros__final_block_bonus">
@@ -67,9 +67,8 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-// import types from '~/store/types'
-import BonusFinish1 from '~/components/BonusFinish1'
-import BonusFinish2 from '~/components/BonusFinish2'
+import BonusFinish1 from '~/components/BonusFinish1New'
+import BonusFinish2 from '~/components/BonusFinish2New'
 import ContactForm from '~/components/ContactForm'
 import ToolTipSvg from '~/components/SVG/TooltipTriangle'
 
@@ -108,7 +107,8 @@ export default {
     },
   },
   async created() {
-    // await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
+    if (this.testMode)
+      await this.$store.dispatch('quiz/FETCH_QUIZ_CONFIG_ACTION', 'qweqwe')
   },
 }
 </script>

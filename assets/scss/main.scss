@@ -362,6 +362,14 @@ body,
     box-shadow: 0px 5px 10px 3px rgba(136, 156, 172, 0.2);
   }
 
+  .tolltip.wo-after {
+    margin-top: 16px;
+  }
+
+  .tolltip.wo-after::after {
+    content: none;
+  }
+
   .tolltip::after {
     content: ' ';
     position: absolute;
@@ -436,11 +444,13 @@ body,
 }
 
 .bonus-start {
+  height: 109px;
+  width: 280px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  width: 300px;
-  min-height: 130px;
+  // width: 300px;
+  // min-height: 130px;
   border-radius: 10px;
   background: linear-gradient(172deg, #001c60 36%, #000 199%);
   position: relative;
@@ -837,5 +847,60 @@ body,
 
   label {
     outline: none;
+  }
+}
+
+.design-block-label {
+  height: 109px;
+  width: 280px;
+  border-radius: 10px;
+  position: relative;
+
+  .design-block-left {
+    float: left;
+    position: relative;
+    height: 100%;
+
+    .design-tupe-duwn {
+      width: 95px;
+      margin-left: 15px;
+      margin-top: 7px;
+
+      img {
+        width: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .design-block-right-cont {
+    float: left;
+    width: 121px;
+    max-height: 80px;
+    max-width: 121px;
+    font-family: 'Roboto';
+    color: #fff;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 80px;
+    overflow: hidden;
+    display: table;
+  }
+
+  .design-block-right  {
+    display: table-cell;
+    vertical-align: middle;
+    max-height: 80px;
+    overflow: hidden;
+  }
+
+  .design-icon-check {
+    position: absolute;
+    right: 10px;
+    top: 9px;
   }
 }
