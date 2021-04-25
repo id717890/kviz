@@ -1,6 +1,9 @@
 <template>
   <section>
-    <div class="neiros__bonus design-block-label mt-4" :style="gradient">
+    <div
+      class="neiros__bonus design-block-label for-step mt-4"
+      :style="gradient"
+    >
       <div class="design-block-left">
         <div class="design-tupe-duwn">
           <img v-if="image" :src="image" />

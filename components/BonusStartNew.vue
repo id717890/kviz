@@ -38,7 +38,7 @@ export default {
     }),
     isShowBonus() {
       if (this.bonus?.finish === true) return false
-      return this.isActiveBonus && this.bonus?.first
+      return this.isActiveBonus
     },
     positions() {
       if (!this.image) {
