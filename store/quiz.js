@@ -36,6 +36,19 @@ export const getters = {
 }
 
 export const actions = {
+  [types.GET_QUIZ_PARAMS_BY_SHORT_URL_ACTION]: async (
+    { commit, dispatch },
+    { id }
+  ) => {
+    id = 24
+    const metrikaId = '60b7625689e12e69f00e9efd'
+    const neirosVisit = '608106f559abbf50fff96b42'
+    const sessionId = '60b76266bd23941bdbda833f'
+    commit(types.SET_METRIKA_ID, metrikaId)
+    commit(types.SET_NEIROS_VISIT, neirosVisit)
+    commit(types.SET_SESSION_ID, sessionId)
+    await dispatch(types.FETCH_QUIZ_CONFIG_ACTION, id)
+  },
   [types.SAVE_RESULT_QUIZ_ACTION]: async ({ state }, { email, phone }) => {
     const metrika = state?.metrikaId
     const neirosVisit = state?.neirosVisit
@@ -102,7 +115,7 @@ export const actions = {
       commit(types.SET_QUIZ_ID, id)
       const { data } = await QuizApi.getQuizConfig(id)
       const steps = cloneDeep(data?.data?.data)
-      console.log('steps', steps)
+      // console.log('steps', steps)
       // eslint-disable-next-line no-unused-vars
       const stepsOLD = cloneDeep(fakedata?.data?.data)
       steps.step2 = steps.step2.filter((x) => x.optional !== false)

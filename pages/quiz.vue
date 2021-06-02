@@ -50,9 +50,10 @@
               Пройдите тест до конца, чтобы получить бонус
             </div>
           </StepBonus>
-          <div class="neiros__footer">
-            <span>Сделано в</span>
-            <img class="logo-neiros" src="/logo_neiros.svg" />
+          <div class="neiros__footer logo-neiros-wrapper">
+            <span class="logo-neiros-made">Сделано в</span>
+            <!-- <img class="logo-neiros" src="/logo_neiros.svg" /> -->
+            <LogoSvg class="logo-neiros" />
           </div>
         </div>
       </div>
@@ -81,6 +82,7 @@ import Operator from '~/components/Operator'
 import Discount from '~/components/Discount'
 import StepBonus from '~/components/BonusStepsNew'
 import CheckSquareSvg from '~/components/SVG/CheckSquare'
+import LogoSvg from '~/components/SVG/NeirosLogo'
 
 const CHECK_OR_RADIO_VARIANTS = 'VAR-OTVETOV'
 const CHECK_OR_RADIO_IMAGE_VARIANTS = 'VAR-S-KARTINAMI'
@@ -112,6 +114,7 @@ export default {
     QuizProgressMobile,
     [Constants.QUESTION_TYPE.QUESTION_NOT_FOUND]: QuestionNotFound,
     CheckSquareSvg,
+    LogoSvg,
   },
   computed: {
     ...mapGetters('quiz', [

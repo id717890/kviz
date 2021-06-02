@@ -11,9 +11,14 @@
             <div v-if="companyRequisites">{{ companyRequisites }}</div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 d-flex flex-row align-items-end">
-          <span style="white-space: nowrap">Сделано в</span>
-          <img class="mb-1 logo-neiros" src="/logo_neiros.svg" />
+        <div
+          class="col-sm-12 col-md-4 d-flex flex-row align-items-end logo-neiros-wrapper"
+        >
+          <span style="white-space: nowrap" class="logo-neiros-made"
+            >Сделано в</span
+          >
+          <!-- <img class="mb-1 logo-neiros" src="/logo_neiros.svg" /> -->
+          <LogoSvg class="mb-1 logo-neiros" />
         </div>
       </div>
     </div>
@@ -22,8 +27,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import LogoSvg from '~/components/SVG/NeirosLogo'
+
 export default {
   name: 'StartPageFooter',
+  components: { LogoSvg },
   computed: {
     ...mapState({
       config: (state) => state?.quiz?.steps?.step1,

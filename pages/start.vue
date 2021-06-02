@@ -32,6 +32,7 @@ import { mapState, mapGetters } from 'vuex'
 import Bonus from '~/components/BonusStartNew'
 import StartHeader from '~/components/StartPage/Header'
 import StartFooter from '~/components/StartPage/Footer'
+
 export default {
   components: { Bonus, StartHeader, StartFooter },
   computed: {
