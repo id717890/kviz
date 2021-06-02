@@ -16,7 +16,9 @@
     </div>
     <div v-if="chatMessage" class="message-chat-question">
       <div class="tolltip" :class="{ 'wo-after': !isShowOperator }">
-        {{ chatMessage }}
+        <div class="tolltip-container">
+          {{ chatMessage }}
+        </div>
       </div>
     </div>
   </section>

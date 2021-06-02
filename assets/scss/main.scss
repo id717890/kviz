@@ -618,6 +618,11 @@ body,
   padding-right: 15px;
 }
 
+.tolltip-container {
+  overflow-x: hidden;
+  height: 75px;
+}
+
 .quiz-progress {
   // height: 17%;
   // min-height: 140px;
@@ -678,6 +683,7 @@ body,
   position: relative;
 }
 
+.tolltip-container::-webkit-scrollbar,
 .polls-left-part::-webkit-scrollbar,
 .quiz-container::-webkit-scrollbar,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar {
@@ -686,6 +692,7 @@ body,
   background-color: rgba(209, 209, 209, 0.3);
 }
 
+.tolltip-container::-webkit-scrollbar-track,
 .polls-left-part::-webkit-scrollbar-track,
 .quiz-container::-webkit-scrollbar-track,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-track {
@@ -694,6 +701,7 @@ body,
   background-color: #f5f5f5;
 }
 
+.tolltip-container::-webkit-scrollbar-thumb,
 .polls-left-part::-webkit-scrollbar-thumb,
 .quiz-container::-webkit-scrollbar-thumb,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-thumb {
@@ -851,7 +859,7 @@ body,
 }
 
 .design-block-label.for-step {
-  width: 100% !important
+  width: 100% !important;
 }
 
 .design-block-label {
@@ -895,7 +903,7 @@ body,
     display: table;
   }
 
-  .design-block-right  {
+  .design-block-right {
     display: table-cell;
     vertical-align: middle;
     max-height: 80px;

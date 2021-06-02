@@ -209,6 +209,7 @@ export default {
 </script>
 
 <style scoped>
+.tolltip-container::-webkit-scrollbar-thumb,
 .quiz-container::-webkit-scrollbar-thumb,
 .neiros__container_kviz .neiros__block_kviz_right::-webkit-scrollbar-thumb {
   background-color: var(--color);

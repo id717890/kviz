@@ -14,7 +14,7 @@ export const state = () => ({
   currentQuestionIndex: 0,
   steps: null,
   size: null,
-  testMode: false,
+  testMode: true,
 })
 
 export const getters = {
@@ -102,7 +102,7 @@ export const actions = {
       commit(types.SET_QUIZ_ID, id)
       const { data } = await QuizApi.getQuizConfig(id)
       const steps = cloneDeep(data?.data?.data)
-      // console.log('steps', steps)
+      console.log('steps', steps)
       // eslint-disable-next-line no-unused-vars
       const stepsOLD = cloneDeep(fakedata?.data?.data)
       steps.step2 = steps.step2.filter((x) => x.optional !== false)
