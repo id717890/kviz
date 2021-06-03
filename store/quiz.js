@@ -38,6 +38,9 @@ export const getters = {
 }
 
 export const actions = {
+  [types.SEND_METRIKA_ACTION]: async (context, params) => {
+    return QuizApi.sendMetrika(params)
+  },
   [types.GET_QUIZ_PARAMS_BY_SHORT_URL_ACTION]: async (
     { commit, dispatch },
     { hash }
@@ -63,9 +66,17 @@ export const actions = {
     commit(types.SET_METRIKA_ID, metrikaId)
     commit(types.SET_NEIROS_VISIT, neirosVisit)
     commit(types.SET_SESSION_ID, sessionId)
-    await dispatch(types.FETCH_QUIZ_CONFIG_SHORT_ACTION, {
+    const result = await dispatch(types.FETCH_QUIZ_CONFIG_SHORT_ACTION, {
       hash,
     })
+    return {
+      ...result,
+      ...{
+        metrikaId,
+        neirosVisit,
+        sessionId,
+      },
+    }
   },
   [types.SAVE_RESULT_QUIZ_ACTION]: async ({ state }, { email, phone }) => {
     const metrika = state?.metrikaId
@@ -134,6 +145,7 @@ export const actions = {
       const steps = cloneDeep(data?.data?.data)
       steps.step2 = steps.step2.filter((x) => x.optional !== false)
       commit(types.SET_QUIZ_STEPS, steps)
+      return data
     } catch (e) {
       console.log('FETCH_QUIZ_CONFIG_ACTION', e)
     }

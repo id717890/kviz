@@ -10,4 +10,7 @@ export default {
   saveResults(data) {
     return ApiBase.post('api/datafrom_kwiz', data)
   },
+  sendMetrika(params) {
+    return ApiBase.get(`api/counter_quiz.js?${params}`)
+  },
 }
