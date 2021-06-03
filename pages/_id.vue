@@ -23,10 +23,11 @@ export default {
   methods: {
     ...mapActions('quiz', [types.GET_QUIZ_PARAMS_BY_SHORT_URL_ACTION]),
     async setInitialize() {
-      const code = this.$route?.params?.id
+      // const code = this.$route?.params?.id
+      const code = 'wistis.ru/123'
       if (code) {
         await this[types.GET_QUIZ_PARAMS_BY_SHORT_URL_ACTION]({
-          id: code,
+          hash: code,
         })
         const startPageIsActive = this.step1?.optional
         if (startPageIsActive) this.$router.push({ name: 'start' })

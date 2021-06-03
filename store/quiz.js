@@ -4,6 +4,8 @@ import types from './types'
 import QuizApi from '~/api/Quiz'
 import fakedata from '~/fakedata'
 import Constants from '~/constants'
+import Hash from '~/helpers/lib/hash'
+import LocalStorage from '~/helpers/lib/localStorage'
 
 export const state = () => ({
   id: null,
@@ -38,16 +40,32 @@ export const getters = {
 export const actions = {
   [types.GET_QUIZ_PARAMS_BY_SHORT_URL_ACTION]: async (
     { commit, dispatch },
-    { id }
+    { hash }
   ) => {
-    id = 24
-    const metrikaId = '60b7625689e12e69f00e9efd'
-    const neirosVisit = '608106f559abbf50fff96b42'
-    const sessionId = '60b76266bd23941bdbda833f'
+    let metrikaId = LocalStorage.get('metrika')
+    let neirosVisit = LocalStorage.get('nvisit')
+    let sessionId = LocalStorage.get('session')
+    if (!metrikaId) {
+      metrikaId = Hash.hexID()
+      LocalStorage.set('metrika', metrikaId)
+      LocalStorage.setExpiration()
+    }
+    if (!neirosVisit) {
+      neirosVisit = Hash.hexID()
+      LocalStorage.set('nvisit', neirosVisit)
+      LocalStorage.setExpiration()
+    }
+    if (!sessionId) {
+      sessionId = Hash.hexID()
+      LocalStorage.set('session', sessionId)
+      LocalStorage.setExpiration()
+    }
     commit(types.SET_METRIKA_ID, metrikaId)
     commit(types.SET_NEIROS_VISIT, neirosVisit)
     commit(types.SET_SESSION_ID, sessionId)
-    await dispatch(types.FETCH_QUIZ_CONFIG_ACTION, id)
+    await dispatch(types.FETCH_QUIZ_CONFIG_SHORT_ACTION, {
+      hash,
+    })
   },
   [types.SAVE_RESULT_QUIZ_ACTION]: async ({ state }, { email, phone }) => {
     const metrika = state?.metrikaId
@@ -108,6 +126,17 @@ export const actions = {
   },
   [types.SAVE_STEP_ANSWER_ACTION]: ({ commit }, data) => {
     console.log(data)
+  },
+  [types.FETCH_QUIZ_CONFIG_SHORT_ACTION]: async ({ commit }, { hash }) => {
+    try {
+      const { data } = await QuizApi.getQuizConfigShortUlr(hash)
+      // console.log(data)
+      const steps = cloneDeep(data?.data?.data)
+      steps.step2 = steps.step2.filter((x) => x.optional !== false)
+      commit(types.SET_QUIZ_STEPS, steps)
+    } catch (e) {
+      console.log('FETCH_QUIZ_CONFIG_ACTION', e)
+    }
   },
   [types.FETCH_QUIZ_CONFIG_ACTION]: async ({ commit }, id) => {
     try {
