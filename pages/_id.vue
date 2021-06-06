@@ -26,14 +26,15 @@ export default {
       types.SEND_METRIKA_ACTION,
     ]),
     async setInitialize() {
-      // console.log(this.$route)
       // const code = this.$route?.params?.id
       // const code = 'wistis.ru/123'
-      const domain = process.env.VUE_APP_API_URL_HASH?.substring(
-        0,
-        process.env.VUE_APP_API_URL_HASH?.length - 1
-      )
-      const code = `${domain}${this.$route?.path}`
+      const origin = window?.location?.origin
+      // const domain = process.env.VUE_APP_API_URL_HASH?.substring(
+      //   0,
+      //   process.env.VUE_APP_API_URL_HASH?.length - 1
+      // )
+      // const codeOld = `${domain}${this.$route?.path}`
+      const code = `${origin}${this.$route?.path}`
       if (code) {
         const result = await this[types.GET_QUIZ_PARAMS_BY_SHORT_URL_ACTION]({
           hash: code,
