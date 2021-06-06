@@ -8,7 +8,7 @@
       <div class="neiros__kviz_padding_block d-flex flex-column flex-grow-1">
         <div class="start-page-btn-and-bonus">
           <div v-if="title" class="neiros__kviz_block_right_text_top">
-            {{ title }}
+            <div :class="{ 'mb-10': !subtitle }">{{ title }}</div>
             <p v-if="subtitle">{{ subtitle }}</p>
           </div>
 
